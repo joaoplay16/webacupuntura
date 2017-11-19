@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:o="http://omnifaces.org/ui"
+	template="/templates/modeloSistema.xhtml"
+	xmlns:my="http://mytags/facelets">
+
+	<ui:define name="conteudo">
+				<f:metadata>
+					<o:viewParam name="usuario"
+						value="#{usuarioBean.usuario}" />
+				</f:metadata>
+
+
+		<div class="container-fluid">
+			<div class="ui-g-8 ui-md-8">
+				<p:messages id="msgs" autoUpdate="true" closable="true" showIcon="false"/>
+				<my:painel cor="panel-primary" titulo="Cadastro de usuario">
+					<h:form id="frmUsuNovo">
+						<div class="form-group">
+							<div class="ui-grid-row">
+								<div class="ui-g-7 ui-md-5">
+									<p:outputLabel value="Usuário:" />
+									<p:inputText value="#{usuarioBean.usuario.nome}"
+										required="true" requiredMessage="Digite o nome de usuário!"
+										maxlength="30" validatorMessage="O usuário deve ter no mínimo 4 caracteres">
+										<f:validateLength minimum="4"/>
+										</p:inputText>
+								</div>
+							</div>
+
+							<div class="ui-grid-row">
+								<div class="ui-g-7 ui-md-5">
+									<p:outputLabel value="Senha:" />
+									<p:password value="#{usuarioBean.usuario.senha}"
+										maxlength="30"  required="true"
+										requiredMessage="Digite a senha!" 
+										validatorMessage="A senha deve ter no mínimo 8 caracteres">
+										<f:validateLength minimum="8" />
+									</p:password>	
+
+								</div>
+							</div>
+							<div class="ui-grid-row">
+								<div class="ui-g-6 ui-md-4">
+									<p:outputLabel value="Permissão:" />
+									<p:selectOneMenu value="#{usuarioBean.usuario.permissao}"
+										required="true"
+										requiredMessage="Selecione o nivel de permissão">
+										<f:selectItem noSelectionOption="true" itemLabel="Selecione" />
+
+										<f:selectItem itemLabel="Adminstrador" itemValue="admin" />
+										<f:selectItem itemLabel="Gerente" itemValue="gerente" />
+										<f:selectItem itemLabel="Atendente" itemValue="atendente" />
+										<f:selectItem itemLabel="Balconista" itemValue="balconista" />
+									</p:selectOneMenu>
+								</div>
+							</div>
+
+							<div class="ui-grid-row">
+								<div class="ui-g-9 ui-md-9">
+									<h:panelGrid columns="1">
+										<p:commandButton value="Salvar"
+											action="#{usuarioBean.salvar}"
+											update=":frmUsuNovo :form:dataList"/>
+									</h:panelGrid>
+								</div>
+							</div>
+
+						</div>
+					</h:form>
+				</my:painel>
+			</div>
+
+			<div class="ui-g-10 ui-md-4">
+				<my:painel cor="panel-primary" titulo="usuarios">
+					<h:form id="form">
+						<p:dataList id="dataList"	value="#{usuarioBean.usuarios}" var="usuario"
+							type="unordered" itemType="none" paginator="true" rows="9"
+							styleClass="paginated" paginatorPosition="bottom" paginatorAlwaysVisible="false"
+							emptyMessage="Nenhum usuário encontrado">
+
+							<p:commandLink update=":form:detalheUsuario"
+								oncomplete="PF('usuarioDialog').show()" title="Detalhes"
+								styleClass="ui-icon ui-icon-search"
+								style="float:left;margin-right:10px">
+								<f:setPropertyActionListener value="#{usuario}"
+									target="#{usuarioBean.usuarioSelecionado}" />
+								<h:outputText value="#{usuario.nome}" />
+							</p:commandLink>
+							<h:outputText value="#{usuario.nome}"
+								style="display:inline-block" />
+						</p:dataList>
+
+						<p:dialog header="Excluir usuário" widgetVar="usuarioDialog"
+							modal="true" showEffect="blind" hideEffect="explode"
+							resizable="false">
+							<p:outputPanel id="detalheUsuario" style="text-align:center;">
+								<p:panelGrid columns="2"
+									rendered="#{not empty usuarioBean.usuarioSelecionado}"
+									columnClasses="value">
+
+									<h:outputLabel value="Id:" />
+									<h:outputText
+										value="#{usuarioBean.usuarioSelecionado.id}" />
+
+									<h:outputLabel value="Nome" />
+									<h:outputText
+										value="#{usuarioBean.usuarioSelecionado.nome}" />
+
+									<h:outputLabel value="Permissão:" />
+									<h:outputText
+										value="#{usuarioBean.usuarioSelecionado.permissao}"
+										 />
+									<p:button title="Editar" icon="ui-icon-pencil" outcome="cadastro_usuario.html">
+										<f:param name="usuario" value="#{usuarioBean.usuarioSelecionado.id}"/>
+									</p:button>
+									<p:commandButton icon="ui-icon-trash" action="#{usuarioBean.excluir}" 
+									update="form:dataList"
+					oncomplete="PF('usuarioDialog').hide()"/>
+								</p:panelGrid>
+
+							</p:outputPanel>
+						</p:dialog>
+					</h:form>
+				</my:painel>
+			</div>
+
+		</div>
+	</ui:define>
+</ui:composition>

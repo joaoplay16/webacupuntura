@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/templates/modeloSistema.xhtml">
+
+	<ui:define name="conteudo">
+			<h2 id="titulo" class="text-center">Pacientes</h2>
+		<h:form id="frmPesquisa">
+			<p:toolbar>
+				<f:facet name="left">
+					<p:button value="Adicionar" outcome="cadastro_paciente"
+						style="text-align: left" />
+					<span class="ui-separator"> <span
+						class="ui-icon ui-icon-grip-dotted-vertical" />
+					</span>
+
+				</f:facet>
+
+			</p:toolbar>
+			<p:dataTable id="pacientesTable" widgetVar="tabelaPacientes"
+				paginator="true" rowsPerPageTemplate="5,10,15" rows="12"
+				paginatorAlwaysVisible="false" value="#{PPBean.pacientes}"
+				paginatorPosition="bottom" resizableColumns="true"
+				filteredValue="#{PPBean.pacienteFiltrados}" var="paciente" 
+				scrollable="true">
+
+				<f:facet name="header">
+					<h:outputText value="Pesquisar: " />
+					<p:inputText id="globalFilter"
+						onkeyup="PF('tabelaPacientes').filter()" style="width:180px"
+						placeholder="Palavra chave" />
+				</f:facet>
+
+				<p:column style="width: 40px">
+					<p:rowToggler />
+				</p:column>
+
+				<p:column headerText="Codigo" styleClass="text-center"
+				
+					sortBy="#{paciente.codigo}" filterable="false"
+					filterBy="#{paciente.codigo}" filterMatchMode="contains"
+					priority="5" style="width: 40px">
+					<h:outputText value="#{paciente.codigo}" />
+
+				</p:column>
+
+				<p:column headerText="Nome" styleClass="text-center"
+					sortBy="#{paciente.nome}" filterable="false"
+					filterBy="#{paciente.nome}" filterMatchMode="contains"
+					style="width: 190px">
+					<h:link value="#{paciente.nome}" outcome="info-paciente">
+						<f:param name="paci" value="#{paciente.codigo}" />
+					</h:link>
+				</p:column>
+
+				<p:column headerText="Celular" styleClass="text-center"
+					filterable="false" filterBy="#{paciente.celular}"
+					filterMatchMode="contains" style="width: 120px">
+					<h:outputText value="#{paciente.celular}"
+						rendered="#{paciente.celular !=null}" />
+				</p:column>
+
+
+				<p:column headerText="Prontuario" styleClass="text-center"
+					style="width: 90px">
+					<p:button outcome="anamnese" icon="ui-icon-document" title="Editar">
+						<f:param name="paciente" value="#{paciente.codigo}" />
+					</p:button>
+				</p:column>
+				<p:column headerText="Ações" styleClass="text-center"
+					style="width: 68px">
+					<p:button outcome="cadastro_paciente" icon="ui-icon-pencil"
+						title="Editar">
+						<f:param name="paci" value="#{paciente.codigo}" />
+					</p:button>
+					<p:commandButton icon="ui-icon-trash" title="Excluir"
+						oncomplete="PF('confirmacaoExclusao').show();" process="@this"
+						update=":frmPesquisa:confirmacaoExclusaoDialog">
+						<f:setPropertyActionListener
+							target="#{PPBean.pacienteSelecionado}" value="#{paciente}" />
+					</p:commandButton>
+				</p:column>
+
+				<p:rowExpansion>
+					<div class="row">
+						<div class="col-md-12">
+							<b class="control-label">E-mail: </b>
+							<h:outputText value="#{paciente.email}"
+								rendered="#{paciente.email != ''}" />
+							<h:outputText value="n/a" rendered="#{paciente.email == ''}" />
+							
+							<br />
+							 <b class="control-label">Telefone: </b>
+							<h:outputText value="#{paciente.telefone}"
+								rendered="#{paciente.telefone !=null}" />
+								
+							<br />
+						</div>
+					</div>
+				</p:rowExpansion>
+			</p:dataTable>
+
+			<p:confirmDialog id="confirmacaoExclusaoDialog"
+				widgetVar="confirmacaoExclusao"
+				message="Tem certeza que deseja excluir o paciente #{PPBean.pacienteSelecionado.nome}?"
+				header="Exclusão de paciente" severity="alert">
+				<p:button value="Não"
+					onclick="PF('confirmacaoExclusao').hide(); return false;" />
+				<p:commandButton value="Sim" update=":frmPesquisa:pacientesTable"
+					onclick="PF('confirmacaoExclusao').hide()"
+					action="#{PPBean.excluir}" />
+			</p:confirmDialog>
+		</h:form>
+	</ui:define>
+</ui:composition>

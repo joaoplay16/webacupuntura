@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<h4 class="text-center">Histórico clínico</h4>
+	<div class="ui-grid-row">
+		<div class="ui-fluid">
+			<div class="ui-g-12 ui-md-6">
+				<p:outputLabel for="input10" value="Sistema circulatório" />
+				<p:inputTextarea id="input10"
+					value="#{cadProntuarioB.paciente.prontuario.historico.sistemaCirculatorio}" />
+
+			</div>
+			<div class="ui-g-12 ui-md-6">
+				<p:outputLabel for="input11" value="Sistema muscular" />
+				<p:inputTextarea id="input11"
+					value="#{cadProntuarioB.paciente.prontuario.historico.sistemaMuscular}" />
+			</div>
+			<div class="ui-g-12 ui-md-6">
+				<p:outputLabel for="input12" value="Sistema nervoso" />
+				<p:inputTextarea id="input12"
+					value="#{cadProntuarioB.paciente.prontuario.historico.sistemaNervoso}" />
+
+			</div>
+			<div class="ui-g-12 ui-md-6">
+				<p:outputLabel for="input13" value="Sistema ósseo" />
+				<p:inputTextarea id="input13"
+					value="#{cadProntuarioB.paciente.prontuario.historico.sistemaOsseo}" />
+			</div>
+			<div class="ui-g-12 ui-md-6">
+				<p:outputLabel for="input14" value="Sistema respiratório" />
+				<p:inputTextarea id="input14"
+					value="#{cadProntuarioB.paciente.prontuario.historico.sistemaRespiratorio}" />
+
+			</div>
+			<div class="ui-g-12 ui-md-6">
+				<p:outputLabel for="input15" value="Sistema gastrointestinal" />
+				<p:inputTextarea id="input15"
+					value="#{cadProntuarioB.paciente.prontuario.historico.sistemaGastroIntestinal}" />
+			</div>
+			<div class="ui-grid-row">
+				<div class="ui-g-12 ui-md-6">
+					<p:outputLabel for="input16" value="Sistema geniturinário" />
+					<p:inputTextarea id="input16"
+						value="#{cadProntuarioB.paciente.prontuario.historico.sistemaGeniturinario}" />
+				</div>
+				<div class="ui-g-12 ui-md-6">
+					<p:outputLabel for="input17" value="Sono (horas por dia)" />
+					<p:inputNumber id="input17" maxlength="2" 
+						value="#{cadProntuarioB.paciente.prontuario.historico.sono}" />
+					
+					
+				</div>
+			</div>
+			<div class="ui-g-12 ui-md-6">
+				<p:outputLabel for="input18" value="Cirurgias" />
+				<p:inputTextarea id="input18"
+					value="#{cadProntuarioB.paciente.prontuario.historico.cirurgias}" />
+
+			</div>
+			<div class="ui-g-12 ui-md-6">
+				<p:outputLabel for="input19" value="Alimentação" />
+				<p:inputTextarea id="input19"
+					value="#{cadProntuarioB.paciente.prontuario.historico.alimentacao}" />
+			</div>
+			<div class="ui-g-12 ui-md-6">
+				<p:outputLabel for="input20" value="Ciclo menstrual" />
+				<p:inputTextarea id="input20"
+					value="#{cadProntuarioB.paciente.prontuario.historico.cicloMenstrual}" />
+
+			</div>
+			<div class="ui-g-12 ui-md-6">
+				<p:outputLabel for="input21" value="Reprodução/Atividade sexual" />
+				<p:inputTextarea id="input21"
+					value="#{cadProntuarioB.paciente.prontuario.historico.atividadeSexual}" />
+			</div>
+		</div>
+	</div>
+</ui:composition>

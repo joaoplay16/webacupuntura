@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/templates/modeloSistema.xhtml">
+
+	<ui:define name="conteudo">
+
+
+		<f:metadata>
+			<f:viewParam name="paciente" value="#{cadProntuarioB.paciente}"></f:viewParam>
+		</f:metadata>
+				<h2 id="titulo" class="text-center">Prontuário</h2>
+		
+		<h:form id="form">
+			<p:growl id="msgs" showDetail="true" />
+			<p:messages id="toast" autoUpdate="true" />
+	
+			<h:outputText id="perm" value="Você não tem permissão para alterar o prontuário!"
+						 rendered="#{loginBean.usuarioLogado.permissao != 'admin'}"
+					styleClass="text-center label label-warning"
+					style="font-size: 15pt;"/>
+			
+			<p:tabView id="tabView" styleClass="ui-g-9 ui-md-12" 
+			dynamic="true" cache="true" rendered="#{loginBean.usuarioLogado.permissao == 'admin'}">
+				<p:ajax event="tabChange" listener="#{cadProntuarioB.onTabChange}"
+					update=":form:toast"  />
+				<p:tab title="Paciente">
+					<div class='ui-fluid'>
+							<div  class="panel panel-primary">
+					<div class="panel-heading">
+						<div class="panel-title">
+							<h4 class="text-center" style="font-weight: bold">
+								Informações pessoais
+							</h4>
+							
+						</div>
+					</div>
+					<div class="panel-body" >
+						<div class="row">
+							<h3 class="text-center"> #{cadProntuarioB.paciente.nome}</h3>
+						</div>
+						<div class="col-md-12 col-sm-6">
+							<h4><b>Idade:</b> #{cadProntuarioB.paciente.idade} anos</h4>
+							<h4> <b>Nascimento: </b>
+							<h:outputText value="#{cadProntuarioB.paciente.nascimento}">
+								<f:convertDateTime locale="pt_BR"
+									pattern="dd/MM/yyyy" />
+							</h:outputText>
+							</h4>
+							<h4><b>Sexo:</b> #{cadProntuarioB.paciente.sexo}</h4>																					
+						</div>
+					</div>
+				</div>
+					</div>
+				</p:tab>
+
+				<p:tab title="Histórico">
+					<div class='ui-fluid'>
+
+						<!-- 						HISTORiCO -->
+						<ui:include src="/includes/historico.xhtml" />
+
+						<!-- 						TABELA PATOLOGIA -->
+						<ui:include src="/includes/tabela_patologia.xhtml" />
+
+						<!-- HISTÓRICO CLINICO-->
+						<ui:include src="/includes/historico_clinico.xhtml" />
+
+						<!--DOR DE CABECA  -->
+						<ui:include src="/includes/dor_cabeca.xhtml" />
+					</div>
+				</p:tab>
+
+				<!-- EXAME FISICO -->
+				<p:tab title="Exame Físico">
+					<ui:include src="/includes/exame_fisico.xhtml" />
+				</p:tab>
+
+				<!-- DIAGNÓSTICO -->
+				<p:tab title="Diagnóstico">
+
+					<div class="ui-fluid">
+						<div class="ui-g-12">
+							<p:outputLabel value="Diagnóstico" />
+							<p:inputTextarea
+								value="#{cadProntuarioB.paciente.prontuario.diagnostico.diagnostico}" />
+						</div>
+
+						<div class="ui-g-12">
+							<p:outputLabel value="Tratamento" />
+							<p:inputTextarea autoResize="true" cols="100"
+								value="#{cadProntuarioB.paciente.prontuario.diagnostico.tratamento}" />
+						</div>
+					</div>
+				</p:tab>
+
+				<p:tab title="Evolução">
+					<ui:include src="/includes/evolucao.xhtml"/>
+				</p:tab>
+				<p:tab title="Finalizar" id="final">
+					<center>
+					<h:commandButton action="#{cadProntuarioB.salvar}" value="Salvar" 
+					styleClass="btn btn-lg btn-success"/>
+					</center>
+				</p:tab>
+			</p:tabView>
+		</h:form>
+	</ui:define>
+
+</ui:composition>

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:o="http://omnifaces.org/ui"
+	template="/templates/modeloSistema.xhtml">
+	
+	
+	<ui:define name="conteudo">
+	<f:metadata>
+		<o:viewParam name="paci" value="#{CPBean.paciente}" />
+	</f:metadata>
+	<div class="container">
+	<h3 id="titulo"  >Cadastro de paciente</h3>
+	
+	<p style=" font-size: 12pt; font-style: oblique;">* Campos obrigatórios</p>
+	</div>
+	<h:form id="frmMsgs">
+	<p:growl id="msgCadPaciente" closable="true" showIcon="false" autoUpdate="true"/>
+	</h:form>
+	
+	<h:form id="frmPacNovo">
+		
+
+		<div class="ui-fluid">
+			<div class="ui-grid-row">
+				<div class="ui-g-10 ui-md-9">
+					<p:outputLabel value="Nome*:" />
+					<p:inputText id="nome" value="#{CPBean.paciente.nome}" required="true"
+					requiredMessage="Digite o nome!"/>
+					<p:message for="nome" />
+				</div>
+			</div>
+			<div class="ui-grid-row">
+				<div class="ui-g-10 ui-md-3">
+					<p:outputLabel value="Nascimento*:" />
+					<p:calendar id="nasc" value="#{CPBean.paciente.nascimento}" required="true"
+						pattern="dd/MM/yyyy" mask="true" maxdate="#{now}" 
+						requiredMessage="Informe a data de nascimento!"/>
+					<p:message for="nasc"/>
+				</div>
+
+				<div class="ui-g-10 ui-md-3">
+					<p:outputLabel value="Sexo*:" />
+					<p:selectOneMenu id="sexo" value="#{CPBean.paciente.sexo}" required="true"
+					requiredMessage="Informe o sexo!">
+						<f:selectItem itemLabel="Selecione" noSelectionOption="true" />
+						<f:selectItem itemLabel="M" itemValue="Masculino" />
+						<f:selectItem itemLabel="F" itemValue="Femenino" />
+					</p:selectOneMenu>
+					<p:message for="sexo"/>					
+				</div>
+			</div>
+
+			<div class="ui-grid-row">
+				<div class="ui-g-10 ui-md-4">
+					<p:outputLabel value="Nacionalidade:" />
+					<p:inputText value="#{CPBean.paciente.nacionalidade}" />
+				</div>
+				<div class="ui-g-10 ui-md-4">
+					<p:outputLabel value="Naturalidade:" />
+					<p:inputText value="#{CPBean.paciente.naturalidade}" />
+				</div>
+			</div>
+			<div class="ui-grid-row">
+				<div class="ui-g-10 ui-md-4">
+					<p:outputLabel value="Estado civil:" />
+					<p:selectOneMenu value="#{CPBean.paciente.estadoCivil}">
+						<f:selectItem itemLabel="Selecione" noSelectionOption="true" />
+						<f:selectItem itemLabel="Solteiro(a)" itemValue="Solteiro(a)" />
+						<f:selectItem itemLabel="Casado(a)" itemValue="Casado(a)" />
+						<f:selectItem itemLabel="Divorciado(a)" itemValue="Divorciado(a)" />
+						<f:selectItem itemLabel="Viuvo(a)" itemValue="Viuvo(a)" />
+					</p:selectOneMenu>
+				</div>
+				<div class="ui-g-10 ui-md-4">
+					<p:outputLabel value="Profissão:" />
+					<p:inputText value="#{CPBean.paciente.profissao}" />
+				</div>
+			</div>
+			<div class="ui-grid-row">
+				<div class="ui-g-10 ui-md-9">
+					<p:outputLabel value="Endereço*:" />
+					<p:inputText id="endereco" value="#{CPBean.paciente.endereco}" required="true"
+					requiredMessage="Preencha o endereço!"/>
+					<p:message for="endereco"/>
+				</div>
+				<div class="ui-g-10 ui-md-9">
+					<p:outputLabel  value="Bairro*:" />
+					<p:inputText id="bairro" value="#{CPBean.paciente.bairro}" required="true"
+					requiredMessage="Informe o bairro!"/>
+					<p:message for="bairro"/>
+				</div>
+			</div>
+
+			<div class="ui-grid-row">
+				<div class="ui-g-10 ui-md-4">
+					<p:outputLabel value="Telefone:" />
+					<p:inputMask value="#{CPBean.paciente.telefone}" mask="(99)9999-9999" />
+				</div>
+				<div class="ui-g-10 ui-md-4">
+					<p:outputLabel value="Celular*:" />
+					<p:inputMask id="celular" value="#{CPBean.paciente.celular}" mask="(99)99999-9999"
+					required="true" requiredMessage="Informe o numero de celular!"/>
+					<p:message for="celular"/>
+				</div>
+			</div>
+			<div class="ui-grid-row">
+				<div class="ui-g-10 ui-md-9">
+					<p:outputLabel value="E-mail:" />
+					<p:inputText value="#{CPBean.paciente.email}" />
+				</div>
+				<div class="ui-g-10 ui-md-9">
+					<p:outputLabel value="Indicação:" />
+					<p:selectOneMenu value="#{CPBean.paciente.indicacao}">
+						<f:selectItem itemLabel="Selecione" noSelectionOption="true" />
+						<f:selectItem itemLabel="Amigo" itemValue="Amigo" />
+						<f:selectItem itemLabel="Parente" itemValue="Parente" />
+					</p:selectOneMenu>
+				</div>
+			</div>
+
+		</div>
+		<div class="ui-grid-row">
+		<div class="ui-g-10 ui-md-9">
+			<p:commandButton value="Salvar" action="#{CPBean.salvar}" update=":frmPacNovo"/>
+			</div>
+		</div>
+
+		
+	</h:form>
+	</ui:define>
+
+</ui:composition>

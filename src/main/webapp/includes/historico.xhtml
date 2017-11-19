@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	
+
+	<div class="ui-g-12 ui-md-6">
+		<p:outputLabel for="area" value="Histórico da doença atual" />
+		<p:inputTextarea
+			value="#{cadProntuarioB.paciente.prontuario.historico.hDoencaAtual}" id="area"
+			autoResize="true" />
+	</div>
+	<div class="ui-g-12 ui-md-6">
+		<p:outputLabel for="area1" value="Histórico patológico" />
+		<p:inputTextarea
+			value="#{cadProntuarioB.paciente.prontuario.historico.hPatologico}" id="area1" />
+	</div>
+	<div class="ui-g-12 ui-md-6">
+		<p:outputLabel for="area2" value="Histórico familiar" />
+		<p:inputTextarea id="area2"
+			value="#{cadProntuarioB.paciente.prontuario.historico.hFamiliar}" />
+	</div>
+	<div class="ui-g-12 ui-md-6">
+		<p:outputLabel for="area3" value="Histórico Social" />
+		<p:inputTextarea id="area3"
+			value="#{cadProntuarioB.paciente.prontuario.historico.hSocial}" />
+	</div>
+	<div class="ui-g-12 ui-md-6">
+		<p:outputLabel for="area4" value="Tratamento atual" />
+		<p:inputTextarea id="area4"
+			value="#{cadProntuarioB.paciente.prontuario.historico.tratamentoAtual}" />
+	</div>
+	<div class="ui-g-12 ui-md-6">
+		<p:outputLabel for="area5" value="Tratamentos anteriores" />
+		<p:inputTextarea id="area5"
+			value="#{cadProntuarioB.paciente.prontuario.historico.tratamentosAnteriores}" />
+	</div>
+	<div class="ui-g-12 ui-md-6">
+		<p:outputLabel for="area6" value="Medicamentos em uso" />
+		<p:inputTextarea id="area6"
+			value="#{cadProntuarioB.paciente.prontuario.historico.medicamentoEmUso}" />
+	</div>
+	<div class="ui-g-12 ui-md-6">
+		<p:outputLabel for="area7" value="Exames apresentados" />
+		<p:inputTextarea id="area7"
+			value="#{cadProntuarioB.paciente.prontuario.historico.examesApresentados}" />
+	</div>
+	<div class="ui-g-12">
+		<p:outputLabel for="input8" value="Diagnóstico médico" />
+		<p:inputText id="input8"
+			value="#{cadProntuarioB.paciente.prontuario.historico.diagnosticoMedico}" />
+	</div>
+	<div class="ui-g-12">
+		<p:outputLabel for="input9" value="Médico" />
+		<p:inputText id="input9"
+			value="#{cadProntuarioB.paciente.prontuario.historico.medico}" />
+	</div>
+</ui:composition>

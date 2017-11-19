@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:form>
+	<div class="side-bar">
+		<div class="panel-group" id="accordion">
+			<!-- 	ADM -->
+			
+			<div class="panel panel-default">
+			<p:remoteCommand rendered="#{loginBean.usuarioLogado.permissao == 'admin' or 
+										loginBean.usuarioLogado.permissao == 'gerente'}">
+				<div class="panel-heading">
+					<h4 class="panel-title text-center">
+						<a data-toggle="collapse" data-parent="#accordion"
+							href="#collapse1"> Administrativo</a>
+					</h4>
+				</div>
+			</p:remoteCommand>	
+				<div id="collapse1" class="panel-collapse collapse ">
+					<ul class="list-group text-center">
+						<li class="list-group-item"><a href="cadastro_usuario.html">Usuários</a></li>
+					</ul>
+				</div>
+			</div>
+			<ul class="nav nav-stacked nav-pills">
+				<li class="list-group-item"><a  href="pacientes.html"><span
+						class="glyphicon glyphicon-pencil" /> Pacientes</a></li>
+				<li class="list-group-item"><a href="consulta.html"><span
+						class="glyphicon glyphicon-pencil" /> Consultas</a></li>
+			</ul>
+		</div>
+	</div>
+</h:form>
+</ui:composition>

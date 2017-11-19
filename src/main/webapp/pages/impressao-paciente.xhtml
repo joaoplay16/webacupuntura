@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:o="http://omnifaces.org/ui">
+<head>
+<meta charset="UTF-8" />
+<title>Document</title>
+
+	<link rel="stylesheet" href="../resources/Bootstrap/css/bootstrap.min.css"/>
+	
+	<h:outputStylesheet name="bootstrap.min.css" library="Bootstrap/css/"/>
+</head>
+<body>
+
+		<f:metadata>
+			<o:viewParam name="paci" value="#{cadProntuarioB.paciente}" />
+		</f:metadata>
+
+		<p:commandButton value="Print" type="button"
+		 icon="ui-icon-print" style="display:block;margin-bottom: 20px"
+			onclick="print(imprima)"/>
+	
+	<center id="imprima">
+	<table id="t" class="table table-bordered table-striped" width="700px" > 
+		<tbody>
+			<tr>
+				<th colspan="6"><h3>Informações pessoais</h3></th>
+			</tr>	
+				
+				<tr>
+					<td colspan="2"><b>Nome: </b>#{cadProntuarioB.paciente.nome}</td>
+					<td colspan="2"><b>Nascimento: </b><h:outputText value="#{cadProntuarioB.paciente.nascimento}">
+								<f:convertDateTime locale="pt_BR"
+									pattern="dd/MM/yyyy" />
+							</h:outputText>
+					</td>
+					<td ><b>Idade: </b>#{cadProntuarioB.paciente.idade}</td>
+					<td ><b>Sexo: </b>#{cadProntuarioB.paciente.sexo}</td>
+					
+				</tr>
+				
+				<tr>
+					<td colspan="2"><b>Endereco:</b> #{cadProntuarioB.paciente.endereco}</td>
+					<td colspan="2"><b>Bairro:</b> #{cadProntuarioB.paciente.bairro}</td>
+					<td colspan="2"><b>Indicação:</b> #{cadProntuarioB.paciente.indicacao}</td>
+				</tr>		
+				
+				<tr>
+					<td colspan="3"><b>E-mail:</b> #{cadProntuarioB.paciente.email}</td>
+					<td colspan="2"><b>Telefone:</b> #{cadProntuarioB.paciente.telefone}</td>
+					<td colspan="1"><b>Celular:</b> #{cadProntuarioB.paciente.celular}</td>			
+				</tr>
+	</tbody>						
+	</table>
+			
+	<table id="t" class="table" width="700px"> 
+							<tbody>
+								<tr>
+									<th>Patologia</th>
+									<th>Indivíduo</th>
+									<th>Mãe</th>
+									<th>Pai</th>
+									<th>Irmão</th>
+									<th>Avós</th>
+									<th>Outro</th>
+								</tr>
+								
+								
+								<tr>
+									<td>Alergia</td>
+									<td><p:selectBooleanCheckbox value="#{cadProntuarioB.paciente.prontuario.alergia.individuo}"
+									 disabled="true"/>
+									</td>
+									<td><p:selectBooleanCheckbox value="#{cadProntuarioB.paciente.prontuario.alergia.mae}" disabled="true"/></td>
+									<td><p:selectBooleanCheckbox value="#{cadProntuarioB.paciente.prontuario.alergia.pai}" disabled="true"/></td>
+									<td><p:selectBooleanCheckbox value="#{cadProntuarioB.paciente.prontuario.alergia.irmao} " disabled="true"/></td>
+									<td><p:selectBooleanCheckbox value="#{cadProntuarioB.paciente.prontuario.alergia.avos}" disabled="true"/></td>
+									<td><h:outputText value="#{cadProntuarioB.paciente.prontuario.alergia.outros}" disabled="true"/></td>
+								</tr>
+								<tr>
+									<td>Alcolismo</td>
+									<td><p:selectBooleanCheckbox value="#{cadProntuarioB.paciente.prontuario.alcoolismo.individuo}" disabled="true"/></td>
+									<td><p:selectBooleanCheckbox value="#{cadProntuarioB.paciente.prontuario.alcoolismo.mae}" disabled="true"/></td>
+									<td><p:selectBooleanCheckbox value="#{cadProntuarioB.paciente.prontuario.alcoolismo.pai}" disabled="true"/></td>
+									<td><p:selectBooleanCheckbox value="#{cadProntuarioB.paciente.prontuario.alcoolismo.irmao}" disabled="true"/></td>
+									<td><p:selectBooleanCheckbox value="#{cadProntuarioB.paciente.prontuario.alcoolismo.avos}" disabled="true"/></td>
+									<td><h:outputText value="#{cadProntuarioB.paciente.prontuario.alcoolismo.outros}" disabled="true"/></td>
+								</tr>
+						
+								<tr>
+									<td>Cancer</td>
+									<td><p:selectBooleanCheckbox value="#{cadProntuarioB.paciente.prontuario.cancer.individuo}" disabled="true" /></td>
+									<td><p:selectBooleanCheckbox value="#{cadProntuarioB.paciente.prontuario.cancer.mae}" disabled="true"/></td>
+									<td><p:selectBooleanCheckbox value="#{cadProntuarioB.paciente.prontuario.cancer.pai}" disabled="true"/></td>
+									<td><p:selectBooleanCheckbox value="#{cadProntuarioB.paciente.prontuario.cancer.irmao}" disabled="true"/></td>
+									<td><p:selectBooleanCheckbox value="#{cadProntuarioB.paciente.prontuario.cancer.avos}" disabled="true"/></td>
+									<td><h:outputText value="#{cadProntuarioB.paciente.prontuario.cancer.outros}" disabled="true"/></td>
+								</tr>
+						
+								<tr>
+									<td>Depressão</td>
+									<td><p:selectBooleanCheckbox value="#{cadProntuarioB.paciente.prontuario.depressao.individuo}" disabled="true"/></td>
+									<td><p:selectBooleanCheckbox value="#{cadProntuarioB.paciente.prontuario.depressao.mae}" disabled="true"/></td>
+									<td><p:selectBooleanCheckbox value="#{cadProntuarioB.paciente.prontuario.depressao.pai}" disabled="true"/></td>
+									<td><p:selectBooleanCheckbox value="#{cadProntuarioB.paciente.prontuario.depressao.irmao}" disabled="true"/></td>
+									<td><p:selectBooleanCheckbox value="#{cadProntuarioB.paciente.prontuario.depressao.avos}" disabled="true"/></td>
+									<td><h:outputText value="#{cadProntuarioB.paciente.prontuario.depressao.outros}" disabled="true"/></td>
+								</tr>
+								<tr>
+									<td>Diabetes</td>
+									<td><p:selectBooleanCheckbox value="#{cadProntuarioB.paciente.prontuario.diabetes.individuo}" disabled="true"/></td>
+									<td><p:selectBooleanCheckbox value="#{cadProntuarioB.paciente.prontuario.diabetes.mae}" disabled="true"/></td>
+									<td><p:selectBooleanCheckbox value="#{cadProntuarioB.paciente.prontuario.diabetes.pai}" disabled="true"/></td>
+									<td><p:selectBooleanCheckbox value="#{cadProntuarioB.paciente.prontuario.diabetes.irmao}" disabled="true"/></td>
+									<td><p:selectBooleanCheckbox value="#{cadProntuarioB.paciente.prontuario.diabetes.avos}" disabled="true"/></td>
+									<td><h:outputText value="#{cadProntuarioB.paciente.prontuario.diabetes.outros}" disabled="true"/></td>
+								</tr>
+								<tr>
+									<td>Doenças Cardiovasculares</td>
+									<td><p:selectBooleanCheckbox value="#{cadProntuarioB.paciente.prontuario.doencasCardiovasculares.individuo}" disabled="true"/></td>
+									<td><p:selectBooleanCheckbox value="#{cadProntuarioB.paciente.prontuario.doencasCardiovasculares.mae}" disabled="true"/></td>
+									<td><p:selectBooleanCheckbox value="#{cadProntuarioB.paciente.prontuario.doencasCardiovasculares.pai}" disabled="true"/></td>
+									<td><p:selectBooleanCheckbox value="#{cadProntuarioB.paciente.prontuario.doencasCardiovasculares.irmao}" disabled="true"/></td>
+									<td><p:selectBooleanCheckbox value="#{cadProntuarioB.paciente.prontuario.doencasCardiovasculares.avos}" disabled="true"/></td>
+									<td><h:outputText value="#{cadProntuarioB.paciente.prontuario.doencasCardiovasculares.outros}" disabled="true"/></td>
+								</tr>
+								<tr>
+									<td>Gastrite</td>
+									<td><p:selectBooleanCheckbox value="#{cadProntuarioB.paciente.prontuario.gastrite.individuo}" disabled="true"/></td>
+									<td><p:selectBooleanCheckbox value="#{cadProntuarioB.paciente.prontuario.gastrite.mae}" disabled="true"/></td>
+									<td><p:selectBooleanCheckbox value="#{cadProntuarioB.paciente.prontuario.gastrite.pai}" disabled="true"/></td>
+									<td><p:selectBooleanCheckbox value="#{cadProntuarioB.paciente.prontuario.gastrite.irmao}" disabled="true"/></td>
+									<td><p:selectBooleanCheckbox value="#{cadProntuarioB.paciente.prontuario.gastrite.avos}" disabled="true"/></td>
+									<td><h:outputText value="#{cadProntuarioB.paciente.prontuario.gastrite.outros}"/></td>
+								</tr>
+								<tr>
+									<td>Hipertensão</td>
+									<td><p:selectBooleanCheckbox value="#{cadProntuarioB.paciente.prontuario.hipertensao.individuo}" disabled="true"/></td>
+									<td><p:selectBooleanCheckbox value="#{cadProntuarioB.paciente.prontuario.hipertensao.mae}" disabled="true"/></td>
+									<td><p:selectBooleanCheckbox value="#{cadProntuarioB.paciente.prontuario.hipertensao.pai}" disabled="true"/></td>
+									<td><p:selectBooleanCheckbox value="#{cadProntuarioB.paciente.prontuario.hipertensao.irmao}" disabled="true"/></td>
+									<td><p:selectBooleanCheckbox value="#{cadProntuarioB.paciente.prontuario.hipertensao.avos}" disabled="true"/></td>
+									<td><h:outputText value="#{cadProntuarioB.paciente.prontuario.hipertensao.outros}" disabled="true"/></td>
+								</tr>
+								<tr>
+									<td>Hipertireoidismo</td>
+									<td><p:selectBooleanCheckbox value="#{cadProntuarioB.paciente.prontuario.hipertireoidismo.individuo}" disabled="true"/></td>
+									<td><p:selectBooleanCheckbox value="#{cadProntuarioB.paciente.prontuario.hipertireoidismo.mae}" disabled="true"/></td>
+									<td><p:selectBooleanCheckbox value="#{cadProntuarioB.paciente.prontuario.hipertireoidismo.pai}" disabled="true"/></td>
+									<td><p:selectBooleanCheckbox value="#{cadProntuarioB.paciente.prontuario.hipertireoidismo.irmao}" disabled="true"/></td>
+									<td><p:selectBooleanCheckbox value="#{cadProntuarioB.paciente.prontuario.hipertireoidismo.avos}" disabled="true"/></td>
+									<td><h:outputText value="#{cadProntuarioB.paciente.prontuario.hipertireoidismo.outros}" disabled="true"/></td>
+								</tr>
+								<tr>
+									<td>Hipotireoidismo</td>
+									<td><p:selectBooleanCheckbox value="#{cadProntuarioB.paciente.prontuario.hipotireoidismo.individuo}" disabled="true"/></td>
+									<td><p:selectBooleanCheckbox value="#{cadProntuarioB.paciente.prontuario.hipotireoidismo.mae}" disabled="true"/></td>
+									<td><p:selectBooleanCheckbox value="#{cadProntuarioB.paciente.prontuario.hipotireoidismo.pai}" disabled="true"/></td>
+									<td><p:selectBooleanCheckbox value="#{cadProntuarioB.paciente.prontuario.hipotireoidismo.irmao}" disabled="true"/></td>
+									<td><p:selectBooleanCheckbox value="#{cadProntuarioB.paciente.prontuario.hipotireoidismo.avos}" disabled="true"/></td>
+									<td><h:outputText value="#{cadProntuarioB.paciente.prontuario.hipotireoidismo.outros}" disabled="true"/></td>
+								</tr>
+								<tr>
+									<td>Obesidade</td>
+									<td><p:selectBooleanCheckbox value="#{cadProntuarioB.paciente.prontuario.obesidade.individuo}" disabled="true"/></td>
+									<td><p:selectBooleanCheckbox value="#{cadProntuarioB.paciente.prontuario.obesidade.mae}" disabled="true"/></td>
+									<td><p:selectBooleanCheckbox value="#{cadProntuarioB.paciente.prontuario.obesidade.pai}" disabled="true"/></td>
+									<td><p:selectBooleanCheckbox value="#{cadProntuarioB.paciente.prontuario.obesidade.irmao}" disabled="true"/></td>
+									<td><p:selectBooleanCheckbox value="#{cadProntuarioB.paciente.prontuario.obesidade.avos}" disabled="true"/></td>
+									<td><h:outputText value="#{cadProntuarioB.paciente.prontuario.obesidade.outros}" disabled="true"/></td>
+								</tr>
+								<tr>
+									<td>Problemas Circulatórios</td>
+									<td><p:selectBooleanCheckbox value="#{cadProntuarioB.paciente.prontuario.problemasCirculatorios.individuo}" disabled="true"/></td>
+									<td><p:selectBooleanCheckbox value="#{cadProntuarioB.paciente.prontuario.problemasCirculatorios.mae}" disabled="true"/></td>
+									<td><p:selectBooleanCheckbox value="#{cadProntuarioB.paciente.prontuario.problemasCirculatorios.pai}" disabled="true"/></td>
+									<td><p:selectBooleanCheckbox value="#{cadProntuarioB.paciente.prontuario.problemasCirculatorios.irmao}" disabled="true"/></td>
+									<td><p:selectBooleanCheckbox value="#{cadProntuarioB.paciente.prontuario.problemasCirculatorios.avos}" disabled="true"/></td>
+									<td><h:outputText value="#{cadProntuarioB.paciente.prontuario.problemasCirculatorios.outros}" disabled="true"/></td>
+								</tr>
+								<tr>
+									<td>Refluxo</td>
+									<td><p:selectBooleanCheckbox value="#{cadProntuarioB.paciente.prontuario.refluxo.individuo}" disabled="true"/></td>
+									<td><p:selectBooleanCheckbox value="#{cadProntuarioB.paciente.prontuario.refluxo.mae}" disabled="true"/></td>
+									<td><p:selectBooleanCheckbox value="#{cadProntuarioB.paciente.prontuario.refluxo.pai}" disabled="true"/></td>
+									<td><p:selectBooleanCheckbox value="#{cadProntuarioB.paciente.prontuario.refluxo.irmao}" disabled="true"/></td>
+									<td><p:selectBooleanCheckbox value="#{cadProntuarioB.paciente.prontuario.refluxo.avos}" disabled="true"/></td>
+									<td><h:outputText value="#{cadProntuarioB.paciente.prontuario.refluxo.outros}" disabled="true"/></td>
+								</tr>
+								<tr>
+									<td>Stress</td>
+									<td><p:selectBooleanCheckbox value="#{cadProntuarioB.paciente.prontuario.stress.individuo}" disabled="true"/></td>
+									<td><p:selectBooleanCheckbox value="#{cadProntuarioB.paciente.prontuario.stress.mae}" disabled="true"/></td>
+									<td><p:selectBooleanCheckbox value="#{cadProntuarioB.paciente.prontuario.stress.pai}" disabled="true"/></td>
+									<td><p:selectBooleanCheckbox value="#{cadProntuarioB.paciente.prontuario.stress.irmao}" disabled="true"/></td>
+									<td><p:selectBooleanCheckbox value="#{cadProntuarioB.paciente.prontuario.stress.avos}" disabled="true"/></td>
+									<td><h:outputText value="#{cadProntuarioB.paciente.prontuario.stress.outros}" disabled="true"/></td>
+								</tr>
+								<tr>
+									<td>Tabagismo</td>
+									<td><p:selectBooleanCheckbox value="#{cadProntuarioB.paciente.prontuario.tabagismo.individuo}" disabled="true"/></td>
+									<td><p:selectBooleanCheckbox value="#{cadProntuarioB.paciente.prontuario.tabagismo.mae}" disabled="true"/></td>
+									<td><p:selectBooleanCheckbox value="#{cadProntuarioB.paciente.prontuario.tabagismo.pai}" disabled="true"/></td>
+									<td><p:selectBooleanCheckbox value="#{cadProntuarioB.paciente.prontuario.tabagismo.irmao}" disabled="true"/></td>
+									<td><p:selectBooleanCheckbox value="#{cadProntuarioB.paciente.prontuario.tabagismo.avos}" disabled="true"/></td>
+									<td><h:outputText value="#{cadProntuarioB.paciente.prontuario.tabagismo.outros}" disabled="true"/></td>
+								</tr>
+								<tr>
+									<td>Ulcera</td>
+									<td><p:selectBooleanCheckbox value="#{cadProntuarioB.paciente.prontuario.ulcera.individuo}" disabled="true"/></td>
+									<td><p:selectBooleanCheckbox value="#{cadProntuarioB.paciente.prontuario.ulcera.mae}" disabled="true"/></td>
+									<td><p:selectBooleanCheckbox value="#{cadProntuarioB.paciente.prontuario.ulcera.pai}" disabled="true"/></td>
+									<td><p:selectBooleanCheckbox value="#{cadProntuarioB.paciente.prontuario.ulcera.irmao}" disabled="true"/></td>
+									<td><p:selectBooleanCheckbox value="#{cadProntuarioB.paciente.prontuario.ulcera.avos}" disabled="true"/></td>
+									<td><h:outputText value="#{cadProntuarioB.paciente.prontuario.ulcera.outros}" disabled="true"/></td>
+								</tr>
+							</tbody>
+						</table>
+						
+						</center>		
+</body>
+</html>

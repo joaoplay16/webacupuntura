@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<h4>Inspeção da língua</h4>
+
+	<div class="ui-grid-row">
+		<div class='ui-fluid'>
+			<div class="ui-g-12 ui-md-6">
+				<p:outputLabel value="Cor" />
+				<p:selectOneMenu>
+					<f:selectItem itemLabel="Selecione" />
+				</p:selectOneMenu>
+
+				<p:outputLabel value="Saburra" />
+				<p:inputText
+					value="#{cadProntuarioB.paciente.prontuario.inspecaoLingua.saburra}" />
+
+				<p:outputLabel value="Forma" />
+				<p:selectOneMenu>
+					<f:selectItem itemLabel="Selecione" />
+				</p:selectOneMenu>
+			</div>
+
+			<div class="ui-g-12 ui-md-6">
+				<div class="ui-grid-row">
+					<p:graphicImage name="lingua.png" library="imagens" width="120"
+						height="125" style="margin-left: 50px" />
+				</div>
+				<div class="ui-grid-row">
+
+					<div class="ui-g-1">
+						<p:outputLabel value="R" />
+						<p:selectBooleanCheckbox
+							value="#{cadProntuarioB.paciente.prontuario.inspecaoLingua.r}" />
+					</div>
+					<div class="ui-g-1">
+						<p:outputLabel value="F" />
+						<p:selectBooleanCheckbox
+							value="#{cadProntuarioB.paciente.prontuario.inspecaoLingua.f}" />
+					</div>
+					<div class="ui-g-1">
+						<p:outputLabel value="E" />
+						<p:selectBooleanCheckbox
+							value="#{cadProntuarioB.paciente.prontuario.inspecaoLingua.e}" />
+					</div>
+					<div class="ui-g-1">
+						<p:outputLabel value="BP" />
+						<p:selectBooleanCheckbox
+							value="#{cadProntuarioB.paciente.prontuario.inspecaoLingua.BP}" />
+					</div>
+					<div class="ui-g-1">
+						<p:outputLabel value="VB" />
+						<p:selectBooleanCheckbox
+							value="#{cadProntuarioB.paciente.prontuario.inspecaoLingua.VB}" />
+					</div>
+					<div class="ui-g-1">
+						<p:outputLabel value="P" />
+						<p:selectBooleanCheckbox
+							value="#{cadProntuarioB.paciente.prontuario.inspecaoLingua.p}" />
+					</div>
+					<div class="ui-g-1">
+						<p:outputLabel value="C" />
+						<p:selectBooleanCheckbox
+							value="#{cadProntuarioB.paciente.prontuario.inspecaoLingua.c}" />
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<div class="ui-grid-row">
+		<div class="ui-fluid">
+			<div class="ui-g-12 ui-md-6">
+				<p:outputLabel value="Humidade" />
+				<p:inputText
+					value="#{cadProntuarioB.paciente.prontuario.inspecaoLingua.umidade}" />
+			</div>
+		</div>
+	</div>
+	<div class="ui-grid-row">
+		<div class="ui-fluid">
+			<div class="ui-g-12">
+				<!--PULSO  -->
+				<p:outputLabel value="Pulso" />
+				<p:editor value="#{cadProntuarioB.paciente.prontuario.pulso}" maxlength="499" />
+
+			</div>
+			<div class="ui-g-12 ui-md-6">
+				<p:outputLabel value="Outras especificações" />
+				<p:inputTextarea
+					value="#{cadProntuarioB.paciente.prontuario.inspecaoLingua.outrasEspecificacoes}" />
+			</div>
+			<div class="ui-g-12 ui-md-6">
+				<p:outputLabel value="Diagnóstico" />
+				<p:inputTextarea
+					value="#{cadProntuarioB.paciente.prontuario.inspecaoLingua.diagnostico}" />
+			</div>
+		</div>
+	</div>
+
+</ui:composition>

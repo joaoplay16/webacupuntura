@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/templates/modeloSistema.xhtml">
+
+	<h:outputScript name="imprimir" library="js" />
+
+	<ui:define name="conteudo">
+		<h2 class="text-center" style="margin-top: -18px; font-family: fantasy;">Consultas</h2>
+		<h:form id="frmConsulta">
+			<p:growl id="msgConsulta" showDetail="true" autoUpdate="true" />
+
+			<p:toolbar>
+				<f:facet name="left">
+					<p:commandButton value="Nova" icon="ui-icon-document"
+						action="#{consultaBean.adicionar}"
+						update=":frmConsulta:tableConsulta" />
+
+					<!-- <span class="ui-separator"> <span
+						class="ui-icon ui-icon-grip-dotted-vertical" />
+					</span>
+
+					<p:commandButton type="button" title="Excluir" icon="ui-icon-trash" />
+					<p:commandButton title="Imprimir" icon="ui-icon-print">
+						<p:printer target="tableConsulta" />
+					</p:commandButton> -->
+
+
+				</f:facet>
+
+			</p:toolbar>
+
+			<p:dataTable id="tableConsulta" widgetVar="tabelaConsulta"
+				style="margin-top: 20px" value="#{consultaBean.consultas}"
+				var="consulta" reflow="true" editable="true" editMode="row"
+				sortMode="multiple" resizableColumns="true"
+				emptyMessage="Nenhum registro encontrado."
+				filteredValue="#{consultaBean.consultasFiltradas}" paginator="true"
+				paginatorPosition="bottom" rowsPerPageTemplate="5,10,15,20"
+				rows="10" paginatorAlwaysVisible="false">
+
+				<p:ajax event="rowEdit" listener="#{consultaBean.onRowEdit}"
+					update=":frmConsulta:tableConsulta" />
+
+				<f:facet name="header">
+					<h:outputText value="Pesquisar: " />
+					<p:inputText id="globalFilter"
+						onkeyup="PF('tabelaConsulta').filter()" 
+						style="width:180px"
+						placeholder="Palavra chave" />
+				</f:facet>
+
+				<p:column headerText="Cod." style="width:70px"
+					styleClass="text-center" filterBy="#{consulta.codigo}"
+					filterable="false" filterMatchMode="contains">
+					<h:outputText value="#{consulta.codigo}" />
+				</p:column>
+
+				<p:column headerText="Paciente" style="width: 210px"
+					styleClass="text-capitalize text-center"
+					sortBy="#{consulta.paciente.codigo}"
+					filterBy="#{consulta.paciente.nome}" filterable="false"
+					filterMatchMode="contains">
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{consulta.paciente.codigo} - #{consulta.paciente.nome}" />
+						</f:facet>
+					
+					<f:facet name="input">
+					<h:outputText value="#{consulta.paciente.codigo} - #{consulta.paciente.nome}" />
+						<p:selectOneMenu value="#{consultaBean.consulta.paciente.codigo}"
+							rendered="#{consulta.codigo == null}" filter="true" filterMatchMode="contains"
+							autoWidth="true" maxlength="5">
+							<f:selectItems value="#{PPBean.pacientes}" var="paciente"
+								itemLabel="#{paciente.nome} - cod: #{paciente.codigo}" itemValue="#{paciente.codigo}" />
+						</p:selectOneMenu>
+					</f:facet>
+					</p:cellEditor>
+				</p:column>
+
+				<p:column headerText="Data" style="width: 125px"
+					sortBy="#{consulta.data}" filterBy="#{consulta.data}"
+					filterable="false" filterMatchMode="contains">
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{consulta.data}">
+								<f:convertDateTime pattern="dd/MM/yyyy HH:mm" timeZone="GMT-3"
+									locale="pt_BR" />
+							</h:outputText>
+						</f:facet>
+						<f:facet name="input">
+							<p:calendar value="#{consulta.data}" pattern="dd/MM/yyyy HH:mm"
+								locale="pt_BR" mask="true" required="true"
+								requiredMessage="A data é necessária!" />
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
+
+				<p:column headerText="Valor" style="width: 90px"
+					sortBy="#{consulta.valor}" filterBy="#{consulta.valor}"
+					filterable="false" filterMatchMode="contains">
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{consulta.valor}">
+								<f:convertNumber type="currency" currencySymbol="R$" />
+							</h:outputText>
+						</f:facet>
+						<f:facet name="input">
+							<p:inputNumber value="#{consulta.valor}" required="true"
+								requiredMessage="Informe o valor da consulta!" />
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
+
+				<p:column headerText="Paga" style="width: 70px"
+					styleClass="text-center" sortBy="#{consulta.pago}">
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="sim" rendered="#{consulta.pago}" />
+							<h:outputText value="não" rendered="#{!consulta.pago}" />
+						</f:facet>
+						<f:facet name="input">
+							<h:selectBooleanCheckbox value="#{consulta.pago}" />
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
+
+				<p:column headerText="Finalizada" style="width: 90px"
+					styleClass="text-center" sortBy="#{consulta.finalizada}">
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="sim" rendered="#{consulta.finalizada}" />
+							<h:outputText value="não" rendered="#{!consulta.finalizada}" />
+						</f:facet>
+						<f:facet name="input">
+							<h:selectBooleanCheckbox value="#{consulta.finalizada}" />
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
+
+				<p:column headerText="Excluir" style="width: 60px">
+					<p:outputPanel>
+
+						<p:commandButton icon="ui-icon-trash" title="Excluir"
+							oncomplete="PF('confirmacaoExclusao').show();" process="@this"
+							update="@form frmConsulta:confirmacaoExclusaoDialog"
+							rendered="#{consulta.codigo != null}">
+							<f:setPropertyActionListener
+								target="#{consultaBean.consultaSelecionada}" value="#{consulta}" />
+						</p:commandButton>
+
+						<p:commandButton icon="ui-icon-trash" title="Excluir"
+							rendered="#{consulta.codigo == null}" process="@this"
+							update="@form frmConsulta:tableConsulta"
+							action="#{consultaBean.excluir}">
+							<f:setPropertyActionListener
+								target="#{consultaBean.consultaSelecionada}" value="#{consulta}" />
+						</p:commandButton>
+					</p:outputPanel>
+				</p:column>
+
+				<p:column style="width:60px">
+					<p:rowEditor saveTitle="salvar" cancelTitle="cancelar"
+						editTitle="editar" />
+				</p:column>
+
+				<f:facet name="footer">
+       				 #{consultaBean.consultas.size()} consultas encontradas.
+    			</f:facet>
+
+				
+			</p:dataTable>
+
+			<p:confirmDialog id="confirmacaoExclusaoDialog"
+				widgetVar="confirmacaoExclusao"
+				message="Tem certeza que deseja excluir a consulta de 
+				#{consultaBean.consultaSelecionada.paciente.nome} - cod: 
+				#{consultaBean.consultaSelecionada.paciente.codigo}?"
+				header="Exclusão de consulta" severity="alert">
+				<div class="text-center">
+					<p:button value="Não"
+						onclick="PF('confirmacaoExclusao').hide(); return false;" />
+					<p:commandButton value="Sim"
+						update="@form :frmConsulta:tableConsulta"
+						onclick="PF('confirmacaoExclusao').hide()"
+						action="#{consultaBean.excluir}" />
+				</div>
+			</p:confirmDialog>
+		</h:form>
+	</ui:define>
+
+</ui:composition>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/templates/loginTemplate.xhtml">
+	
+	<ui:define name="conteudo">
+		
+	
+			<div class="view">
+			
+        <!--Intro content-->
+        <div class="full-bg-img flex-center">
+           <div class="container">
+           	<h1 class="text-center clinica-brand">Web Acupuntura</h1>
+            <h:form class="form-signin" >
+                <h2 class="form-signin-heading text-center" >Login</h2>
+                <label for="usuario" class="info-login">Usuário</label>
+				<h:inputText value="#{loginBean.usuario.nome}" styleClass="form-control" 
+				required="true" requiredMessage="Digite seu nome de usuário"/>
+				
+                <label for="password" class="info-login">Senha</label>
+                <h:inputSecret id="password" value="#{loginBean.usuario.senha}" 
+                styleClass="form-control" required="true" requiredMessage="Digite sua senha" />             
+
+            <h:commandButton styleClass="btn btn-lg btn-primary btn-block" 
+            value="Entrar" action="#{loginBean.doLogin}" />
+        </h:form>
+    </div>
+</div>
+</div>
+		
+	</ui:define>
+</ui:composition>
