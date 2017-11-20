@@ -21,7 +21,7 @@ public class Consulta {
 	private Boolean pago;
 	private Boolean finalizada;	
 	private Paciente paciente;
-	private boolean edit;
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	public Long getCodigo() {
@@ -77,15 +77,6 @@ public class Consulta {
 
 	public void setPaciente(Paciente paciente) {
 		this.paciente = paciente;
-	}
-
-	@Transient
-	public boolean isEdit() {
-		return edit;
-	}
-
-	public void setEdit(boolean edit) {
-		this.edit = edit;
 	}
 
 	@Override

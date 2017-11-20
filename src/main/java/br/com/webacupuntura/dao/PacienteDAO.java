@@ -34,7 +34,7 @@ public class PacienteDAO implements Serializable{
 			CriteriaBuilder builder = em.getCriteriaBuilder();
 			CriteriaQuery<PacienteLazy> criteriaQuery = builder.createQuery(PacienteLazy.class);
 			Root<Paciente> paciente = criteriaQuery.from(Paciente.class);
-			Join<Paciente,Consulta> u = paciente.join("consultas", JoinType.LEFT);
+			//Join<Paciente,Consulta> u = paciente.join("consultas", JoinType.LEFT);
 			criteriaQuery.select(builder.construct(PacienteLazy.class, 
 								paciente.get("codigo"),
 								paciente.get("nome"),
@@ -43,7 +43,7 @@ public class PacienteDAO implements Serializable{
 								paciente.get("email"),
 								paciente.get("prontuario").get("codigo")					
 								));
-			criteriaQuery.groupBy(paciente.get("codigo"));
+			//criteriaQuery.groupBy(paciente.get("codigo"));
 			return em.createQuery(criteriaQuery).getResultList();
 		}
 		

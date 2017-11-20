@@ -22,6 +22,7 @@ import br.com.webacupuntura.jpa.Transactional;
 import br.com.webacupuntura.modelo.Consulta;
 import br.com.webacupuntura.modelo.Paciente;
 import br.com.webacupuntura.modeloquery.ConsultaLazy;
+import br.com.webacupuntura.relatorio.Relatorio;
 import br.com.webacupuntura.util.FacesUtil;
 
 @Named
@@ -53,15 +54,14 @@ public class ConsultaBean implements Serializable {
 		try {
 			consultaDAO.salvar(consultaSelecionada);
 			limpar();
-			if(consultaSelecionada.getCodigo() == null){
-				FacesUtil.addSuccessMessage("Consulta agendada!",null);
-				
-				FacesContext.getCurrentInstance()
-				.getExternalContext().redirect("consulta.html");
-			}	
-			
+			if (consultaSelecionada.getCodigo() == null) {
+				FacesUtil.addSuccessMessage("Consulta agendada!", null);
+
+				FacesContext.getCurrentInstance().getExternalContext().redirect("consulta.html");
+			}
+
 		} catch (Exception e) {
-			FacesUtil.addErrorMessage(e.getMessage(),null);
+			FacesUtil.addErrorMessage(e.getMessage(), null);
 		}
 	}
 
@@ -69,16 +69,16 @@ public class ConsultaBean implements Serializable {
 		try {
 			if (consultaSelecionada.getCodigo() != null) {
 				consultaDAO.excluir(consultaSelecionada);
-				
-				FacesUtil.addSuccessMessage("Exclusão de coonsulta","Consulta de " +
-				consultaSelecionada.getPaciente().getNome() + " excluída!",null);
+
+				FacesUtil.addSuccessMessage("Exclusão de coonsulta",
+						"Consulta de " + consultaSelecionada.getPaciente().getNome() + " excluída!", null);
 			}
-			this.consultas.remove(consultaSelecionada);	
-			
-			if(consultasFiltradas!=null)
+			this.consultas.remove(consultaSelecionada);
+
+			if (consultasFiltradas != null)
 				consultasFiltradas.remove(consultaSelecionada);
 		} catch (NegocioException e) {
-			FacesUtil.addErrorMessage("Erro ao excluir consulta",null);
+			FacesUtil.addErrorMessage("Erro ao excluir consulta", null);
 		}
 	}
 
@@ -86,12 +86,11 @@ public class ConsultaBean implements Serializable {
 		this.consulta = new Consulta();
 		this.consulta.setPaciente(new Paciente());
 		this.consultas.add(consulta);
-		if(consultasFiltradas !=null)
-		this.consultasFiltradas.add(consulta);
+		if (consultasFiltradas != null)
+			this.consultasFiltradas.add(consulta);
 
 	}
-	
-	
+
 	public Consulta getConsulta() {
 		return consulta;
 	}
@@ -116,8 +115,6 @@ public class ConsultaBean implements Serializable {
 		this.consultaSelecionada = consultaSelecionada;
 	}
 
-	
-
 	public List<Consulta> getConsultasFiltradas() {
 		return consultasFiltradas;
 	}
@@ -126,12 +123,21 @@ public class ConsultaBean implements Serializable {
 		this.consultasFiltradas = consultasFiltradas;
 	}
 
+	public void gerarRelatorio() {
+		if (consultas.size() > 0) {
+			Relatorio<Consulta> relatorio = new Relatorio<Consulta>();
+			relatorio.getRelatorio(consultas);
+		} else {
+			FacesUtil.addErrorMessage("Sem consultas", null);
+		}
+	}
+
 	public void onRowEdit(RowEditEvent event) {
 		this.consultaSelecionada = (Consulta) event.getObject();
-			if(consultaSelecionada.getCodigo() != null){		
-				FacesUtil.addSuccessMessage("Atualização de consulta",
-						"Consulta de código " + consultaSelecionada.getCodigo() + " atualizada!",null);
-			}
+		if (consultaSelecionada.getCodigo() != null) {
+			FacesUtil.addSuccessMessage("Atualização de consulta",
+					"Consulta de código " + consultaSelecionada.getCodigo() + " atualizada!", null);
+		}
 		salvar();
 	}
 
@@ -150,6 +156,5 @@ public class ConsultaBean implements Serializable {
 			FacesContext.getCurrentInstance().addMessage("mgsConsulta", msg);
 		}
 	}
-	
 
 }

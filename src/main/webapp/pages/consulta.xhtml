@@ -20,14 +20,14 @@
 						action="#{consultaBean.adicionar}"
 						update=":frmConsulta:tableConsulta" />
 
-					<!-- <span class="ui-separator"> <span
+					<span class="ui-separator"> <span
 						class="ui-icon ui-icon-grip-dotted-vertical" />
 					</span>
 
 					<p:commandButton type="button" title="Excluir" icon="ui-icon-trash" />
-					<p:commandButton title="Imprimir" icon="ui-icon-print">
-						<p:printer target="tableConsulta" />
-					</p:commandButton> -->
+					<p:commandButton action="#{consultaBean.gerarRelatorio()}" title="Imprimir" icon="ui-icon-print"
+					ajax="false" onclick="this.form.target='_blank'"/>
+						
 
 
 				</f:facet>
