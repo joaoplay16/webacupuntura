@@ -25,7 +25,8 @@
 				reflow="true"
 				resizableColumns="true" emptyMessage="Nenhum registro encontrado." 
 				paginator="true" paginatorPosition="bottom" 
-				rowsPerPageTemplate="5,10,15,20" sortMode="single" sortBy="#{evolucao.data}" 
+				rowsPerPageTemplate="5,10,15,20" sortMode="single" 
+				sortBy="#{evolucao.data}" sortOrder="descending"
 				rows="5" paginatorAlwaysVisible="false" >
 			
 			
@@ -74,7 +75,7 @@
 				</p:commandButton>
 				
 				<p:commandButton icon="ui-icon-trash" title="Excluir"
-				process="@this" update=":form:tabView:tableEvolucao"
+				 update=":form:tabView:tableEvolucao"
 				action="#{cadProntuarioB.excluirEvolucao}"
 				rendered="#{evolucao.codigo == null}">
 					<f:setPropertyActionListener value="#{evolucao}" 

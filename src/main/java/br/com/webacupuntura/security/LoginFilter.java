@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import br.com.webacupuntura.modelo.Usuario;
 
-//@WebFilter(urlPatterns={"/pages/*"})
+@WebFilter(urlPatterns={"/pages/*"})
 public class LoginFilter implements Filter {
 
 	@Override

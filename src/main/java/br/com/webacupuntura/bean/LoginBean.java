@@ -1,15 +1,11 @@
 package br.com.webacupuntura.bean;
 
 import java.io.Serializable;
-
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.persistence.NoResultException;
-
-import com.sun.org.apache.xml.internal.security.Init;
-
 import br.com.webacupuntura.dao.UsuarioDAO;
 import br.com.webacupuntura.modelo.Usuario;
 import br.com.webacupuntura.util.FacesUtil;

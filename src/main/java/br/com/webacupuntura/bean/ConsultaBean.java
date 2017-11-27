@@ -5,10 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ViewScoped;
-import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -18,16 +16,14 @@ import org.primefaces.event.RowEditEvent;
 
 import br.com.webacupuntura.dao.ConsultaDAO;
 import br.com.webacupuntura.exception.NegocioException;
-import br.com.webacupuntura.jpa.Transactional;
 import br.com.webacupuntura.modelo.Consulta;
 import br.com.webacupuntura.modelo.Paciente;
-import br.com.webacupuntura.modeloquery.ConsultaLazy;
 import br.com.webacupuntura.relatorio.Relatorio;
 import br.com.webacupuntura.util.FacesUtil;
 
 @Named
 @ViewScoped
-public class ConsultaBean implements Serializable {
+public class ConsultaBean implements Serializable{
 
 	private static final long serialVersionUID = 1459680182023053572L;
 
@@ -125,8 +121,8 @@ public class ConsultaBean implements Serializable {
 
 	public void gerarRelatorio() {
 		if (consultas.size() > 0) {
-			Relatorio<Consulta> relatorio = new Relatorio<Consulta>();
-			relatorio.getRelatorio(consultas);
+			Relatorio relatorio = new Relatorio();
+			relatorio.getRelatorio("consulta",null);
 		} else {
 			FacesUtil.addErrorMessage("Sem consultas", null);
 		}

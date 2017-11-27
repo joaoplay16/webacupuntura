@@ -85,9 +85,8 @@
 	</style>
 	<queryString>
 		<![CDATA[select c.codigo, p.nome, c.data, c.valor, c.pago, c.finalizada From Consulta c
-join Paciente p
-on p.codigo = c.codigo
-order by c.data desc;]]>
+ join Paciente p
+on  p.codigo = c.codigo_paciente;]]>
 	</queryString>
 	<field name="codigo" class="java.lang.Long">
 		<fieldDescription><![CDATA[]]></fieldDescription>
@@ -170,7 +169,7 @@ order by c.data desc;]]>
 				<text><![CDATA[Finalizada:]]></text>
 			</staticText>
 			<line>
-				<reportElement x="47" y="34" width="464" height="1" uuid="2e7e9894-abcb-48cd-a322-115559af684a"/>
+				<reportElement x="47" y="34" width="424" height="1" uuid="2e7e9894-abcb-48cd-a322-115559af684a"/>
 			</line>
 			<textField>
 				<reportElement x="393" y="0" width="66" height="17" uuid="352d261d-b89f-476a-9b48-ab0b1580673a"/>

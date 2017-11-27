@@ -17,7 +17,9 @@
 		<h2 id="titulo" class="text-center">Informações do paciente</h2>
 		<h:form>					
 			<div  class="container-fluid">
-				
+			<div class="text-right">
+
+				</div>
 				<div  class="panel panel-primary">
 					<div class="panel-heading">
 						<div class="panel-title">
@@ -59,9 +61,12 @@
 						</div>
 					</div>
 					
-				<!-- 	<div class="panel-footer panelInfoP">
-						<h:commandButton styleClass="btn btn-warning" value="Imprimir" />
-					</div> -->
+					<div class="panel-footer panelInfoP text-right">
+						<h:commandButton action="#{cadProntuarioB.gerarRelatorio()}" 
+							style="margin-bottom: 5px" styleClass="btn btn-md btn-success" 
+							value="Imprimir" onclick="this.form.target='_blank'" 
+							rendered="#{cadProntuarioB.paciente.codigo != null}"/>
+					</div>
 				</div>
 				
 				<div class="panel panel-primary">

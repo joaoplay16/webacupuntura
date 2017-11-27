@@ -15,8 +15,6 @@ import javax.persistence.criteria.JoinType;
 import javax.persistence.criteria.Root;
 import javax.persistence.metamodel.SingularAttribute;
 
-import com.sun.security.ntlm.Client;
-
 import br.com.webacupuntura.dao.PacienteDAO;
 import br.com.webacupuntura.modelo.Consulta;
 import br.com.webacupuntura.modelo.Paciente;
@@ -157,7 +155,7 @@ public class Teste {
 		*/
 		
 		
-		CriteriaBuilder builder = em.getCriteriaBuilder();
+		/*CriteriaBuilder builder = em.getCriteriaBuilder();
 		CriteriaQuery<PacienteLazy> criteriaQuery = builder.createQuery(PacienteLazy.class);
 		Root<Paciente> paciente = criteriaQuery.from(Paciente.class);
 		Join<Paciente,Consulta> u = paciente.join("consultas", JoinType.LEFT);
@@ -171,7 +169,15 @@ public class Teste {
 							paciente.get("prontuario").get("codigo")					
 							));
 		criteriaQuery.groupBy(paciente.get("codigo"));
-		List<PacienteLazy > pl =em.createQuery(criteriaQuery).getResultList();
+		List<PacienteLazy > pl =em.createQuery(criteriaQuery).getResultList();*/
+		
+		
+		String jpql = "select p,pr from Prontuario p "
+				+ "left join fetch p. pr ";
+		
+		List<Paciente> p = em.createQuery(jpql).getResultList();
+		
+		
 		
 	}
 }

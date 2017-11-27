@@ -5,17 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.context.RequestScoped;
-import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ViewScoped;
-import javax.faces.model.ListDataModel;
 import javax.inject.Inject;
 import javax.inject.Named;
 import br.com.webacupuntura.dao.PacienteDAO;
 import br.com.webacupuntura.exception.NegocioException;
-import br.com.webacupuntura.jpa.Transactional;
-import br.com.webacupuntura.modelo.Paciente;
 import br.com.webacupuntura.modeloquery.PacienteLazy;
 import br.com.webacupuntura.util.FacesUtil;
 
@@ -73,4 +67,6 @@ public class PesquisaPacienteBean implements Serializable{
 	public void setPacienteFiltrados(List<PacienteLazy> pacienteFiltrados) {
 		this.pacienteFiltrados = pacienteFiltrados;
 	}
+
+	
 }

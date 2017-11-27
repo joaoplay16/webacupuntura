@@ -53,7 +53,6 @@ public class UsuarioBean implements Serializable {
 	@PostConstruct
 	private void init() {
 		limpar();
-		usuarios = usuarioDAO.buscarTodos();
 	}
 
 	private void limpar() {

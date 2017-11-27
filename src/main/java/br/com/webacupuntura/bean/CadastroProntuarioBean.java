@@ -15,11 +15,12 @@ import org.primefaces.event.TabChangeEvent;
 import br.com.webacupuntura.exception.NegocioException;
 import br.com.webacupuntura.modelo.*;
 import br.com.webacupuntura.modelo.patologia.*;
+import br.com.webacupuntura.relatorio.Relatorio;
 import br.com.webacupuntura.service.CadastroPacienteService;
 import br.com.webacupuntura.util.FacesUtil;
 
 @Named("cadProntuarioB")
-@SessionScoped
+@ViewScoped
 public class CadastroProntuarioBean implements Serializable{
 
 	private static final long serialVersionUID = 1L;
@@ -30,7 +31,6 @@ public class CadastroProntuarioBean implements Serializable{
 	
 	private Paciente paciente;
 	
-	private boolean editEvolucao;
 	
 	
 	public void salvar() throws NegocioException{
@@ -77,7 +77,7 @@ public class CadastroProntuarioBean implements Serializable{
 		this.paciente.getProntuario().setInspecaoLingua(new InspecaoLingua());
 		this.paciente.getProntuario().setDiagnostico(new Diagnostico());
 		this.paciente.getProntuario().setDorCabeca(new DorCabeca());
-		this.paciente.getProntuario().setEvolucoes(new ArrayList<>());
+		this.paciente.getProntuario().setEvolucoes(new ArrayList<Evolucao>());
 		
 	}
 	
@@ -91,9 +91,6 @@ public class CadastroProntuarioBean implements Serializable{
 		this.paciente.getProntuario().getEvolucoes().remove(evolucaoSelecionada);
 	}
 	
-	public void atualizarEvolucao(Evolucao e) {
-		e.setEdit(true);
-	}
 	
 	public Evolucao getEvolucaoSelecionada() {
 		return evolucaoSelecionada;
@@ -111,14 +108,12 @@ public class CadastroProntuarioBean implements Serializable{
 		this.paciente = paciente;
 	}
 	
-	
-	public boolean isEditEvolucao() {
-		return editEvolucao;
+	public void gerarRelatorio(){
+				
+		Relatorio r = new Relatorio();
+		r.getRelatorio("info-paciente", paciente.getCodigo());
 	}
 
-	public void setEditEvolucao(boolean editEvolucao) {
-		this.editEvolucao = editEvolucao;
-	}
 
 	public void onTabChange(TabChangeEvent event) {
 //	        FacesMessage msg = new FacesMessage("Tab Changed", "Active Tab: " + event.getTab().getTitle());
