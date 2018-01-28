@@ -32,7 +32,7 @@ public class LoginFilter implements Filter {
 			String contextPath = ((HttpServletRequest) request).getContextPath();
 			
 			((HttpServletResponse) response).sendRedirect(contextPath +
-					"/login.html");
+					"/login.xhtml");
 			System.out.println(contextPath);
 		} else {
 			chain.doFilter(request, response);

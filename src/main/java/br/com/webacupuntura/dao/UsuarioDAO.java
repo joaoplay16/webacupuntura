@@ -43,4 +43,6 @@ public class UsuarioDAO implements Serializable {
 	public Usuario buscarPeloCodigo(Long id) {
 		return em.find(Usuario.class, id);
 	}
+	
+	
 }

@@ -4,21 +4,20 @@ package br.com.webacupuntura.converter;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
-import javax.faces.convert.FacesConverter;
+import javax.inject.Inject;
+import javax.inject.Named;
 
 import br.com.webacupuntura.dao.PacienteDAO;
 import br.com.webacupuntura.modelo.Paciente;
-import br.com.webacupuntura.modeloquery.PacienteLazy;
-import br.com.webacupuntura.util.cdi.CDIServiceLocator;
 
-@FacesConverter(forClass=Paciente.class)
+
+@Named
 public class PacienteConverter implements Converter {
 
+	@Inject
 	private PacienteDAO pacienteDAO;
 	
-	public PacienteConverter() {
-		this.pacienteDAO = CDIServiceLocator.getBean(PacienteDAO.class);
-	}
+	
 	
 	@Override
 	public Object getAsObject(FacesContext context, UIComponent component, String value) {

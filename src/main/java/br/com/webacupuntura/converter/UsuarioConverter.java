@@ -4,20 +4,20 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
+import javax.inject.Inject;
+import javax.inject.Named;
 
 import br.com.webacupuntura.dao.UsuarioDAO;
 import br.com.webacupuntura.modelo.Usuario;
 import br.com.webacupuntura.util.cdi.CDIServiceLocator;
 
 
-@FacesConverter(forClass=Usuario.class)
+@Named
 public class UsuarioConverter implements Converter {
 
+	@Inject
 	UsuarioDAO usuarioDAO;
-	
-	public UsuarioConverter() {
-		usuarioDAO = CDIServiceLocator.getBean(UsuarioDAO.class);
-	}
+
 	
 	@Override
 	public Object getAsObject(FacesContext context, UIComponent component, String value) {

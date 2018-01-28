@@ -11,7 +11,7 @@
 	
 	<ui:define name="conteudo">
 	<f:metadata>
-		<o:viewParam name="paci" value="#{CPBean.paciente}" />
+		<o:viewParam name="paci" value="#{CPBean.paciente}" converter="#{pacienteConverter}"/>
 	</f:metadata>
 	<div class="container">
 	<h3 id="titulo"  >Cadastro de paciente</h3>

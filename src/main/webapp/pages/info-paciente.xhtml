@@ -11,7 +11,7 @@
 
 	<ui:define name="conteudo">
 		<f:metadata>
-			<o:viewParam name="paci" value="#{cadProntuarioB.paciente}" />
+			<o:viewParam name="paci" value="#{cadProntuarioB.paciente}" converter="#{pacienteConverter}"/>
 		</f:metadata>
 		
 		<h2 id="titulo" class="text-center">Informações do paciente</h2>

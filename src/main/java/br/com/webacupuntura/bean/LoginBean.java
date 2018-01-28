@@ -38,12 +38,13 @@ public class LoginBean implements Serializable {
 			FacesUtil.addErrorMessage("Usuário ou senha incorretos!","","");
 			return "";
 		}
-	
+		
 	}
 
 	@PostConstruct
 	private void init() {
 		this.usuario = new Usuario();
+		
 	}
 	
 	public String doLogout() {

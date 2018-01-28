@@ -87,7 +87,7 @@ public class Relatorio {
 	private Connection getConexao() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			con = DriverManager.getConnection("jdbc:mysql://node150477-webacupuntura4.jelasticlw.com.br/webacupuntura", "root", "YAGbhn58975");
+			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/webacupuntura", "root", "");
 			return con;
 
 		} catch (SQLException e) {

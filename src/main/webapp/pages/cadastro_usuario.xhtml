@@ -12,7 +12,8 @@
 	<ui:define name="conteudo">
 				<f:metadata>
 					<o:viewParam name="usuario"
-						value="#{usuarioBean.usuario}" />
+						value="#{usuarioBean.usuario}" 
+						converter="#{usuarioConverter}"/>
 				</f:metadata>
 
 
