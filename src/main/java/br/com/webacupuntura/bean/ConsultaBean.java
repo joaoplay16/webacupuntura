@@ -53,7 +53,7 @@ public class ConsultaBean implements Serializable{
 			if (consultaSelecionada.getCodigo() == null) {
 				FacesUtil.addSuccessMessage("Consulta agendada!", null);
 
-				FacesContext.getCurrentInstance().getExternalContext().redirect("consulta.html");
+				FacesContext.getCurrentInstance().getExternalContext().redirect("consulta.xhtml");
 			}
 
 		} catch (Exception e) {
@@ -152,5 +152,20 @@ public class ConsultaBean implements Serializable{
 			FacesContext.getCurrentInstance().addMessage("mgsConsulta", msg);
 		}
 	}
+	
+	public Double getLucroTotal() {
+		return consultaDAO.lucroTotal();
+	}
+	
+	public Double getAReceber() {
+		return consultaDAO.aReceber();
+	}
 
+	public Double getLucroSemanal() {
+		return consultaDAO.lucroSemanal();
+	}
+	
+	public Double getLucroMensal() {
+		return consultaDAO.lucroMensal();
+	}
 }

@@ -1,6 +1,7 @@
 package webacupuntura.main;
 
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -12,7 +13,9 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Join;
 import javax.persistence.criteria.JoinType;
+import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+import javax.persistence.criteria.Selection;
 import javax.persistence.metamodel.SingularAttribute;
 
 import br.com.webacupuntura.dao.PacienteDAO;
@@ -171,13 +174,31 @@ public class Teste {
 		criteriaQuery.groupBy(paciente.get("codigo"));
 		List<PacienteLazy > pl =em.createQuery(criteriaQuery).getResultList();*/
 		
+		//quanto ganhou na semana
+		String jpql = "select sum(c.valor) from Consulta c "
+				+ " where c.pago = true and week(c.data) = week(curtime())"
+				+ " and year(c.data) = year(curtime())";
 		
-		String jpql = "select p,pr from Prontuario p "
-				+ "left join fetch p. pr ";
+		List<Consulta> c = em.createQuery(jpql).getResultList();
 		
-		List<Paciente> p = em.createQuery(jpql).getResultList();
+		System.out.println(c);
 		
 		
+		/*
+		CriteriaBuilder builder = em.getCriteriaBuilder();
+		CriteriaQuery<Object[]> criteriaQuery = builder.createQuery(Object[].class);
+		Root<Consulta> consulta = criteriaQuery.from(Consulta.class);
+		criteriaQuery.multiselect(consulta.get("codigo"),
+				builder.sum(consulta.get("valor")));
+		
+		List<Predicate> predicates = new ArrayList<>();
+
+
+		List<Object[]> consultas = em.createQuery(criteriaQuery).getResultList();
+		
+		for(Object c[]: consultas) {
+			System.out.println(c[0] + " - " + c[1]);
+		}*/
 		
 	}
 }

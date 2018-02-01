@@ -44,6 +44,20 @@ public class ConsultaDAO implements Serializable {
 		return  em.createQuery("SELECT c FROM Consulta c JOIN FETCH c.paciente ORDER BY c.data DESC").getResultList();
 	}
 
+	public Double lucroTotal() {
+		return em.createNamedQuery("Consulta.lucroTotal", Double.class).getSingleResult();
+	}
 	
+	public Double aReceber() {
+		return em.createNamedQuery("Consulta.aReceber", Double.class).getSingleResult();
+	}
+	
+	public Double lucroSemanal() {
+		return em.createNamedQuery("Consulta.lucroSemanal", Double.class).getSingleResult();
+	}
+	
+	public Double lucroMensal() {
+		return em.createNamedQuery("Consulta.lucroMensal", Double.class).getSingleResult();
+	}
 
 }

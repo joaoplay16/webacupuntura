@@ -11,9 +11,24 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Transient;
 
 @Entity
+
+@NamedQueries({
+	@NamedQuery(name="Consulta.lucroTotal", 
+			query="select sum(c.valor) from Consulta c where c.pago = true"),
+	@NamedQuery(name="Consulta.aReceber", 
+			query="select sum(c.valor) from Consulta c where c.pago = false"),
+	@NamedQuery(name="Consulta.lucroMensal",
+			query="select sum(c.valor) from Consulta c where c.pago = true and "
+			+ "MONTH(c.data) = MONTH(curdate()) and YEAR(c.data) = YEAR(curdate())"),
+	@NamedQuery(name="Consulta.lucroSemanal",
+			query="select sum(c.valor) from Consulta c where c.pago = true and "
+	+ "WEEK(c.data) = WEEK(curdate()) and YEAR(c.data) = YEAR(curdate())")
+})
 public class Consulta {
 	private Long codigo;
 	private Date data;
