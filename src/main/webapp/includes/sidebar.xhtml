@@ -5,18 +5,20 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
+	
+
 
 <h:form>
 	<div class="side-bar">
-		<div class="panel-group" id="accordion">
+		<div  id="accordion">
 			<!-- 	ADM -->
 			
-			<div class="panel panel-default">
+			<div class="panel t">
 			<p:remoteCommand rendered="#{loginBean.usuarioLogado.permissao == 'admin' or 
 										loginBean.usuarioLogado.permissao == 'gerente'}">
-				<div class="panel-heading">
+				<div  class="panel-heading">
 					<h4 class="panel-title text-center">
-						<a data-toggle="collapse" data-parent="#accordion"
+						<a  data-toggle="collapse" data-parent="#accordion"
 							href="#collapse1"> Administrativo</a>
 					</h4>
 				</div>
@@ -27,13 +29,31 @@
 					</ul>
 				</div>
 			</div>
-			<ul class="nav nav-stacked nav-pills">
-				<li class="list-group-item"><a  href="pacientes.xhtml"><span
+				
+			
+				<ul class="nav nav-stacked nav-pills ">
+				<li class="t">  <a  href="pacientes.xhtml"><span
 						class="glyphicon glyphicon-pencil" /> Pacientes</a></li>
-				<li class="list-group-item"><a href="consulta.xhtml"><span
+				<li class="t"><a  href="consulta.xhtml"><span
+						class="glyphicon glyphicon-pencil" /> Consultas</a></li>
+		
+				<li class="t">  <a  href="pacientes.xhtml"><span
+						class="glyphicon glyphicon-pencil" /> Pacientes</a></li>
+				<li class="t"><a  href="consulta.xhtml"><span
+						class="glyphicon glyphicon-pencil" /> Consultas</a></li>
+
+				<li class="t">  <a  href="pacientes.xhtml"><span
+						class="glyphicon glyphicon-pencil" /> Pacientes</a></li>
+				<li class="t"><a  href="consulta.xhtml"><span
 						class="glyphicon glyphicon-pencil" /> Consultas</a></li>
 			</ul>
+			
+			
 		</div>
 	</div>
 </h:form>
+
+
+
 </ui:composition>
+

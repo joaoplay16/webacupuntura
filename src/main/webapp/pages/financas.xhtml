@@ -7,36 +7,49 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	template="/templates/modeloSistema.xhtml">
 
-	<h:outputScript name="imprimir" library="js" />
+  <h:outputScript name="imprimir" library="js" /> 
 
 	<ui:define name="conteudo">
-		<h2 class="text-center" style="margin-top: -18px; font-family: fantasy;">Financas</h2>
+	<div class="corpo">
+	
+		<h2 class="text-center">Financas</h2>
 		
-		<div class="col-md-2">
+		
+		
+		<div class="col-md-3">
 			<h3>Lucro total</h3>
-			<h:outputText value="#{consultaBean.lucroTotal}">
+			<div class="decor">
+			<h:outputText   value="#{consultaBean.lucroTotal}">
 			<f:convertNumber type="currency" currencySymbol="R$" />
 			</h:outputText>
+			</div>
 		</div>
-			<div class="col-md-2">
+			<div class="col-md-3">
 			<h3>Total a receber</h3>
-			<h:outputText value="#{consultaBean.AReceber}">
+			<div class="decor">
+			<h:outputText styleClass="decor" value="#{consultaBean.AReceber}">
 			<f:convertNumber type="currency" currencySymbol="R$" />
 			</h:outputText>
+			</div>
 		</div>
-		<div class="col-md-2">
+		<div class="col-md-3">
 		<h3>Lucro semanal</h3>
-			<h:outputText value="#{consultaBean.lucroSemanal}">
+		<div class="decor">
+			<h:outputText  value="#{consultaBean.lucroSemanal}">
 			<f:convertNumber type="currency" currencySymbol="R$" />
 			</h:outputText>
+			</div>
 		</div>
-		<div class="col-md-2">
+		<div class="col-md-3">
 		<h3>Lucro mensal</h3>
+		<div class="decor">
 			<h:outputText value="#{consultaBean.lucroMensal}">
 			<f:convertNumber type="currency" currencySymbol="R$" />
 			</h:outputText>
+			</div>
 		</div>		
-		
+	
+		</div>
 	</ui:define>
 
 </ui:composition>
