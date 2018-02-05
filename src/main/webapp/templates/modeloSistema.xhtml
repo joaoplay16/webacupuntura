@@ -9,21 +9,19 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	<title>Web Acupuntura</title>
-	
-	
-	
-	
+
 	<link rel="stylesheet" href="../resources/Bootstrap/css/bootstrap.min.css"/>
 	<link rel="stylesheet" href="../resources/css/decoration.css"/>
 	
 	<h:outputStylesheet name="bootstrap.min.css" library="Bootstrap/css/"/>
 	<h:outputStylesheet name="estilos.css" library="css"/>
+	
 	<h:outputStylesheet name="cadastro_paciente.css" library="css"/>
 	<h:outputStylesheet name="anamnese.css" library="css"/>
-	<h:outputStylesheet name="resources/css/decoration.css"/>
+	<script src="../resources/Bootstrap/js/bootstrap.min.js"></script>
+	
+	
 	<script>
-	
-	
 	
 	$(document).ready(function(){
 		$(".tema").css({
@@ -34,9 +32,9 @@
 	
 	</script>
 
-
-	
 	<script >
+	
+	
 		$(document).ready(function(){
 			var panel1 = $('.panelInfoP');
 			$('#btnToggle').click(function(){
@@ -104,7 +102,7 @@
 	</div>
 
 
-	<div id="info" class="col-md-9 col-sm-9 col-lg-8 b">
+	<div id="info" class="col-md-9 col-sm-9 col-lg-8 conteudo">
 		<ui:insert name="conteudo"/>
 	</div>
 	
