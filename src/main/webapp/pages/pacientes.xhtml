@@ -8,20 +8,26 @@
 	template="/templates/modeloSistema.xhtml">
 
 	<ui:define name="conteudo">
+	<div class="corpoP">
 			<h2 id="titulo" class="text-center">Pacientes</h2>
 		<h:form id="frmPesquisa">
-			<p:toolbar>
-				<f:facet name="left">
-					<p:button value="Adicionar" outcome="cadastro_paciente"
+		
+			<p:toolbar styleClass="ss" >
+			
+			
+				<f:facet   name="left">
+					<p:button  value="Adicionar" outcome="cadastro_paciente"
 						style="text-align: left" />
 					<span class="ui-separator"> <span
 						class="ui-icon ui-icon-grip-dotted-vertical" />
 					</span>
 
 				</f:facet>
+				
 
 			</p:toolbar>
-			<p:dataTable id="pacientesTable" widgetVar="tabelaPacientes"
+			
+			<p:dataTable  id="pacientesTable" widgetVar="tabelaPacientes"
 				paginator="true" rowsPerPageTemplate="5,10,15" rows="12"
 				paginatorAlwaysVisible="false" value="#{PPBean.pacientes}"
 				paginatorPosition="bottom" resizableColumns="true"
@@ -48,7 +54,7 @@
 
 				</p:column>
 
-				<p:column headerText="Nome" styleClass="text-center"
+				<p:column  headerText="Nome" styleClass="text-center "
 					sortBy="#{paciente.nome}" filterable="false"
 					filterBy="#{paciente.nome}" filterMatchMode="contains"
 					style="width: 190px">
@@ -115,5 +121,6 @@
 					action="#{PPBean.excluir}" />
 			</p:confirmDialog>
 		</h:form>
+		</div>
 	</ui:define>
 </ui:composition>
