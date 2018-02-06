@@ -10,7 +10,7 @@
   <h:outputScript name="imprimir" library="js" /> 
 
 	<ui:define name="conteudo">
-	<div class="corpo">
+	<div>
 	
 		<h2 class="text-center">Financas</h2>
 		
@@ -18,7 +18,7 @@
 		
 		<div class="col-md-3">
 			<h3>Lucro total</h3>
-			<div class="decor">
+			<div>
 			<h:outputText   value="#{consultaBean.lucroTotal}">
 			<f:convertNumber type="currency" currencySymbol="R$" />
 			</h:outputText>
@@ -26,15 +26,15 @@
 		</div>
 			<div class="col-md-3">
 			<h3>Total a receber</h3>
-			<div class="decor">
-			<h:outputText styleClass="decor" value="#{consultaBean.AReceber}">
+			<div >
+			<h:outputText value="#{consultaBean.AReceber}">
 			<f:convertNumber type="currency" currencySymbol="R$" />
 			</h:outputText>
 			</div>
 		</div>
 		<div class="col-md-3">
 		<h3>Lucro semanal</h3>
-		<div class="decor">
+		<div >
 			<h:outputText  value="#{consultaBean.lucroSemanal}">
 			<f:convertNumber type="currency" currencySymbol="R$" />
 			</h:outputText>
@@ -42,7 +42,7 @@
 		</div>
 		<div class="col-md-3">
 		<h3>Lucro mensal</h3>
-		<div class="decor">
+		<div >
 			<h:outputText value="#{consultaBean.lucroMensal}">
 			<f:convertNumber type="currency" currencySymbol="R$" />
 			</h:outputText>
