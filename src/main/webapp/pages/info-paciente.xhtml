@@ -452,6 +452,10 @@
 										cadProntuarioB.paciente.prontuario.historico.atividadeSexual !=null}"/><p />
 					
 							<h4 class="text-center">Exame físico</h4>
+							<h:outputLabel value="Pulso " style="font-size: 14pt; font-weight: normal"
+							rendered="#{cadProntuarioB.paciente.prontuario.pulso !=''}"/>
+							<p:editor value="#{cadProntuarioB.paciente.prontuario.pulso}" 
+								rendered="#{cadProntuarioB.paciente.prontuario.pulso !=''}"/><p/>
 							
 							<div class="col-md-6 col-sm-6">
 							<h5 style="font-weight: bold" class="text-left">Inspeção da língua:</h5>
@@ -479,6 +483,8 @@
 							rendered="#{cadProntuarioB.paciente.prontuario.inspecaoLingua.outrasEspecificacoes !=''}"/>
 							<h:outputText value=" #{cadProntuarioB.paciente.prontuario.inspecaoLingua.outrasEspecificacoes}"
 							rendered="#{cadProntuarioB.paciente.prontuario.inspecaoLingua.outrasEspecificacoes !=''}"/><p />
+							
+							
 							
 							</div>
 							<div class="col-md-6 col-sm-6">
@@ -528,7 +534,7 @@
 								<div class="row">
 								
 								<div class="col-md-12">
-									<h:outputLabel value="Diagnóstico: "
+									<h:outputLabel value="Diagnóstico: " 
 									rendered="#{cadProntuarioB.paciente.prontuario.inspecaoLingua.diagnostico !=''}"/>
 									<h:outputText value=" #{cadProntuarioB.paciente.prontuario.inspecaoLingua.diagnostico}"
 									rendered="#{cadProntuarioB.paciente.prontuario.inspecaoLingua.diagnostico

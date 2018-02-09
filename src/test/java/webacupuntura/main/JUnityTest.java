@@ -61,14 +61,4 @@ public class JUnityTest {
 
 	}
 	
-
-	@Test
-	public void dataAtual() {
-		String jpql = "select curdate()";
-		
-	em.createQuery(jpql).getSingleResult();
-		
-		System.out.println();
-
-	}
 }

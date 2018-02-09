@@ -9,7 +9,7 @@
 
 	<div class="ui-g-12 ui-md-6">
 		<p:outputLabel for="area" value="Histórico da doença atual" />
-		<p:inputTextarea
+		<p:inputTextarea 
 			value="#{cadProntuarioB.paciente.prontuario.historico.hDoencaAtual}" id="area"
 			autoResize="true" />
 	</div>
@@ -18,7 +18,7 @@
 		<p:inputTextarea
 			value="#{cadProntuarioB.paciente.prontuario.historico.hPatologico}" id="area1" />
 	</div>
-	<div class="ui-g-12 ui-md-6">
+	<div class="ui-g-12 ui-md-6 ">
 		<p:outputLabel for="area2" value="Histórico familiar" />
 		<p:inputTextarea id="area2"
 			value="#{cadProntuarioB.paciente.prontuario.historico.hFamiliar}" />
@@ -53,7 +53,7 @@
 		<p:inputText id="input8"
 			value="#{cadProntuarioB.paciente.prontuario.historico.diagnosticoMedico}" />
 	</div>
-	<div class="ui-g-12">
+	<div class="ui-g-12 ">
 		<p:outputLabel for="input9" value="Médico" />
 		<p:inputText id="input9"
 			value="#{cadProntuarioB.paciente.prontuario.historico.medico}" />

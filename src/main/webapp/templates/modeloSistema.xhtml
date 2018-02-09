@@ -12,54 +12,21 @@
 
 	<link rel="stylesheet"
 		href="../resources/Bootstrap/css/bootstrap.min.css" />
-	<link rel="stylesheet" href="../resources/css/decoration.css" />
+	<link rel="stylesheet" type="text/css" href="../resources/css/decoration.css" />
 
 	<h:outputStylesheet name="bootstrap.min.css" library="Bootstrap/css/" />
 	<h:outputStylesheet name="estilos.css" library="css" />
+	<h:outputStylesheet name="decoration.css" library="css"/>
+
 
 	<h:outputStylesheet name="cadastro_paciente.css" library="css" />
 	<h:outputStylesheet name="anamnese.css" library="css" />
 	<script src="../resources/Bootstrap/js/bootstrap.min.js"></script>
+		<script src="../resources/js/model.js"></script>
 
 
-	<script>
-		$(document).ready(function() {
-			$(".tema").css({
-				color : "red"
-			})
-			
-
-		});
-	</script>
-
-	<script>
-		$(document).ready(function() {
-			var panel1 = $('.panelInfoP');
-			$('#btnToggle').click(function() {
-				if (panel1.is(':visible')) {
-					panel1.hide(200);
-					$('#btnToggle').text('Mostrar');
-				} else {
-					panel1.show(200);
-					$('#btnToggle').text('Menos');
-				}
-			});
-
-			var panel2 = $('.panelProntuP');
-			$('#btnToggle2').click(function() {
-				if (panel2.is(':visible')) {
-					panel2.hide(200);
-					$('#btnToggle2').text('Mostrar');
-				} else {
-					panel2.show(200);
-					$('#btnToggle2').text('Menos');
-				}
-			});
-
-		});
-	</script>
 </h:head>
-<h:body style="height:100%">
+<h:body>
 	<p:growl id="msgGlobal" life="3000" />
 
 	<nav class="navbar navbar-inverse navbar-fixed-top tema">
@@ -72,8 +39,8 @@
 					class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			<h3>
-				<strong>Web Acupuntura</strong>
+			<h3 class="titulo">
+				<strong >Web Acupuntura</strong>
 			</h3>
 		</div>
 		<div id="navbar" class="navbar-collapse collapse">
@@ -94,14 +61,14 @@
 	</nav>
 
 
-	<div class="col-md-3 col-sm-3 col-lg-2  sidebar sid  tema">
+	<div  class="col-md-3 col-sm-3 col-lg-2  sidebar ssidebar  tema">
 		<ui:include src="/includes/sidebar.xhtml" />
 	</div>
-
-
-	<div id="info" class="col-md-9 col-sm-9 col-lg-8 conteudo">
+	
+	<div id="info"  class="col-md-9 col-sm-9 col-lg-8 conteudo" >
 		<ui:insert name="conteudo" />
 	</div>
+
 
 
 

@@ -63,6 +63,7 @@
 							</div>
 
 							<div class="ui-grid-row">
+							
 								<div class="ui-g-9 ui-md-9">
 									<h:panelGrid columns="1">
 										<p:commandButton value="Salvar"
@@ -71,7 +72,7 @@
 									</h:panelGrid>
 								</div>
 							</div>
-
+	
 						</div>
 					</h:form>
 				</my:painel>
@@ -80,7 +81,7 @@
 			<div class="ui-g-10 ui-md-4">
 				<my:painel cor="panel-primary" titulo="usuarios">
 					<h:form id="form">
-						<p:dataList id="dataList"	value="#{usuarioBean.usuarios}" var="usuario"
+						<p:dataList id="dataList" value="#{usuarioBean.usuarios}" var="usuario"
 							type="unordered" itemType="none" paginator="true" rows="9"
 							styleClass="paginated" paginatorPosition="bottom" paginatorAlwaysVisible="false"
 							emptyMessage="Nenhum usuário encontrado">
@@ -88,13 +89,19 @@
 							<p:commandLink update=":form:detalheUsuario"
 								oncomplete="PF('usuarioDialog').show()" title="Detalhes"
 								styleClass="ui-icon ui-icon-search"
-								style="float:left;margin-right:10px">
+								style="float:left;margin-right:10px"
+								rendered="#{usuario.nome != 'admin'}"
+								>
 								<f:setPropertyActionListener value="#{usuario}"
 									target="#{usuarioBean.usuarioSelecionado}" />
-								<h:outputText value="#{usuario.nome}" />
+								<h:outputText value="#{usuario.nome}" 
+									rendered="#{usuario.nome != 'admin'}"
+								/>
 							</p:commandLink>
 							<h:outputText value="#{usuario.nome}"
-								style="display:inline-block" />
+								style="display:inline-block" 
+								rendered="#{usuario.nome != 'admin'}"
+								/>
 						</p:dataList>
 
 						<p:dialog header="Excluir usuário" widgetVar="usuarioDialog"
@@ -102,7 +109,7 @@
 							resizable="false">
 							<p:outputPanel id="detalheUsuario" style="text-align:center;">
 								<p:panelGrid columns="2"
-									rendered="#{not empty usuarioBean.usuarioSelecionado}"
+									rendered="#{usuarioBean.usuarioSelecionado != null}"
 									columnClasses="value">
 
 									<h:outputLabel value="Id:" />
@@ -121,10 +128,12 @@
 										<f:param name="usuario" value="#{usuarioBean.usuarioSelecionado.id}"/>
 									</p:button>
 									<p:commandButton icon="ui-icon-trash" action="#{usuarioBean.excluir}" 
-									update="form:dataList"
-					oncomplete="PF('usuarioDialog').hide()"/>
+									update="form:dataList" rendered="#{loginBean.usuarioLogado.permissao == 'admin' or 
+										loginBean.usuarioLogado.permissao == 'gerente'}"
+									oncomplete="PF('usuarioDialog').hide()"/>
 								</p:panelGrid>
 
+								
 							</p:outputPanel>
 						</p:dialog>
 					</h:form>

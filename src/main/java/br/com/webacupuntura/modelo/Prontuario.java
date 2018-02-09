@@ -66,7 +66,7 @@ public class Prontuario {
 		this.dorCabeca = dorCabeca;
 	}
 
-	@Column(length=500)
+	@Column(length=1000)
 	public String getPulso() {
 		return pulso;
 	}

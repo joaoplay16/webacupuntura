@@ -1,37 +1,47 @@
-html {
+@charset "utf-8";
+
+
+
+/* css da pagina template */
+html, body {
+	margin: 0;
 	height: 100%;
 }
-
-a {
-	color: #1C1C1C;
+.titulo{
+	color: #FFFFFF;
 }
 
-.sid {
+.ssidebar {
+	position: fixed;
 	padding-top: 80px;
 	height: 100%;
+	margin-left: 0px;
 }
 
 .conteudo {
 	margin-top: 80px;
+	height: 300px;
+	margin-left: 250px;
 }
 
 .tema {
 	background-color: #023E6B;
 }
 
-.t {
+/* css da pagina sidebar */
+.temalista {
 	background-color: #FFFFFF;
 	color: #000000;
 	margin-top: 10px;
 }
-ul.nav li:hover,ul.nav li a:hover {
-	background-color:  #FFB5C5;
+
+ul.nav li:hover, ul.nav li a:hover {
+	background-color: #FFB5C5;
 	font-size: 15px;
 	color: #000000;
 }
 
-
-
+/* css das tabela */
 .ui-datatable-even {
 	background-color: #8DB6CD;
 }
@@ -43,6 +53,20 @@ ul.nav li:hover,ul.nav li a:hover {
 .ui-datatable-odd {
 	background: #A4D3EE;
 }
+
 .ui-datatable-odd:hover {
 	background: #FFB5C5;
+}
+
+/* css da pagina finanças */
+.ui-chkbox-icon {
+	background-color: #CFCFCF;
+}
+
+.fot {
+	font-size: 25px;
+}
+
+.fot>h3 {
+	font-family: fantasy;
 }

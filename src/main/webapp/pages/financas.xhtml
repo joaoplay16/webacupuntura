@@ -7,45 +7,44 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	template="/templates/modeloSistema.xhtml">
 
-  <h:outputScript name="imprimir" library="js" /> 
-
 	<ui:define name="conteudo">
 	<div>
-	
-		<h2 class="text-center">Financas</h2>
-		
-		
-		
-		<div class="col-md-3">
+		<h2 class="text-center">Finanças</h2>
+		<div class="col-md-3 fot">
 			<h3>Lucro total</h3>
 			<div>
 			<h:outputText   value="#{consultaBean.lucroTotal}">
 			<f:convertNumber type="currency" currencySymbol="R$" />
 			</h:outputText>
+			<h:outputText rendered="#{consultaBean.lucroTotal == null}"  value="n/a"/>
 			</div>
 		</div>
-			<div class="col-md-3">
+			<div class="col-md-3 fot">
 			<h3>Total a receber</h3>
 			<div >
 			<h:outputText value="#{consultaBean.AReceber}">
 			<f:convertNumber type="currency" currencySymbol="R$" />
 			</h:outputText>
+			<h:outputText rendered="#{consultaBean.AReceber == null}"  value="n/a"/>
 			</div>
 		</div>
-		<div class="col-md-3">
+		<div class="col-md-3 fot">
 		<h3>Lucro semanal</h3>
 		<div >
-			<h:outputText  value="#{consultaBean.lucroSemanal}">
+			<h:outputText 
+			value="#{consultaBean.lucroSemanal}">
 			<f:convertNumber type="currency" currencySymbol="R$" />
 			</h:outputText>
+			<h:outputText rendered="#{consultaBean.lucroSemanal == null}"  value="n/a"/>
 			</div>
 		</div>
-		<div class="col-md-3">
+		<div class="col-md-3 fot">
 		<h3>Lucro mensal</h3>
 		<div >
 			<h:outputText value="#{consultaBean.lucroMensal}">
 			<f:convertNumber type="currency" currencySymbol="R$" />
 			</h:outputText>
+			<h:outputText rendered="#{consultaBean.lucroMensal == null}"  value="n/a"/>
 			</div>
 		</div>		
 	

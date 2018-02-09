@@ -5,45 +5,73 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
 	<h4 class="text-center">Dor de cabeça(Enxaqueca):</h4>
 
-	<div class="ui-grid ui-grid-responsive">
-		<div class="ui-grid-row">
+	<div class="ui-grid ui-grid-responsive " style="height: 250px;">
+		<div class="ui-grid-row " >
+			<div class="container">
+				<div class="row">
+					<div class="ui-grid-col-2" style="text-align: center">
 
-			<div class="ui-grid-col-2" style="text-align: center">
-				<p:graphicImage name="dorcabeca1.png" library="imagens" />
-				<p:selectBooleanCheckbox
-					value="#{cadProntuarioB.paciente.prontuario.dorCabeca.dor1}" />
-			</div>
+						<p:graphicImage title="cabeça 1" name="dorcabeca1.png"
+							library="imagens" />
+					</div>
+					<div class="ui-grid-col-2 " style="text-align: center">
+						<p:graphicImage name="dorcabeca2.png" library="imagens"
+							title="cabeça 2" />
+					</div>
+					<div class="ui-grid-col-2" style="text-align: center">
+						<p:graphicImage name="dorcabeca3.png" library="imagens"
+							title="cabeça 3" />
+					</div>
+					<div class="ui-grid-col-2 " style="text-align: center">
+						<p:graphicImage name="dorcabeca4.png" library="imagens"
+							title="cabeça 4" />
+					</div>
+					<div class="ui-grid-col-2 " style="text-align: center">
+						<p:graphicImage name="dorcabeca5.png" library="imagens"
+							title="cabeça 5" />
+					</div>
+					<div class="ui-grid-col-2" style="text-align: center">
 
-			<div class="ui-grid-col-2" style="text-align: center">
-				<p:graphicImage name="dorcabeca2.png" library="imagens" />
-				<p:selectBooleanCheckbox
-					value="#{cadProntuarioB.paciente.prontuario.dorCabeca.dor2}" />
-			</div>
-
-			<div class="ui-grid-col-2" style="text-align: center">
-				<p:graphicImage name="dorcabeca3.png" library="imagens" />
-				<p:selectBooleanCheckbox
-					value="#{cadProntuarioB.paciente.prontuario.dorCabeca.dor3}" />
-			</div>
-
-			<div class="ui-grid-col-2" style="text-align: center">
-				<p:graphicImage name="dorcabeca4.png" library="imagens" />
-				<p:selectBooleanCheckbox
-					value="#{cadProntuarioB.paciente.prontuario.dorCabeca.dor4}" />
-			</div>
-
-			<div class="ui-grid-col-2" style="text-align: center">
-				<p:graphicImage name="dorcabeca5.png" library="imagens" />
-				<p:selectBooleanCheckbox
-					value="#{cadProntuarioB.paciente.prontuario.dorCabeca.dor5}" />
-			</div>
-
-			<div class="ui-grid-col-2" style="text-align: center">
-				<p:graphicImage name="dorcabeca6.png" library="imagens" />
-				<p:selectBooleanCheckbox
-					value="#{cadProntuarioB.paciente.prontuario.dorCabeca.dor6}" />
+						<p:graphicImage name="dorcabeca6.png" library="imagens"
+							title="cabeça 6" />
+					</div>
+				</div>
+				<div class="row" style="margin-top: 20px;">
+					<div class="ui-grid-col-2" style="text-align: center">
+						<p:selectBooleanCheckbox
+							value="#{cadProntuarioB.paciente.prontuario.dorCabeca.dor1}"
+							title="cabeça 1" />
+					</div>
+					<div class="ui-grid-col-2 " style="text-align: center">
+						<p:selectBooleanCheckbox
+							value="#{cadProntuarioB.paciente.prontuario.dorCabeca.dor2}"
+							title="cabeça 2" />
+					</div>
+					<div class="ui-grid-col-2" style="text-align: center">
+						<p:selectBooleanCheckbox
+							value="#{cadProntuarioB.paciente.prontuario.dorCabeca.dor3}"
+							title="cabeça 3" />
+					</div>
+					<div class="ui-grid-col-2 " style="text-align: center">
+						<p:selectBooleanCheckbox
+							value="#{cadProntuarioB.paciente.prontuario.dorCabeca.dor4}"
+							title="cabeça 4" />
+					</div>
+					<div class="ui-grid-col-2 " style="text-align: center">
+						<p:selectBooleanCheckbox
+							value="#{cadProntuarioB.paciente.prontuario.dorCabeca.dor5}"
+							title="cabeça 5" />
+					</div>
+					<div class="ui-grid-col-2" style="text-align: center">
+						<p:selectBooleanCheckbox 
+							value="#{cadProntuarioB.paciente.prontuario.dorCabeca.dor6}"
+							title="cabeça 6" />
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>

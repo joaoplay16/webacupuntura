@@ -5,10 +5,12 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
+	
+	
 
 	<h4>Inspeção da língua</h4>
 
-	<div class="ui-grid-row">
+	<div class="ui-grid-row bb">
 		<div class='ui-fluid'>
 			<div class="ui-g-12 ui-md-6">
 				<p:outputLabel value="Cor" />
@@ -73,7 +75,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="ui-grid-row">
+	<div class="ui-grid-row bb">
 		<div class="ui-fluid">
 			<div class="ui-g-12 ui-md-6">
 				<p:outputLabel value="Humidade" />
@@ -82,12 +84,12 @@
 			</div>
 		</div>
 	</div>
-	<div class="ui-grid-row">
+	<div class="ui-grid-row bb">
 		<div class="ui-fluid">
 			<div class="ui-g-12">
 				<!--PULSO  -->
 				<p:outputLabel value="Pulso" />
-				<p:editor value="#{cadProntuarioB.paciente.prontuario.pulso}" maxlength="499" />
+				<p:editor value="#{cadProntuarioB.paciente.prontuario.pulso}" maxlength="999" />
 
 			</div>
 			<div class="ui-g-12 ui-md-6">
@@ -102,5 +104,6 @@
 			</div>
 		</div>
 	</div>
+	
 
 </ui:composition>

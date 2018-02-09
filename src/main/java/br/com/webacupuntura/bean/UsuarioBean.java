@@ -29,9 +29,11 @@ public class UsuarioBean implements Serializable {
 	@Transactional
 	public void excluir() throws NegocioException {
 		try {
+			if(!usuario.getNome().equals("admin")) {
 			usuarioDAO.excluir(usuarioSelecionado);
 			this.usuarios.remove(usuarioSelecionado);
 			FacesUtil.addSuccessMessage(usuarioSelecionado.getNome() + " excluido!","");
+			}
 		} catch (Exception e) {
 			FacesUtil.addErrorMessage(e.getMessage(),"");
 		}
