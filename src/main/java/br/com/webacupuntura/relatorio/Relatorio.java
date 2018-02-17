@@ -4,6 +4,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
+import java.io.Serializable;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -14,14 +15,16 @@ import java.util.Map;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletResponse;
 
-
+import br.com.webacupuntura.modeloquery.RelatorioConsulta;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.util.JRLoader;
 
-public class Relatorio {
+public class Relatorio implements Serializable{
+
+	private static final long serialVersionUID = -4273436482364256714L;
 	private HttpServletResponse response;
 	private FacesContext context;
 	private Connection con;
@@ -32,7 +35,7 @@ public class Relatorio {
 	}
 
 	
-	public void getRelatorio(String arquivo, Long codigo) {
+	public void getRelatorio(String arquivo,Map<String,Object> params) {
 
 		try {
 			
@@ -45,13 +48,11 @@ public class Relatorio {
 			ByteArrayOutputStream baos = new ByteArrayOutputStream();
 			
 			JasperReport jasper = (JasperReport) JRLoader.loadObject(stream);
-			Map<String, Object> params = new HashMap<String, Object>();
 			
-			if(codigo!=null)
-			params.put("codigo", codigo);
-			params.put("banner", "/report/leaf_banner_gray.png");
-			
-			
+			if(params !=null){	
+				params.put("banner", "/report/leaf_banner_gray.png");
+			}
+						
 				//JRBeanCollectionDataSource datasrc = new JRBeanCollectionDataSource(lista);
 			
 				// para usar JavaBeanDataSource define 'datasrc' como datasource
@@ -67,7 +68,7 @@ public class Relatorio {
 
 			response.setHeader("Content-disposition", "inline; filename=relatorio.pdf");
 
-			response.getOutputStream().write(baos.toByteArray());
+				response.getOutputStream().write(baos.toByteArray());
 
 			response.getOutputStream().flush();
 
@@ -77,7 +78,11 @@ public class Relatorio {
 			
 			closeConnection();
 
-		} catch (Exception e) {
+		} catch (IllegalStateException e) {
+			e.getMessage();
+		}
+		
+		catch (Exception e) {
 			System.err.println("ERRO METODO GERAR: ");
 			e.printStackTrace();
 		}

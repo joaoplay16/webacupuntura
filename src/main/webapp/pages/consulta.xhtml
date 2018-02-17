@@ -23,11 +23,41 @@
 					</span>
 
 					<p:commandButton type="button" title="Excluir" icon="ui-icon-trash" />
-					<p:commandButton action="#{consultaBean.gerarRelatorio()}" title="Imprimir" icon="ui-icon-print"
-					ajax="false" onclick="this.form.target='_blank'"/>
+					<p:commandButton id="btnPrint" title="Imprimir" icon="ui-icon-print"  />
 				</f:facet>
 
 			</p:toolbar>
+			
+			<div class="container relatorio">
+				<div class="col-md-2">
+					De: <p:calendar value="#{consultaBean.relatorioConsulta.dataInicial}"
+					size="8"
+					/>
+				</div>
+				
+				<div class="col-md-2">
+					Até: <p:calendar value="#{consultaBean.relatorioConsulta.dataFinal}"
+					size="8"
+					/>
+				</div>
+				<div class="col-md-1">
+					<p:outputLabel value="Incluir campos:"/>
+					<p:selectBooleanCheckbox id="checkIncluir" value="#{consultaBean.relatorioConsulta.incluirPagoEFinalizado}"/>
+				</div>
+				<div class="col-md-1 ">
+					<p:outputLabel value="Pago"/>
+					<p:selectBooleanCheckbox value="#{consultaBean.relatorioConsulta.paga}"/>
+				</div>
+				<div class="col-md-1 ">
+					<p:outputLabel value="Finalizada"/>
+					<p:selectBooleanCheckbox value="#{consultaBean.relatorioConsulta.finalizada}"/>
+				</div>
+				<div class="col-md-1 ">
+					<h:commandButton actionListener="#{consultaBean.gerarRelatorio()}"
+					class="btn btn-sm btn-primary" value="Imprimir" onclick="this.form.target='_BLANK'"
+					/>
+				</div>
+			</div>
 
 			<p:dataTable id="tableConsulta" widgetVar="tabelaConsulta"
 				style="margin-top: 20px" value="#{consultaBean.consultas}"
@@ -65,15 +95,13 @@
 							<h:outputText value="#{consulta.paciente.codigo} - #{consulta.paciente.nome}" />
 						</f:facet>
 						<f:facet name="input">
-						
-<!-- 						TODO: corrigir bug p:selectOneMenu somento o primeiro é selecionado -->
-						<h:selectOneMenu value="#{consultaBean.consulta.paciente.codigo}"
+						<p:selectOneMenu value="#{consultaBean.consulta.paciente.codigo}"
 							rendered="#{consulta.codigo == null}" style="color: black" >
 							<f:selectItems value="#{PPBean.pacientes}" var="paciente"
 								itemLabel="#{paciente.nome} - cod: #{paciente.codigo}" itemValue="#{paciente.codigo}" >
 								
 								</f:selectItems>
-						</h:selectOneMenu>
+						</p:selectOneMenu>
 						</f:facet>
 					</p:cellEditor>
 				</p:column>

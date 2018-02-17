@@ -83,10 +83,11 @@
 			<pen lineWidth="0.5" lineColor="#000000"/>
 		</box>
 	</style>
+	<parameter name="sql" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
 	<queryString>
-		<![CDATA[select c.codigo, p.nome, c.data, c.valor, c.pago, c.finalizada From Consulta c
- join Paciente p
-on  p.codigo = c.codigo_paciente;]]>
+		<![CDATA[$P!{sql}]]>
 	</queryString>
 	<field name="codigo" class="java.lang.Long">
 		<fieldDescription><![CDATA[]]></fieldDescription>
