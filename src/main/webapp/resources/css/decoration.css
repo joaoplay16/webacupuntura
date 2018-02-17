@@ -41,6 +41,10 @@ ul.nav li:hover, ul.nav li a:hover {
 	color: #000000;
 }
 
+.ui-growl{
+	margin-top: 80px;
+}
+
 /* css das tabela */
 .ui-datatable-even {
 	background-color: #8DB6CD;

@@ -2,7 +2,9 @@ package br.com.webacupuntura.bean;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
@@ -111,7 +113,9 @@ public class CadastroProntuarioBean implements Serializable{
 	public void gerarRelatorio(){
 				
 		Relatorio r = new Relatorio();
-		r.getRelatorio("info-paciente", paciente.getCodigo());
+		Map<String, Object> params = new HashMap<String,Object>();
+		params.put("codigo", paciente.getCodigo());
+		r.getRelatorio("info-paciente", params);
 	}
 
 

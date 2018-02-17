@@ -1,8 +1,14 @@
 package br.com.webacupuntura.bean;
 
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
@@ -18,12 +24,14 @@ import br.com.webacupuntura.dao.ConsultaDAO;
 import br.com.webacupuntura.exception.NegocioException;
 import br.com.webacupuntura.modelo.Consulta;
 import br.com.webacupuntura.modelo.Paciente;
+import br.com.webacupuntura.modeloquery.RelatorioConsulta;
 import br.com.webacupuntura.relatorio.Relatorio;
+import br.com.webacupuntura.service.RelatorioConsultaService;
 import br.com.webacupuntura.util.FacesUtil;
 
 @Named
 @ViewScoped
-public class ConsultaBean implements Serializable{
+public class ConsultaBean extends RelatorioConsulta implements Serializable{
 
 	private static final long serialVersionUID = 1459680182023053572L;
 
@@ -31,6 +39,9 @@ public class ConsultaBean implements Serializable{
 	private Consulta consultaSelecionada;
 	private List<Consulta> consultasFiltradas;
 	private Consulta consulta;
+	private RelatorioConsulta relatorioConsulta;
+	@Inject
+	private RelatorioConsultaService relatorioConsultaService;
 
 	@Inject
 	private ConsultaDAO consultaDAO;
@@ -42,6 +53,7 @@ public class ConsultaBean implements Serializable{
 
 	public void limpar() {
 		this.consulta = new Consulta();
+		this.relatorioConsulta = new RelatorioConsulta();
 		this.consulta.setPaciente(new Paciente());
 		this.consultas = consultaDAO.buscarTodas();
 	}
@@ -122,9 +134,9 @@ public class ConsultaBean implements Serializable{
 	public void gerarRelatorio() {
 		if (consultas.size() > 0) {
 			Relatorio relatorio = new Relatorio();
-			relatorio.getRelatorio("consulta",null);
+			relatorioConsultaService.gerar(relatorio,relatorioConsulta);
 		} else {
-			FacesUtil.addErrorMessage("Sem consultas", null);
+			FacesUtil.addErrorMessage("Sem consultas para imprimir", null);
 		}
 	}
 
@@ -168,4 +180,12 @@ public class ConsultaBean implements Serializable{
 	public Double getLucroMensal() {
 		return consultaDAO.lucroMensal();
 	}
+
+	public RelatorioConsulta getRelatorioConsulta() {
+		return relatorioConsulta;
+	}
+
+	
+
+
 }

@@ -1,8 +1,6 @@
+document.getElementsByClassName('relatorio')[0].style.display="none";
 
-
-
-
-$(document).ready(function() {
+$(function() {
 	var panel1 = $('.panelInfoP');
 	$('#btnToggle').click(function() {
 		if (panel1.is(':visible')) {
@@ -24,5 +22,15 @@ $(document).ready(function() {
 			$('#btnToggle2').text('Menos');
 		}
 	});
-
+	
+	
+	var relatorio = $('.relatorio');
+	$('#frmConsulta\\:btnPrint').click(function() {
+		if (relatorio.is(':visible')) {
+			relatorio.hide(200);
+		} else {
+			relatorio.show(200);
+		}
+	});
+	
 });
