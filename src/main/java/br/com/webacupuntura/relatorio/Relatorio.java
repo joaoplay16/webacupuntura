@@ -40,25 +40,25 @@ public class Relatorio implements Serializable{
 
 		try {
 			
-			String caminho = arquivo+".jasper";
+			String caminho = "reports/"+arquivo+".jasper";
 			InputStream stream =  this.getClass().getClassLoader().getResourceAsStream(caminho);
 				
-			//URL url = this.getClass().getResource(caminho);
 			ByteArrayOutputStream baos = new ByteArrayOutputStream();
 			
 			JasperReport jasper = (JasperReport) JRLoader.loadObject(stream);
 			
-			if(params !=null){	
-				params.put("banner", "/report/leaf_banner_gray.png");
+			if(params != null){
+				params.put("SUBREPORT_DIR", "reports/");
+				params.put("IMAGENS_DIR", "imagens/");
 			}
-						
+			
 				//JRBeanCollectionDataSource datasrc = new JRBeanCollectionDataSource(lista);
 			
 				// para usar JavaBeanDataSource define 'datasrc' como datasource
 				JasperPrint print = JasperFillManager.fillReport(jasper, params, getConexao());
 				JasperExportManager.exportReportToPdfStream(print, baos);
 				
-			System.out.println("BYTES: " + baos.size());
+			
 			response.reset();
 
 			response.setContentType("application/pdf");
@@ -67,7 +67,7 @@ public class Relatorio implements Serializable{
 
 			response.setHeader("Content-disposition", "inline; filename=relatorio.pdf");
 
-				response.getOutputStream().write(baos.toByteArray());
+			response.getOutputStream().write(baos.toByteArray());
 
 			response.getOutputStream().flush();
 
@@ -76,7 +76,7 @@ public class Relatorio implements Serializable{
 			context.responseComplete();
 			
 			closeConnection();
-
+			System.out.println("BYTES: " + baos.size());
 		} catch (IllegalStateException e) {
 			e.getMessage();
 		}

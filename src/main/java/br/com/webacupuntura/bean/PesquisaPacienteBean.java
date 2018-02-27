@@ -2,6 +2,7 @@ package br.com.webacupuntura.bean;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -11,11 +12,14 @@ import javax.inject.Named;
 import br.com.webacupuntura.dao.PacienteDAO;
 import br.com.webacupuntura.exception.NegocioException;
 import br.com.webacupuntura.modeloquery.PacienteLazy;
+import br.com.webacupuntura.relatorio.AoGerarRelatorio;
+import br.com.webacupuntura.relatorio.Relatorio;
 import br.com.webacupuntura.util.FacesUtil;
 
 @Named("PPBean")
 @ViewScoped
-public class PesquisaPacienteBean implements Serializable{
+public class PesquisaPacienteBean implements 
+Serializable, AoGerarRelatorio{
 
 	private static final long serialVersionUID = 1L;
 
@@ -41,9 +45,7 @@ public class PesquisaPacienteBean implements Serializable{
 			FacesUtil.addErrorMessage(e.getMessage(),null);
 		}
 	}
-	
-	
-	
+
 	public PacienteLazy getPacienteSelecionado() {
 		return pacienteSelecionado;
 	}
@@ -68,5 +70,18 @@ public class PesquisaPacienteBean implements Serializable{
 		this.pacienteFiltrados = pacienteFiltrados;
 	}
 
-	
+	@Override
+	public void gerarRelatorio() {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public void gerarRelatorioTodos() {
+		if(this.pacientes.size() > 0 ) {
+			Relatorio r = new Relatorio();
+			r.getRelatorio("rel-paciente", new HashMap<String,Object>());
+		}else {
+			FacesUtil.addErrorMessage("Não há pacientes para imprimir!", "");
+		}
+	}
 }
