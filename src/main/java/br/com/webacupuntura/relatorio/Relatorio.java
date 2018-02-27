@@ -39,17 +39,13 @@ public class Relatorio implements Serializable{
 	public void getRelatorio(String arquivo,Map<String,Object> params) {
 
 		try {
+			ClassLoader cl =this.getClass().getClassLoader();
 			
-			ServletContext sc = (ServletContext)context.getExternalContext().getContext();
-			String path = sc.getRealPath("/templates/"+arquivo+".jasper");
 			
 			String caminho = "/report/"+arquivo+".jasper";
-			InputStream stream =  this.getClass().getResourceAsStream(caminho);
+			InputStream stream =  cl.getResourceAsStream(caminho);
 				
-			URL url = this.getClass().getResource(caminho);
-			System.out.println("url: " +url);
-			System.out.println("path: " +path);
-			
+			//URL url = this.getClass().getResource(caminho);
 			ByteArrayOutputStream baos = new ByteArrayOutputStream();
 			
 			JasperReport jasper = (JasperReport) JRLoader.loadObject(stream);
