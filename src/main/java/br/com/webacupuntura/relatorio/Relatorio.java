@@ -39,11 +39,9 @@ public class Relatorio implements Serializable{
 	public void getRelatorio(String arquivo,Map<String,Object> params) {
 
 		try {
-			ClassLoader cl =this.getClass().getClassLoader();
 			
-			
-			String caminho = "/report/"+arquivo+".jasper";
-			InputStream stream =  cl.getResourceAsStream(caminho);
+			String caminho = arquivo+".jasper";
+			InputStream stream =  this.getClass().getClassLoader().getResourceAsStream(caminho);
 				
 			//URL url = this.getClass().getResource(caminho);
 			ByteArrayOutputStream baos = new ByteArrayOutputStream();
