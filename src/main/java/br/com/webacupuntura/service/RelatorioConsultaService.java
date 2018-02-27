@@ -37,7 +37,14 @@ public class RelatorioConsultaService implements Serializable{
 			
 			relatorio.getRelatorio("consulta", params);
 		}
-		
 	}
-
+	public void gerarTodos(Relatorio relatorio) {
+		
+		String sql = "select c.codigo, p.nome, c.data, c.valor, c.pago, c.finalizada From Consulta c"
+				+" join Paciente p on  p.codigo = c.codigo_paciente ";
+			
+			params.put("sql", sql);
+			
+			relatorio.getRelatorio("consulta", params);
+		}
 }

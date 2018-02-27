@@ -25,13 +25,15 @@ import br.com.webacupuntura.exception.NegocioException;
 import br.com.webacupuntura.modelo.Consulta;
 import br.com.webacupuntura.modelo.Paciente;
 import br.com.webacupuntura.modeloquery.RelatorioConsulta;
+import br.com.webacupuntura.relatorio.AoGerarRelatorio;
 import br.com.webacupuntura.relatorio.Relatorio;
 import br.com.webacupuntura.service.RelatorioConsultaService;
 import br.com.webacupuntura.util.FacesUtil;
 
 @Named
 @ViewScoped
-public class ConsultaBean extends RelatorioConsulta implements Serializable{
+public class ConsultaBean extends RelatorioConsulta
+implements Serializable , AoGerarRelatorio{
 
 	private static final long serialVersionUID = 1459680182023053572L;
 
@@ -131,14 +133,7 @@ public class ConsultaBean extends RelatorioConsulta implements Serializable{
 		this.consultasFiltradas = consultasFiltradas;
 	}
 
-	public void gerarRelatorio() {
-		if (consultas.size() > 0) {
-			Relatorio relatorio = new Relatorio();
-			relatorioConsultaService.gerar(relatorio,relatorioConsulta);
-		} else {
-			FacesUtil.addErrorMessage("Sem consultas para imprimir", null);
-		}
-	}
+	
 
 	public void onRowEdit(RowEditEvent event) {
 		this.consultaSelecionada = (Consulta) event.getObject();
@@ -185,7 +180,25 @@ public class ConsultaBean extends RelatorioConsulta implements Serializable{
 		return relatorioConsulta;
 	}
 
-	
+	@Override
+	public void gerarRelatorioTodos() {
+		if (consultas.size() > 0) {
+			Relatorio relatorio = new Relatorio();
+			relatorioConsultaService.gerarTodos(relatorio);
+		} else {
+			FacesUtil.addErrorMessage("Não há para imprimir", null);
+		}
+		
+	}
+	@Override
+	public void gerarRelatorio() {
+		if (consultas.size() > 0) {
+			Relatorio relatorio = new Relatorio();
+			relatorioConsultaService.gerar(relatorio,relatorioConsulta);
+		} else {
+			FacesUtil.addErrorMessage("Não há para imprimir", null);
+		}
+	}
 
 
 }

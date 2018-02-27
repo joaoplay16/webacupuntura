@@ -8,10 +8,11 @@
 	template="/templates/modeloSistema.xhtml">
 
 	<ui:define name="conteudo">
-		<h2 class="text-center" style="margin-top: -18px; font-family: fantasy;">Consultas</h2>
+		<h2 class="text-center"
+			style="margin-top: -18px; font-family: fantasy;">Consultas</h2>
 		<h:form id="frmConsulta">
 			<p:growl id="msgConsulta" showDetail="true" autoUpdate="true" />
-			
+
 			<p:toolbar>
 				<f:facet name="left">
 					<p:commandButton value="Nova" icon="ui-icon-document"
@@ -22,42 +23,49 @@
 						class="ui-icon ui-icon-grip-dotted-vertical" />
 					</span>
 
-					<p:commandButton type="button" title="Excluir" icon="ui-icon-trash" />
-					<p:commandButton id="btnPrint" title="Imprimir" icon="ui-icon-print"  />
+<!-- 					<p:commandButton type="button" title="Excluir" icon="ui-icon-trash" /> -->
+					<p:commandButton id="btnPrint" title="Imprimir"
+						icon="ui-icon-print" />
+						
 				</f:facet>
-
 			</p:toolbar>
-			
-			<div class="container relatorio">
-				<div class="col-md-2">
-					De: <p:calendar value="#{consultaBean.relatorioConsulta.dataInicial}"
-					size="8"
-					/>
-				</div>
-				
-				<div class="col-md-2">
-					Até: <p:calendar value="#{consultaBean.relatorioConsulta.dataFinal}"
-					size="8"
-					/>
-				</div>
-				<div class="col-md-1">
-					<p:outputLabel value="Incluir campos:"/>
-					<p:selectBooleanCheckbox id="checkIncluir" value="#{consultaBean.relatorioConsulta.incluirPagoEFinalizado}"/>
-				</div>
-				<div class="col-md-1 ">
-					<p:outputLabel value="Pago"/>
-					<p:selectBooleanCheckbox value="#{consultaBean.relatorioConsulta.paga}"/>
-				</div>
-				<div class="col-md-1 ">
-					<p:outputLabel value="Finalizada"/>
-					<p:selectBooleanCheckbox value="#{consultaBean.relatorioConsulta.finalizada}"/>
-				</div>
-				<div class="col-md-1 ">
+
+			<p:overlayPanel for="btnPrint" modal="true">
+				<p:panelGrid columns="2" layout="grid">
+					<f:facet name="header">Impressão</f:facet>
+				<p:outputLabel value="De:" />	
+				<p:calendar
+						value="#{consultaBean.relatorioConsulta.dataInicial}" size="8" />
+				<p:outputLabel value="Até:" />
+				   <p:calendar value="#{consultaBean.relatorioConsulta.dataFinal}"
+						size="8" locale="pt_BR" timeZone="GMT-3"/>
+					<p:column >
+						<p:outputLabel id="lblIncluir" value="Incluir campos abaixo?" />
+					<p:tooltip for="lblIncluir" value="Se 'Sim' os campos 'Paga' e 'Finalizada'
+					serão incluidos como critérios de impressão" trackMouse="true"/>
+					</p:column>
+					
+					<p:selectBooleanButton id="checkIncluir"
+						value="#{consultaBean.relatorioConsulta.incluirPagoEFinalizado}"
+						onLabel="Sim" offLabel="Não" />
+					<p:outputLabel value="Pago" />
+					<p:selectBooleanCheckbox
+						value="#{consultaBean.relatorioConsulta.paga}" />
+					<p:outputLabel value="Finalizada" />
+					<p:selectBooleanCheckbox
+						value="#{consultaBean.relatorioConsulta.finalizada}" />
 					<h:commandButton actionListener="#{consultaBean.gerarRelatorio()}"
-					class="btn btn-sm btn-primary" value="Imprimir" onclick="this.form.target='_BLANK'"
-					/>
-				</div>
-			</div>
+						class="btn btn-sm btn-primary" value="Imprimir"
+						onclick="this.form.target='_BLANK'" />
+					<f:facet name="footer">
+						<h:commandButton
+							actionListener="#{consultaBean.gerarRelatorioTodos()}"
+							class="btn btn-sm btn-default" value="Imprimir tudo"
+							onclick="this.form.target='_blank'" />
+					</f:facet>
+				</p:panelGrid>
+
+			</p:overlayPanel>
 
 			<p:dataTable id="tableConsulta" widgetVar="tabelaConsulta"
 				style="margin-top: 20px" value="#{consultaBean.consultas}"
@@ -74,8 +82,7 @@
 				<f:facet name="header">
 					<h:outputText value="Pesquisar: " />
 					<p:inputText id="globalFilter"
-						onkeyup="PF('tabelaConsulta').filter()" 
-						style="width:180px"
+						onkeyup="PF('tabelaConsulta').filter()" style="width:180px"
 						placeholder="Palavra chave" />
 				</f:facet>
 
@@ -92,16 +99,18 @@
 					filterMatchMode="contains">
 					<p:cellEditor>
 						<f:facet name="output">
-							<h:outputText value="#{consulta.paciente.codigo} - #{consulta.paciente.nome}" />
+							<h:outputText
+								value="#{consulta.paciente.codigo} - #{consulta.paciente.nome}" />
 						</f:facet>
 						<f:facet name="input">
-						<p:selectOneMenu value="#{consultaBean.consulta.paciente.codigo}"
-							rendered="#{consulta.codigo == null}" style="color: black" >
-							<f:selectItems value="#{PPBean.pacientes}" var="paciente"
-								itemLabel="#{paciente.nome} - cod: #{paciente.codigo}" itemValue="#{paciente.codigo}" >
-								
+							<p:selectOneMenu value="#{consultaBean.consulta.paciente.codigo}"
+								rendered="#{consulta.codigo == null}" style="color: black">
+								<f:selectItems value="#{PPBean.pacientes}" var="paciente"
+									itemLabel="#{paciente.nome} - cod: #{paciente.codigo}"
+									itemValue="#{paciente.codigo}">
+
 								</f:selectItems>
-						</p:selectOneMenu>
+							</p:selectOneMenu>
 						</f:facet>
 					</p:cellEditor>
 				</p:column>
@@ -195,7 +204,7 @@
 				<f:facet name="footer">
        				 #{consultaBean.consultas.size()} consultas encontradas.
     			</f:facet>
-		
+
 			</p:dataTable>
 
 			<p:confirmDialog id="confirmacaoExclusaoDialog"
@@ -214,5 +223,5 @@
 				</div>
 			</p:confirmDialog>
 		</h:form>
-		</ui:define>
+	</ui:define>
 </ui:composition>

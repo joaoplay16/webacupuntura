@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
@@ -8,23 +9,21 @@
 	template="/templates/modeloSistema.xhtml">
 
 	<ui:define name="conteudo">
-	<div class="">
 			<h2 id="titulo" class="text-center">Pacientes</h2>
 		<h:form id="frmPesquisa">
 		
 			<p:toolbar >
-			
-			
-				<f:facet   name="left">
+				<f:facet name="left">
 					<p:button  value="Adicionar" outcome="cadastro_paciente"
 						style="text-align: left" />
 					<span class="ui-separator"> <span
 						class="ui-icon ui-icon-grip-dotted-vertical" />
 					</span>
-
+					<p:commandButton action="#{PPBean.gerarRelatorioTodos()}" 
+					title="Imprimir" icon="ui-icon-print" onclick="this.form.target='_blank'"
+					ajax="false"
+					/>
 				</f:facet>
-				
-
 			</p:toolbar>
 			
 			<p:dataTable  id="pacientesTable" widgetVar="tabelaPacientes"
@@ -121,6 +120,5 @@
 					action="#{PPBean.excluir}" />
 			</p:confirmDialog>
 		</h:form>
-		</div>
 	</ui:define>
 </ui:composition>

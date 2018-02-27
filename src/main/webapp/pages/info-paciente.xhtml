@@ -62,7 +62,7 @@
 					</div>
 					
 					<div class="panel-footer panelInfoP text-right">
-						<h:commandButton action="#{cadProntuarioB.gerarRelatorio()}" 
+						<h:commandButton action="#{cadProntuarioB.gerarRelatorioDados()}" 
 							style="margin-bottom: 5px" styleClass="btn btn-md btn-success" 
 							value="Imprimir" onclick="this.form.target='_blank'" 
 							rendered="#{cadProntuarioB.paciente.codigo != null}"/>
@@ -81,9 +81,7 @@
 					</div>
 					
 					<div class="panel-body panelProntuP">
-					
-					
-					
+
 						<div class="col-md-12 co-sm-12 col-xs-12 text-justify">
 								<center>
 									<h:outputText value="Evolução: " styleClass="text-center" style="font-size: 15pt"
@@ -567,12 +565,18 @@
 								 !=null}"/><p />
 							</div>	
 							<hr />	
-						</div>			
+						</div>
+									
 					</div>
-						
-					<!-- <div class="panel-footer panelProntuP">
-						<h:commandButton styleClass="btn btn-warning" value="Imprimir" />
-					</div> -->
+			
+						<div class="panel-footer panelProntuP text-right">
+							<h:commandButton action="#{cadProntuarioB.gerarRelatorioProntuario()}" 
+							style="margin-bottom: 5px" styleClass="btn btn-md btn-success" 
+							value="Imprimir" onclick="this.form.target='_blank'" 
+							rendered="#{cadProntuarioB.paciente.codigo != null}"/>
+						</div>
+				
+					
 				</div>
 			</div>
 

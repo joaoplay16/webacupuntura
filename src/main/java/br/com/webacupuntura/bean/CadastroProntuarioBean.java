@@ -110,12 +110,21 @@ public class CadastroProntuarioBean implements Serializable{
 		this.paciente = paciente;
 	}
 	
-	public void gerarRelatorio(){
+	public void gerarRelatorioDados(){
 				
 		Relatorio r = new Relatorio();
 		Map<String, Object> params = new HashMap<String,Object>();
 		params.put("codigo", paciente.getCodigo());
 		r.getRelatorio("info-paciente", params);
+	}
+	
+	public void gerarRelatorioProntuario(){
+		
+		Relatorio r = new Relatorio();
+		Map<String, Object> params = new HashMap<String,Object>();
+		params.put("codigo", paciente.getCodigo());
+		
+		r.getRelatorio("info-paciente-e-prontuario", params);
 	}
 
 

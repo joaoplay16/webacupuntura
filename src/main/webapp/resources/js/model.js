@@ -1,4 +1,4 @@
-document.getElementsByClassName('relatorio')[0].style.display="none";
+//document.getElementsByClassName('relatorio')[0].style.display="none";
 
 $(function() {
 	var panel1 = $('.panelInfoP');
@@ -24,13 +24,6 @@ $(function() {
 	});
 	
 	
-	var relatorio = $('.relatorio');
-	$('#frmConsulta\\:btnPrint').click(function() {
-		if (relatorio.is(':visible')) {
-			relatorio.hide(200);
-		} else {
-			relatorio.show(200);
-		}
-	});
+
 	
 });
