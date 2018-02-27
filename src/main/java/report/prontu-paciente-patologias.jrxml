@@ -1,0 +1,790 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="prontu-paciente" language="groovy" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="9d492d21-2db2-48fd-8539-83d73571932c">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="codigo" class="java.lang.Long">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select
+
+        alcoolismo2_.avos as alcolismo_avos,
+        alcoolismo2_.individuo as alcolismo_individuo,
+        alcoolismo2_.irmao as alcolismo_irmao,
+        alcoolismo2_.mae as alcolismo_mae,
+        alcoolismo2_.outros as alcolismo_outros,
+        alcoolismo2_.pai as alcolismo_pai,
+        alergia3_.avos as alergia_avos,
+        alergia3_.individuo as alergia_individuo,
+        alergia3_.irmao as alergia_irmao,
+        alergia3_.mae as alergia_mae,
+        alergia3_.outros as alergia_outros,
+        alergia3_.pai as alergia_pai,
+        cancer4_.avos as cancer_avos,
+        cancer4_.individuo as cancer_individuo,
+        cancer4_.irmao as cancer_irmao,
+        cancer4_.mae as cancer_mae,
+        cancer4_.outros as cancer_outros,
+        cancer4_.pai as cancer_pai,
+        depressao5_.avos as depressao_avos,
+        depressao5_.individuo as depressao_individuo,
+        depressao5_.irmao as depressao_irmao,
+        depressao5_.mae as depressao_mae,
+        depressao5_.outros as depressao_outros,
+        depressao5_.pai as depressao_pai,
+        diabetes6_.avos as diabete_avos,
+        diabetes6_.individuo as diabete_individuo,
+        diabetes6_.irmao as diabete_irmao,
+        diabetes6_.mae as diabete_mae,
+        diabetes6_.outros as diabete_outros,
+        diabetes6_.pai as diabete_pai,
+        diagnostic7_.diagnostico as diagnostico,
+        diagnostic7_.tratamento as tratamento,
+        doencascar8_.avos as dcardio_avos,
+        doencascar8_.individuo as dcardio_individuo,
+        doencascar8_.irmao as dcardio_irmao,
+        doencascar8_.mae as dcardio_mae,
+        doencascar8_.outros as dcardio_outros,
+        doencascar8_.pai as dcardio_pai,
+        gastrite12_.avos as gastrite_avos,
+        gastrite12_.individuo as gastrite_individuo,
+        gastrite12_.irmao as gastrite_irmao,
+        gastrite12_.mae as gastrite_mae,
+        gastrite12_.outros as gastrite_outros,
+        gastrite12_.pai as gastrite_pai,
+        hipertensa13_.avos as hipertensao_avos,
+        hipertensa13_.individuo as hipertensao_individuo,
+        hipertensa13_.irmao as hipertensao_irmao,
+        hipertensa13_.mae as hipertensao_mae,
+        hipertensa13_.outros as hipertensao_outros,
+        hipertensa13_.pai as hipertensao_pai,
+        hipertireo14_.avos as hipertireoidismo_avos,
+        hipertireo14_.individuo as hipertireoidismo_individuo,
+        hipertireo14_.irmao as hipertireoidismo_irmao,
+        hipertireo14_.mae as hipertireoidismo_mae,
+        hipertireo14_.outros as hipertireoidismo_outros,
+        hipertireo14_.pai as hipertireoidismo_pai,
+        hipotireoi15_.avos as hipotireoidismo_avos,
+        hipotireoi15_.individuo as hipotireoidismo_individuo,
+        hipotireoi15_.irmao as hipotireoidismo_irmao,
+        hipotireoi15_.mae as hipotireoidismo_mae,
+        hipotireoi15_.outros as hipotireoidismo_outros,
+        hipotireoi15_.pai as hipotireoidismo_pai,
+        obesidade18_.avos as obesidade_avos,
+        obesidade18_.individuo as obesidade_individuo,
+        obesidade18_.irmao as obesidade_irmao,
+        obesidade18_.mae as obesidade_mae,
+        obesidade18_.outros as obesidade_outros,
+        obesidade18_.pai as obesidade_pai,
+        problemasc19_.avos as pcirculatorios_avos,
+        problemasc19_.individuo as pcirculatorios_individuo,
+        problemasc19_.irmao as pcirculatorios_irmao,
+        problemasc19_.mae as pcirculatorios_mae,
+        problemasc19_.outros as pcirculatorios_outros,
+        problemasc19_.pai as pcirculatorios_pai,
+        refluxo20_.avos as refluxo_avos,
+        refluxo20_.individuo as refluxo_individuo,
+        refluxo20_.irmao as refluxo_irmao,
+        refluxo20_.mae as refluxo_mae,
+        refluxo20_.outros as refluxo_outros,
+        refluxo20_.pai as refluxo_pai,
+        stress21_.avos as stress_avos,
+        stress21_.individuo as stress_individuo,
+        stress21_.irmao as stress_irmao,
+        stress21_.mae as stress_mae,
+        stress21_.outros as stress_outros,
+        stress21_.pai as stress_pai,
+        tabagismo22_.avos as tabagismo_avos,
+        tabagismo22_.individuo as tabagismo_individuo,
+        tabagismo22_.irmao as tabagismo_irmao,
+        tabagismo22_.mae as tabagismo_mae,
+        tabagismo22_.outros as tabagismo_outros,
+        tabagismo22_.pai as tabagismo_pai,
+        ulcera23_.avos as ulcera_avos,
+        ulcera23_.individuo as ulcera_individuo,
+        ulcera23_.irmao as ulcera_irmao,
+        ulcera23_.mae as ulcera_mae,
+        ulcera23_.outros as ulcera_outros,
+        ulcera23_.pai as ulcera_pai
+    from
+        Paciente paciente
+    left outer join
+        Prontuario prontuario
+            on paciente.codigo_prontuario = prontuario.codigo
+    left outer join
+        Patologia alcoolismo2_
+            on prontuario.codigo_alcoolismo=alcoolismo2_.codigo
+    left outer join
+        Patologia alergia3_
+            on prontuario.codigo_alergia=alergia3_.codigo
+    left outer join
+        Patologia cancer4_
+            on prontuario.codigo_cancer=cancer4_.codigo
+    left outer join
+        Patologia depressao5_
+            on prontuario.codigo_depressao=depressao5_.codigo
+    left outer join
+        Patologia diabetes6_
+            on prontuario.codigo_diabetes=diabetes6_.codigo
+    left outer join
+        Diagnostico diagnostic7_
+            on prontuario.codigo_diagnostico=diagnostic7_.codigo
+    left outer join
+        Patologia doencascar8_
+            on prontuario.codigo_dcadiovasculares=doencascar8_.codigo
+    left outer join
+        DorCabeca dorcabeca9_
+            on prontuario.codigo_dor_cabeca=dorcabeca9_.codigo
+    left outer join
+        Prontuario_Evolucao evolucoes10_
+            on prontuario.codigo=evolucoes10_.Prontuario_codigo
+    left outer join
+        Evolucao evolucao11_
+            on evolucoes10_.evolucoes_codigo=evolucao11_.codigo
+    left outer join
+        Patologia gastrite12_
+            on prontuario.codigo_gastrite=gastrite12_.codigo
+    left outer join
+        Patologia hipertensa13_
+            on prontuario.codigo_hipertensao=hipertensa13_.codigo
+    left outer join
+        Patologia hipertireo14_
+            on prontuario.codigo_hipertireoidismo=hipertireo14_.codigo
+    left outer join
+        Patologia hipotireoi15_
+            on prontuario.codigo_hipotireoidismo=hipotireoi15_.codigo
+    left outer join
+        Historico historico16_
+            on prontuario.codigo_historico=historico16_.codigo
+    left outer join
+        InspecaoLingua inspecaoli17_
+            on prontuario.codigo_inspecao_ligua=inspecaoli17_.codigo
+    left outer join
+        Patologia obesidade18_
+            on prontuario.codigo_obesidade=obesidade18_.codigo
+    left outer join
+        Patologia problemasc19_
+            on prontuario.codigo_pcirculatorios=problemasc19_.codigo
+    left outer join
+        Patologia refluxo20_
+            on prontuario.codigo_refluxo=refluxo20_.codigo
+    left outer join
+        Patologia stress21_
+            on prontuario.codigo_stress=stress21_.codigo
+    left outer join
+        Patologia tabagismo22_
+            on prontuario.codigo_tabagismo=tabagismo22_.codigo
+    left outer join
+        Patologia ulcera23_
+            on prontuario.codigo_ulcera=ulcera23_.codigo
+    where
+        paciente.codigo=$P{codigo}]]>
+	</queryString>
+	<field name="alcolismo_avos" class="java.lang.Boolean"/>
+	<field name="alcolismo_individuo" class="java.lang.Boolean"/>
+	<field name="alcolismo_irmao" class="java.lang.Boolean"/>
+	<field name="alcolismo_mae" class="java.lang.Boolean"/>
+	<field name="alcolismo_outros" class="java.lang.String"/>
+	<field name="alcolismo_pai" class="java.lang.Boolean"/>
+	<field name="alergia_avos" class="java.lang.Boolean"/>
+	<field name="alergia_individuo" class="java.lang.Boolean"/>
+	<field name="alergia_irmao" class="java.lang.Boolean"/>
+	<field name="alergia_mae" class="java.lang.Boolean"/>
+	<field name="alergia_outros" class="java.lang.String"/>
+	<field name="alergia_pai" class="java.lang.Boolean"/>
+	<field name="cancer_avos" class="java.lang.Boolean"/>
+	<field name="cancer_individuo" class="java.lang.Boolean"/>
+	<field name="cancer_irmao" class="java.lang.Boolean"/>
+	<field name="cancer_mae" class="java.lang.Boolean"/>
+	<field name="cancer_outros" class="java.lang.String"/>
+	<field name="cancer_pai" class="java.lang.Boolean"/>
+	<field name="depressao_avos" class="java.lang.Boolean"/>
+	<field name="depressao_individuo" class="java.lang.Boolean"/>
+	<field name="depressao_irmao" class="java.lang.Boolean"/>
+	<field name="depressao_mae" class="java.lang.Boolean"/>
+	<field name="depressao_outros" class="java.lang.String"/>
+	<field name="depressao_pai" class="java.lang.Boolean"/>
+	<field name="diabete_avos" class="java.lang.Boolean"/>
+	<field name="diabete_individuo" class="java.lang.Boolean"/>
+	<field name="diabete_irmao" class="java.lang.Boolean"/>
+	<field name="diabete_mae" class="java.lang.Boolean"/>
+	<field name="diabete_outros" class="java.lang.String"/>
+	<field name="diabete_pai" class="java.lang.Boolean"/>
+	<field name="diagnostico" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tratamento" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dcardio_avos" class="java.lang.Boolean"/>
+	<field name="dcardio_individuo" class="java.lang.Boolean"/>
+	<field name="dcardio_irmao" class="java.lang.Boolean"/>
+	<field name="dcardio_mae" class="java.lang.Boolean"/>
+	<field name="dcardio_outros" class="java.lang.String"/>
+	<field name="dcardio_pai" class="java.lang.Boolean"/>
+	<field name="gastrite_avos" class="java.lang.Boolean"/>
+	<field name="gastrite_individuo" class="java.lang.Boolean"/>
+	<field name="gastrite_irmao" class="java.lang.Boolean"/>
+	<field name="gastrite_mae" class="java.lang.Boolean"/>
+	<field name="gastrite_outros" class="java.lang.String"/>
+	<field name="gastrite_pai" class="java.lang.Boolean"/>
+	<field name="hipertensao_avos" class="java.lang.Boolean"/>
+	<field name="hipertensao_individuo" class="java.lang.Boolean"/>
+	<field name="hipertensao_irmao" class="java.lang.Boolean"/>
+	<field name="hipertensao_mae" class="java.lang.Boolean"/>
+	<field name="hipertensao_outros" class="java.lang.String"/>
+	<field name="hipertensao_pai" class="java.lang.Boolean"/>
+	<field name="hipertireoidismo_avos" class="java.lang.Boolean"/>
+	<field name="hipertireoidismo_individuo" class="java.lang.Boolean"/>
+	<field name="hipertireoidismo_irmao" class="java.lang.Boolean"/>
+	<field name="hipertireoidismo_mae" class="java.lang.Boolean"/>
+	<field name="hipertireoidismo_outros" class="java.lang.String"/>
+	<field name="hipertireoidismo_pai" class="java.lang.Boolean"/>
+	<field name="hipotireoidismo_avos" class="java.lang.Boolean"/>
+	<field name="hipotireoidismo_individuo" class="java.lang.Boolean"/>
+	<field name="hipotireoidismo_irmao" class="java.lang.Boolean"/>
+	<field name="hipotireoidismo_mae" class="java.lang.Boolean"/>
+	<field name="hipotireoidismo_outros" class="java.lang.String"/>
+	<field name="hipotireoidismo_pai" class="java.lang.Boolean"/>
+	<field name="obesidade_avos" class="java.lang.Boolean"/>
+	<field name="obesidade_individuo" class="java.lang.Boolean"/>
+	<field name="obesidade_irmao" class="java.lang.Boolean"/>
+	<field name="obesidade_mae" class="java.lang.Boolean"/>
+	<field name="obesidade_outros" class="java.lang.String"/>
+	<field name="obesidade_pai" class="java.lang.Boolean"/>
+	<field name="pcirculatorios_avos" class="java.lang.Boolean"/>
+	<field name="pcirculatorios_individuo" class="java.lang.Boolean"/>
+	<field name="pcirculatorios_irmao" class="java.lang.Boolean"/>
+	<field name="pcirculatorios_mae" class="java.lang.Boolean"/>
+	<field name="pcirculatorios_outros" class="java.lang.String"/>
+	<field name="pcirculatorios_pai" class="java.lang.Boolean"/>
+	<field name="refluxo_avos" class="java.lang.Boolean"/>
+	<field name="refluxo_individuo" class="java.lang.Boolean"/>
+	<field name="refluxo_irmao" class="java.lang.Boolean"/>
+	<field name="refluxo_mae" class="java.lang.Boolean"/>
+	<field name="refluxo_outros" class="java.lang.String"/>
+	<field name="refluxo_pai" class="java.lang.Boolean"/>
+	<field name="stress_avos" class="java.lang.Boolean"/>
+	<field name="stress_individuo" class="java.lang.Boolean"/>
+	<field name="stress_irmao" class="java.lang.Boolean"/>
+	<field name="stress_mae" class="java.lang.Boolean"/>
+	<field name="stress_outros" class="java.lang.String"/>
+	<field name="stress_pai" class="java.lang.Boolean"/>
+	<field name="tabagismo_avos" class="java.lang.Boolean"/>
+	<field name="tabagismo_individuo" class="java.lang.Boolean"/>
+	<field name="tabagismo_irmao" class="java.lang.Boolean"/>
+	<field name="tabagismo_mae" class="java.lang.Boolean"/>
+	<field name="tabagismo_outros" class="java.lang.String"/>
+	<field name="tabagismo_pai" class="java.lang.Boolean"/>
+	<field name="ulcera_avos" class="java.lang.Boolean"/>
+	<field name="ulcera_individuo" class="java.lang.Boolean"/>
+	<field name="ulcera_irmao" class="java.lang.Boolean"/>
+	<field name="ulcera_mae" class="java.lang.Boolean"/>
+	<field name="ulcera_outros" class="java.lang.String"/>
+	<field name="ulcera_pai" class="java.lang.Boolean"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="260">
+			<staticText>
+				<reportElement x="-2" y="4" width="117" height="16" uuid="72005138-0faa-441b-8e68-611bbc411883"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Patologia]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="115" y="4" width="68" height="16" uuid="c2b94487-d8df-44d4-8bdc-93a9162c1187"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Indivíduo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="183" y="4" width="68" height="16" uuid="2e6cc573-df1b-49ba-8524-a19eeb97ed98"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Mãe]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="251" y="4" width="68" height="16" uuid="e3a56674-6828-4d37-9813-8c51f3b6aede"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Pai]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="319" y="4" width="68" height="16" uuid="03ef8373-113c-490b-b5e4-003a06f0cf31"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Irmão]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="387" y="4" width="68" height="16" uuid="6175eee7-7ca9-4678-8097-877a5fe0ff00"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Avós]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="455" y="4" width="138" height="16" uuid="6e3968cf-d6d2-4b65-bc9e-4c3b49872f17"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Outro]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-2" y="20" width="117" height="14" uuid="29b1a46e-6aad-4a18-a09e-5c6cfdfa9b59"/>
+				<text><![CDATA[Alergia]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="115" y="20" width="68" height="14" uuid="dfba0971-06ae-479c-8978-e6ff0bb98bb0"/>
+				<textFieldExpression><![CDATA[($F{alergia_individuo} ? "sim":"não")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="183" y="20" width="68" height="14" uuid="4643e95a-ccc7-442e-aef1-623c19b47e98"/>
+				<textFieldExpression><![CDATA[($F{alergia_mae} ? "sim":"não")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="251" y="20" width="68" height="14" uuid="016c11cb-820e-497c-b4f8-01a7da1585d7"/>
+				<textFieldExpression><![CDATA[($F{alergia_pai} ? "sim":"não")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="319" y="20" width="68" height="14" uuid="092aac26-97ac-4017-8003-726ea5622043"/>
+				<textFieldExpression><![CDATA[($F{alergia_irmao} ? "sim":"não")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="387" y="20" width="68" height="14" uuid="1c9d5b09-d9dc-43da-8e62-d97afc3827fe"/>
+				<textFieldExpression><![CDATA[($F{alergia_avos} ? "sim":"não")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="455" y="20" width="138" height="14" uuid="47db217a-f2e1-475e-893c-651f37dc4b02"/>
+				<textFieldExpression><![CDATA[$F{alergia_outros}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="-2" y="34" width="117" height="14" uuid="e2f461e4-6a9f-4f7e-8e1b-290861536fdb"/>
+				<text><![CDATA[Alcolismo]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="115" y="34" width="68" height="14" uuid="dd4e3ab8-9753-43b0-b5e2-d4569819f6b7"/>
+				<textFieldExpression><![CDATA[($F{alcolismo_individuo} ? "sim":"não")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="183" y="34" width="68" height="14" uuid="ef400105-21c8-41be-a775-fddd5c011b15"/>
+				<textFieldExpression><![CDATA[($F{alcolismo_mae} ? "sim":"não")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="251" y="34" width="68" height="14" uuid="bbed05fc-ee34-4426-81c1-efed7e018ed5"/>
+				<textFieldExpression><![CDATA[($F{alcolismo_pai} ? "sim":"não")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="319" y="34" width="68" height="14" uuid="c19af97a-d34f-4afd-946b-40979a88626c"/>
+				<textFieldExpression><![CDATA[($F{alcolismo_irmao} ? "sim":"não")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="387" y="34" width="68" height="14" uuid="467b05de-69cd-408a-844c-d5e213c6d366"/>
+				<textFieldExpression><![CDATA[($F{alergia_avos}? "sim":"não")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="455" y="34" width="138" height="14" uuid="fff39d8b-9b33-4bdc-b26a-0e745ea99203"/>
+				<textFieldExpression><![CDATA[$F{alcolismo_outros}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="-2" y="48" width="117" height="14" uuid="eabe94c7-c3e8-4863-ad9f-657f03b0d03b"/>
+				<text><![CDATA[Cancer]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="115" y="48" width="68" height="14" uuid="95df46e1-63c3-4044-a4ea-70795b59e731"/>
+				<textFieldExpression><![CDATA[($F{cancer_individuo} ? "sim":"não")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="319" y="48" width="68" height="14" uuid="ba2d12aa-c893-43d9-86a5-f20f21782e03"/>
+				<textFieldExpression><![CDATA[($F{cancer_irmao} ? "sim":"não")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="183" y="48" width="68" height="14" uuid="d371c2c5-6b0d-4bd4-9e57-90f6acd9b8be"/>
+				<textFieldExpression><![CDATA[($F{cancer_mae} ? "sim":"não")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="387" y="48" width="68" height="14" uuid="632c5b5a-40b8-4493-bea1-ebb7525488ff"/>
+				<textFieldExpression><![CDATA[($F{cancer_avos}? "sim":"não")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="251" y="48" width="68" height="14" uuid="fdfd4556-e7c1-4c93-803e-45d0df5651b0"/>
+				<textFieldExpression><![CDATA[($F{cancer_pai} ? "sim":"não")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="455" y="48" width="138" height="14" uuid="2aba87f1-d9ac-42b9-8ce7-3e1b60b25b7d"/>
+				<textFieldExpression><![CDATA[$F{cancer_outros}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="319" y="62" width="68" height="14" uuid="4718c388-e99f-4bd7-82ac-71ecbc4e7af1"/>
+				<textFieldExpression><![CDATA[($F{depressao_irmao} ? "sim":"não")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="183" y="62" width="68" height="14" uuid="7fb5ea46-11ee-424b-9793-706794cabf65"/>
+				<textFieldExpression><![CDATA[($F{depressao_mae} ? "sim":"não")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="455" y="62" width="138" height="14" uuid="d8a91062-c31d-4437-bb58-64cbc6d7f125"/>
+				<textFieldExpression><![CDATA[$F{depressao_outros}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="387" y="62" width="68" height="14" uuid="a17024f8-1e22-4e65-8ce7-f331a42797f7"/>
+				<textFieldExpression><![CDATA[($F{depressao_avos}? "sim":"não")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="115" y="62" width="68" height="14" uuid="927bdad9-5c07-4ddd-b7cd-b9659ec45817"/>
+				<textFieldExpression><![CDATA[($F{depressao_individuo} ? "sim":"não")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="251" y="62" width="68" height="14" uuid="634f2583-3486-44e2-954a-22eda1a05847"/>
+				<textFieldExpression><![CDATA[($F{depressao_pai} ? "sim":"não")]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="-2" y="62" width="117" height="14" uuid="cded8cb9-a2d6-42fd-8bb6-4fc5ca69f069"/>
+				<text><![CDATA[Depresssão]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="319" y="76" width="68" height="14" uuid="9f34234b-8b5e-434a-ae81-184a144f4604"/>
+				<textFieldExpression><![CDATA[($F{diabete_irmao} ? "sim":"não")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="251" y="76" width="68" height="14" uuid="43aeeb75-cb03-4092-9c55-35b6d39c78d3"/>
+				<textFieldExpression><![CDATA[($F{diabete_pai} ? "sim":"não")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="115" y="76" width="68" height="14" uuid="e30f7e0c-6fd6-4cde-822b-1e24fc64c4a9"/>
+				<textFieldExpression><![CDATA[($F{diabete_individuo} ? "sim":"não")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="455" y="76" width="138" height="14" uuid="49eb5ddf-8b92-4c9a-b01e-8778702bd9c3"/>
+				<textFieldExpression><![CDATA[$F{diabete_outros}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="-2" y="76" width="117" height="14" uuid="7ffde4eb-2be8-4988-82e7-7ca152592a8b"/>
+				<text><![CDATA[Diabetes]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="183" y="76" width="68" height="14" uuid="b4b31fe7-05fb-4834-8dc8-30c21b6b8fa7"/>
+				<textFieldExpression><![CDATA[($F{diabete_mae} ? "sim":"não")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="387" y="76" width="68" height="14" uuid="51af66e2-f5ac-404d-940d-80651faf3407"/>
+				<textFieldExpression><![CDATA[($F{diabete_avos}? "sim":"não")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="115" y="100" width="68" height="14" uuid="8bac1b62-ad71-417b-ae57-aa019a4ca232"/>
+				<textFieldExpression><![CDATA[($F{dcardio_individuo} ? "sim":"não")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="455" y="100" width="138" height="14" uuid="831eeda8-3766-4a02-9388-93748ae48ee7"/>
+				<textFieldExpression><![CDATA[$F{dcardio_outros}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="387" y="100" width="68" height="14" uuid="f3cb6a4f-aed7-4273-b315-12aa33cbeee8"/>
+				<textFieldExpression><![CDATA[($F{dcardio_avos}? "sim":"não")]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="-2" y="90" width="117" height="24" uuid="10c9d6c2-e3b1-4391-aa75-0f663a6c5228"/>
+				<text><![CDATA[Doenças cardiovasculares]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="183" y="100" width="68" height="14" uuid="f2137c6b-35b7-49d1-a6cd-1532e5c7d640"/>
+				<textFieldExpression><![CDATA[($F{dcardio_mae} ? "sim":"não")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="251" y="100" width="68" height="14" uuid="81b5b449-9185-4744-89ff-ca748bcee7e3"/>
+				<textFieldExpression><![CDATA[($F{dcardio_pai} ? "sim":"não")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="319" y="100" width="68" height="14" uuid="5de42b9f-11e5-48d3-9b9e-5d78c373d563"/>
+				<textFieldExpression><![CDATA[($F{dcardio_irmao} ? "sim":"não")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="251" y="114" width="68" height="14" uuid="ee0fa15c-cf61-4b26-902d-8390a15e4bcd"/>
+				<textFieldExpression><![CDATA[($F{gastrite_pai} ? "sim":"não")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="387" y="114" width="68" height="14" uuid="bf655a5f-0a87-4ad8-86a8-4f9b0531c112"/>
+				<textFieldExpression><![CDATA[($F{gastrite_avos}? "sim":"não")]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="-2" y="114" width="117" height="14" uuid="1b97ae3a-1509-4890-aca7-2d9600bae8b3"/>
+				<text><![CDATA[Gastrite]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="455" y="114" width="138" height="14" uuid="4b3e7785-cc18-4ed5-b964-768c86811adc"/>
+				<textFieldExpression><![CDATA[$F{gastrite_outros}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="183" y="114" width="68" height="14" uuid="897e8383-7c43-44ea-8514-5a767deae223"/>
+				<textFieldExpression><![CDATA[($F{gastrite_mae} ? "sim":"não")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="115" y="114" width="68" height="14" uuid="312091e7-3510-4bd7-9a83-4939a8f0be9a"/>
+				<textFieldExpression><![CDATA[($F{gastrite_individuo} ? "sim":"não")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="319" y="114" width="68" height="14" uuid="d78e3019-c6f6-4293-b256-cf2bbc4a27cd"/>
+				<textFieldExpression><![CDATA[($F{gastrite_irmao} ? "sim":"não")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="183" y="128" width="68" height="14" uuid="cc66185f-e12f-4a88-98a9-9abd9f250347"/>
+				<textFieldExpression><![CDATA[($F{hipertensao_mae} ? "sim":"não")]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="-2" y="128" width="117" height="14" uuid="f5b1c7de-46cd-4b2c-864a-995f9a5cbc1b"/>
+				<text><![CDATA[Hipertensão]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="251" y="128" width="68" height="14" uuid="b7a7ec95-d34b-445d-8948-7b6eb68d7879"/>
+				<textFieldExpression><![CDATA[($F{hipertensao_pai} ? "sim":"não")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="115" y="128" width="68" height="14" uuid="e5899559-ebbb-4e3d-92c3-5076bd989063"/>
+				<textFieldExpression><![CDATA[($F{hipertensao_individuo} ? "sim":"não")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="319" y="128" width="68" height="14" uuid="dff53a99-2185-4940-a2eb-c2a2c00de5fe"/>
+				<textFieldExpression><![CDATA[($F{hipertensao_irmao} ? "sim":"não")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="455" y="128" width="138" height="14" uuid="961d7007-8bfe-43fb-848e-1a81fb0c5356"/>
+				<textFieldExpression><![CDATA[$F{hipertensao_outros}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="387" y="128" width="68" height="14" uuid="3e1bfc84-45c9-4902-87e8-a21ff4c927af"/>
+				<textFieldExpression><![CDATA[($F{hipertensao_avos}? "sim":"não")]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="-2" y="142" width="117" height="14" uuid="bde833e7-46fc-415d-94b0-e303636e899c"/>
+				<text><![CDATA[Hipertireoidismo]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="251" y="142" width="68" height="14" uuid="55d195a7-9968-45c8-92c9-85b72a633d61"/>
+				<textFieldExpression><![CDATA[($F{hipertireoidismo_pai} ? "sim":"não")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="183" y="142" width="68" height="14" uuid="0b043ec1-eeb2-4f17-9983-a01bf5a1fb2b"/>
+				<textFieldExpression><![CDATA[($F{hipertireoidismo_mae} ? "sim":"não")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="319" y="142" width="68" height="14" uuid="f97876cb-d890-450f-8970-eaf0de167b62"/>
+				<textFieldExpression><![CDATA[($F{hipertireoidismo_irmao} ? "sim":"não")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="455" y="142" width="138" height="14" uuid="26d249fe-e152-4deb-af5f-bd98dbb0b084"/>
+				<textFieldExpression><![CDATA[$F{hipertireoidismo_outros}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="387" y="142" width="68" height="14" uuid="25a9cec8-977f-4f24-a94b-8d0f28ef3eed"/>
+				<textFieldExpression><![CDATA[($F{hipertireoidismo_avos}? "sim":"não")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="115" y="142" width="68" height="14" uuid="382a42e6-4bf6-427d-a238-06aaf8ae6c8c"/>
+				<textFieldExpression><![CDATA[($F{hipertireoidismo_individuo} ? "sim":"não")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="183" y="156" width="68" height="14" uuid="b544e2af-8e51-4427-b91c-31a8d5338d11"/>
+				<textFieldExpression><![CDATA[($F{hipotireoidismo_mae} ? "sim":"não")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="319" y="156" width="68" height="14" uuid="687b9a47-3ff0-47b6-8252-7e2bdd37ff9a"/>
+				<textFieldExpression><![CDATA[($F{hipotireoidismo_irmao} ? "sim":"não")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="455" y="156" width="138" height="14" uuid="41d11daf-edc5-4568-8224-30797bcf1089"/>
+				<textFieldExpression><![CDATA[$F{hipotireoidismo_outros}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="387" y="156" width="68" height="14" uuid="af082374-782f-482f-b7f0-4103a73ab1d0"/>
+				<textFieldExpression><![CDATA[($F{hipotireoidismo_avos}? "sim":"não")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="115" y="156" width="68" height="14" uuid="9f4b9fc1-f124-44c5-a15d-297d6e47ff35"/>
+				<textFieldExpression><![CDATA[($F{hipotireoidismo_individuo} ? "sim":"não")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="251" y="156" width="68" height="14" uuid="92e7259a-2c4f-47d2-bcc1-64c2aed86ba5"/>
+				<textFieldExpression><![CDATA[($F{hipotireoidismo_pai} ? "sim":"não")]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="-2" y="156" width="117" height="14" uuid="0f255597-a04b-4f3b-8bd4-da03c5b651cb"/>
+				<text><![CDATA[Hipotireoidismo]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="183" y="170" width="68" height="14" uuid="4f14cb4b-db38-48c6-9a76-2e0720e33da0"/>
+				<textFieldExpression><![CDATA[($F{obesidade_mae} ? "sim":"não")]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="-2" y="170" width="117" height="14" uuid="86ebf50e-349d-4c5c-90a8-0a3689aac2ef"/>
+				<text><![CDATA[Obesidade]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="251" y="170" width="68" height="14" uuid="8c2b0fdf-ae33-429b-a469-0c7b4d65c105"/>
+				<textFieldExpression><![CDATA[($F{obesidade_pai} ? "sim":"não")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="115" y="170" width="68" height="14" uuid="f138bab7-0890-468b-aaff-2beb2d26ae8d"/>
+				<textFieldExpression><![CDATA[($F{obesidade_individuo} ? "sim":"não")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="319" y="170" width="68" height="14" uuid="89af46b7-db84-479b-bf28-19e3b01fddf2"/>
+				<textFieldExpression><![CDATA[($F{obesidade_irmao} ? "sim":"não")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="455" y="170" width="138" height="14" uuid="dea6db23-b97e-4e74-980f-ad2adfacd1de"/>
+				<textFieldExpression><![CDATA[$F{obesidade_outros}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="387" y="170" width="68" height="14" uuid="09f88ea1-e101-411f-9c40-e56c571898b9"/>
+				<textFieldExpression><![CDATA[($F{obesidade_avos}? "sim":"não")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="251" y="184" width="68" height="14" uuid="9004d5a7-4b08-4eee-a920-3bde05467291"/>
+				<textFieldExpression><![CDATA[($F{pcirculatorios_pai} ? "sim":"não")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="455" y="184" width="138" height="14" uuid="d0bf1112-6b22-48df-9ba7-c6c53c3f0925"/>
+				<textFieldExpression><![CDATA[$F{pcirculatorios_outros}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="387" y="184" width="68" height="14" uuid="8bd45cbf-e7d7-4355-9086-4f0ac14a1c91"/>
+				<textFieldExpression><![CDATA[($F{pcirculatorios_avos}? "sim":"não")]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="-2" y="184" width="120" height="14" uuid="5a5ad0f1-7930-4d0d-b4f7-9b0ba87fa73f"/>
+				<text><![CDATA[Problemas circulatórios]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="319" y="184" width="68" height="14" uuid="4f752bd0-e682-4712-b9e9-4964346d66c9"/>
+				<textFieldExpression><![CDATA[($F{pcirculatorios_irmao} ? "sim":"não")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="183" y="184" width="68" height="14" uuid="a511d502-7f5d-480d-966a-329af8c57ff2"/>
+				<textFieldExpression><![CDATA[($F{pcirculatorios_mae} ? "sim":"não")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="118" y="184" width="65" height="14" uuid="f7ea5df5-9db3-4b03-99f0-09215ae83f19"/>
+				<textFieldExpression><![CDATA[($F{pcirculatorios_individuo} ? "sim":"não")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="251" y="198" width="68" height="14" uuid="8a95b05f-05fd-4f5e-8c68-28eeb4531193"/>
+				<textFieldExpression><![CDATA[($F{refluxo_pai} ? "sim":"não")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="455" y="198" width="138" height="14" uuid="00345e26-a1a9-4413-9f97-9bb6c6a6bf77"/>
+				<textFieldExpression><![CDATA[$F{refluxo_outros}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="387" y="198" width="68" height="14" uuid="1643e25c-9e33-4b93-bb33-abab7b66869c"/>
+				<textFieldExpression><![CDATA[($F{refluxo_avos}? "sim":"não")]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="-2" y="198" width="117" height="14" uuid="17addce8-5be2-4887-8b02-e82e621a17dc"/>
+				<text><![CDATA[Refluxo]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="319" y="198" width="68" height="14" uuid="f0ef6c09-b81c-4802-9fd2-3a576ab5e4d9"/>
+				<textFieldExpression><![CDATA[($F{refluxo_irmao} ? "sim":"não")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="183" y="198" width="68" height="14" uuid="2caf248c-e2e7-45c3-ac6e-aa01788aab06"/>
+				<textFieldExpression><![CDATA[($F{refluxo_mae} ? "sim":"não")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="115" y="198" width="68" height="14" uuid="4d73865b-3970-46d1-b4e6-431bdcf1b194"/>
+				<textFieldExpression><![CDATA[($F{refluxo_individuo} ? "sim":"não")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="387" y="212" width="68" height="14" uuid="6269241f-a16f-4888-8c91-563b4267000e"/>
+				<textFieldExpression><![CDATA[($F{refluxo_avos}? "sim":"não")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="183" y="212" width="68" height="14" uuid="a86b3d0d-662c-4c67-aa1d-fe69b89e0c3b"/>
+				<textFieldExpression><![CDATA[($F{stress_mae} ? "sim":"não")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="251" y="212" width="68" height="14" uuid="af32cfd2-b53f-4f32-9e36-eb4d43c914d7"/>
+				<textFieldExpression><![CDATA[($F{stress_pai} ? "sim":"não")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="115" y="212" width="68" height="14" uuid="3d77b13f-6bb0-4eb9-b2e3-a3960947fe54"/>
+				<textFieldExpression><![CDATA[($F{stress_individuo} ? "sim":"não")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="455" y="212" width="138" height="14" uuid="83b536f8-0ac9-4c47-ae3a-2a294e4bc667"/>
+				<textFieldExpression><![CDATA[$F{stress_outros}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="319" y="212" width="68" height="14" uuid="6978c1b4-0e53-4621-aa72-809eecdaae13"/>
+				<textFieldExpression><![CDATA[($F{stress_irmao} ? "sim":"não")]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="-2" y="212" width="117" height="14" uuid="5347d112-48d6-46d1-b1bf-b3b20ef0d2ea"/>
+				<text><![CDATA[Stress]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="387" y="226" width="68" height="14" uuid="d90510bd-ae4d-4365-a9fc-053e7e062865"/>
+				<textFieldExpression><![CDATA[($F{tabagismo_avos}? "sim":"não")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="115" y="226" width="68" height="14" uuid="770c9037-8c6e-4341-9701-f50faac2955e"/>
+				<textFieldExpression><![CDATA[($F{tabagismo_individuo} ? "sim":"não")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="319" y="226" width="68" height="14" uuid="0a02c5f8-324c-4592-be7a-159831139139"/>
+				<textFieldExpression><![CDATA[($F{tabagismo_irmao} ? "sim":"não")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="455" y="226" width="138" height="14" uuid="48b5e7ca-2417-49cd-aec6-3b34ee756c71"/>
+				<textFieldExpression><![CDATA[$F{tabagismo_outros}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="-2" y="226" width="117" height="14" uuid="45e561fa-f9d0-4092-b242-2d8dcea3411e"/>
+				<text><![CDATA[Tabagismo]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="251" y="226" width="68" height="14" uuid="59481899-9a99-4208-ac19-07c7c6272876"/>
+				<textFieldExpression><![CDATA[($F{tabagismo_pai} ? "sim":"não")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="183" y="226" width="68" height="14" uuid="e49bc2d8-c511-4371-9881-882d6785d567"/>
+				<textFieldExpression><![CDATA[($F{tabagismo_mae} ? "sim":"não")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="387" y="240" width="68" height="14" uuid="8f5d28be-e27d-4d52-90ae-6f28d3b205d1"/>
+				<textFieldExpression><![CDATA[($F{ulcera_avos}? "sim":"não")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="115" y="240" width="68" height="14" uuid="ae2ab1de-43c5-4754-8179-0dc5d16b4118"/>
+				<textFieldExpression><![CDATA[($F{ulcera_individuo} ? "sim":"não")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="319" y="240" width="68" height="14" uuid="c683ab73-2f8b-4dde-818f-ef983e7210a9"/>
+				<textFieldExpression><![CDATA[($F{ulcera_irmao} ? "sim":"não")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="455" y="240" width="138" height="14" uuid="df76e3e4-c9c0-443a-bfc0-929bdb76de85"/>
+				<textFieldExpression><![CDATA[$F{ulcera_outros}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="-2" y="240" width="117" height="14" uuid="dc824280-400c-4aa5-ad20-7294138413a5"/>
+				<text><![CDATA[Úlcera]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="251" y="240" width="68" height="14" uuid="54314ebc-4b5f-4521-9499-77d46162bd42"/>
+				<textFieldExpression><![CDATA[($F{ulcera_pai} ? "sim":"não")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="183" y="240" width="68" height="14" uuid="305af459-9cae-4eb2-9cb6-d04f75efc6b0"/>
+				<textFieldExpression><![CDATA[($F{ulcera_mae} ? "sim":"não")]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+</jasperReport>

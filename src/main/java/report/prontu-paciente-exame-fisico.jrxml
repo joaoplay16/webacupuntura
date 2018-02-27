@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="prontu-paciente" language="groovy" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="9d492d21-2db2-48fd-8539-83d73571932c">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="codigo" class="java.lang.Long">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["/home/joao/Documentos/projetos-eclipse/webacupuntura/src/main/java/report/"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select
+	diagnostic7_.diagnostico as diagnostico_sindr,
+        prontuario.pulso,
+        inspecaoli17_.cor as cor_lingua,
+        inspecaoli17_.diagnostico as diagnostico_lingua,
+        inspecaoli17_.forma as forma_lingua,
+        inspecaoli17_.outrasEspecificacoes,
+        inspecaoli17_.saburra as saburra,
+        inspecaoli17_.umidade as umidade,
+
+	inspecaoli17_.R ,
+	inspecaoli17_.F ,
+	inspecaoli17_.E,
+	inspecaoli17_.BP,
+	inspecaoli17_.VB,
+	inspecaoli17_.P,
+	inspecaoli17_.C,
+	diagnostic7_.tratamento
+    from
+        Paciente paciente
+    left outer join
+        Prontuario prontuario
+            on paciente.codigo_prontuario = prontuario.codigo
+    left outer join
+        Diagnostico diagnostic7_
+            on prontuario.codigo_diagnostico=diagnostic7_.codigo
+    left outer join
+        Historico historico16_
+            on prontuario.codigo_historico=historico16_.codigo
+    left outer join
+        InspecaoLingua inspecaoli17_
+            on prontuario.codigo_inspecao_ligua=inspecaoli17_.codigo
+    where
+        paciente.codigo=1]]>
+	</queryString>
+	<field name="diagnostico_sindr" class="java.lang.String"/>
+	<field name="pulso" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cor_lingua" class="java.lang.String"/>
+	<field name="diagnostico_lingua" class="java.lang.String"/>
+	<field name="forma_lingua" class="java.lang.String"/>
+	<field name="outrasEspecificacoes" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="saburra" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="umidade" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="R" class="java.lang.Boolean">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="F" class="java.lang.Boolean">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="E" class="java.lang.Boolean">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="BP" class="java.lang.Boolean">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="VB" class="java.lang.Boolean">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="P" class="java.lang.Boolean">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="C" class="java.lang.Boolean">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tratamento" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band/>
+	</title>
+	<pageHeader>
+		<band height="705">
+			<staticText>
+				<reportElement x="0" y="0" width="145" height="22" uuid="c55d26e3-aea6-431b-8405-e22e1770cc18"/>
+				<textElement>
+					<font fontName="SansSerif" size="15" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Inspeção da língua]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="22" width="34" height="12" uuid="810a5c84-14d0-4430-94b5-f578b122b9c5"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cor:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="34" y="22" width="205" height="12" uuid="aec41db4-c2c2-4269-9548-cf222542b89c"/>
+				<textFieldExpression><![CDATA[$F{cor_lingua}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="44" width="53" height="12" uuid="5c3a4331-9a39-4a30-ae85-119231aaedcf"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Saburra:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="48" y="67" width="191" height="12" uuid="a4f6a8bd-77e1-40f3-a366-a5446cee6f8d"/>
+				<textFieldExpression><![CDATA[$F{forma_lingua}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="53" y="44" width="186" height="12" uuid="9e191e00-7b80-4699-b05d-bfbae725e073"/>
+				<textFieldExpression><![CDATA[$F{saburra}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="67" width="48" height="12" uuid="21a3976c-8bfe-48f0-9ec4-6437d57a14ae"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Forma:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="89" width="68" height="12" uuid="4d961870-a99a-442f-83a8-6e48f51ffe17"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Humidade:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="68" y="89" width="171" height="12" uuid="10b54795-4862-43d2-8409-a0a545e4b9b4"/>
+				<textFieldExpression><![CDATA[$F{umidade}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="290" y="6" width="145" height="95" uuid="9ff9d1a8-c04e-4861-8a4f-790a8142d93b"/>
+				<imageExpression><![CDATA["/home/joao/Documentos/projetos-eclipse/webacupuntura/src/main/webapp/resources/imagens/lingua.png"]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="472" y="7" width="26" height="12" uuid="477a45c8-2929-417d-baef-7886c03fbe19"/>
+				<textFieldExpression><![CDATA[($F{R} ? "sim":"não")]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="447" y="7" width="25" height="12" uuid="883d28fe-eade-493b-b7ba-20822f7aa2e4"/>
+				<text><![CDATA[R]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="447" y="19" width="25" height="12" uuid="0cfe90d6-34c2-4469-80c2-e66136e792fa"/>
+				<text><![CDATA[F]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="472" y="19" width="26" height="12" uuid="cc3abdb8-10dd-41bf-bf11-0572d6e6449a"/>
+				<textFieldExpression><![CDATA[($F{F} ? "sim":"não")]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="447" y="31" width="25" height="12" uuid="84ea0160-d1d8-4854-8720-7e6ac61e1caa"/>
+				<text><![CDATA[E]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="472" y="31" width="26" height="12" uuid="0baedc54-77de-44e1-9f5c-d4cfc5f3c56e"/>
+				<textFieldExpression><![CDATA[($F{E} ? "sim":"não")]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="447" y="43" width="25" height="12" uuid="bd15308c-c1b6-440f-bf17-dcd0bb6d6b79"/>
+				<text><![CDATA[BP]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="472" y="43" width="26" height="12" uuid="70ac0184-183c-46ff-a6cb-b45041b6a0a5"/>
+				<textFieldExpression><![CDATA[($F{BP} ? "sim":"não")]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="447" y="55" width="25" height="12" uuid="17a1be39-4b35-49db-99ba-aad30f31245f"/>
+				<text><![CDATA[VB]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="472" y="55" width="26" height="12" uuid="ef8b24db-5520-4728-af3c-b3c50389ad7e"/>
+				<textFieldExpression><![CDATA[($F{VB} ? "sim":"não")]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="447" y="67" width="25" height="12" uuid="0d458867-53de-4bd6-872a-a2a76854cf2b"/>
+				<text><![CDATA[P]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="472" y="67" width="26" height="12" uuid="f166da6f-0302-4d4b-8a13-a28f698895a5"/>
+				<textFieldExpression><![CDATA[($F{P} ? "sim":"não")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="472" y="77" width="26" height="12" uuid="2b511793-925c-4917-902b-25d70d5aa860"/>
+				<textFieldExpression><![CDATA[($F{C} ? "sim":"não")]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="447" y="77" width="25" height="12" uuid="1e50f169-bf3a-4e76-818d-bd8ac3024d63"/>
+				<text><![CDATA[C]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="186" width="115" height="12" uuid="7f1529c0-719e-4508-9108-10efecd25e58"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Diagnóstico/língua]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="198" width="552" height="73" uuid="ccdbf2a2-5e44-4f3d-a442-549d2e3d2e5d"/>
+				<textFieldExpression><![CDATA[$F{diagnostico_lingua}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="271" width="68" height="17" uuid="667126a5-2c75-4504-85d3-2dad2e38a8e7"/>
+				<textElement>
+					<font fontName="SansSerif" size="14" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Pulso]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="287" width="552" height="221" uuid="0279ebce-e9a0-47fd-a1fc-b54ae82f8d38"/>
+				<textFieldExpression><![CDATA[$F{pulso}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="101" width="145" height="12" uuid="8445c95f-b07f-4ad5-9b0d-d01906eeff69"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Outras especificações:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="113" width="552" height="73" uuid="1ae6c3c2-7935-412a-ac42-434da4a03326"/>
+				<textFieldExpression><![CDATA[$F{outrasEspecificacoes}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="508" width="181" height="20" uuid="7fba7587-9e20-4c27-9fcd-dfef98b30331"/>
+				<textElement>
+					<font fontName="SansSerif" size="15" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Diagnóstico sindrômico]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="528" width="552" height="77" uuid="e2d4ffb7-c2b5-44fb-a09e-e9807dae47ba"/>
+				<textFieldExpression><![CDATA[$F{diagnostico_sindr}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="605" width="181" height="20" uuid="ff194af6-8317-46b2-b109-938c21b189bd"/>
+				<textElement>
+					<font fontName="SansSerif" size="15" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Tratamento]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="625" width="552" height="80" uuid="28a20b80-6812-43c4-82ae-ad1dd52c71dd"/>
+				<textFieldExpression><![CDATA[$F{tratamento}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+</jasperReport>

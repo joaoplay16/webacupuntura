@@ -13,6 +13,7 @@ import java.util.HashMap;
 
 import java.util.Map;
 import javax.faces.context.FacesContext;
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletResponse;
 
 import br.com.webacupuntura.modeloquery.RelatorioConsulta;
@@ -39,12 +40,10 @@ public class Relatorio implements Serializable{
 
 		try {
 			
-			String caminho = "/report/"+arquivo+".jasper";
-			InputStream stream =  this.getClass().getResourceAsStream(caminho);
+			String caminho = arquivo+".jasper";
+			InputStream stream =  this.getClass().getClassLoader().getResourceAsStream(caminho);
 				
-			URL url = this.getClass().getResource(caminho);
-			System.out.println("URL: " +url);
-			
+			//URL url = this.getClass().getResource(caminho);
 			ByteArrayOutputStream baos = new ByteArrayOutputStream();
 			
 			JasperReport jasper = (JasperReport) JRLoader.loadObject(stream);
@@ -92,7 +91,7 @@ public class Relatorio implements Serializable{
 	private Connection getConexao() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/webacupuntura", "root", "");
+			con = DriverManager.getConnection("jdbc:mysql://sql10.freesqldatabase.com:3306/sql10223460", "sql10223460", "TQpTnA7Rex");
 			return con;
 
 		} catch (SQLException e) {
