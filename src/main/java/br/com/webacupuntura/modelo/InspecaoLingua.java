@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -50,7 +51,7 @@ public class InspecaoLingua implements Serializable{
 	public void setCor(String cor) {
 		this.cor = cor;
 	}
-
+	@Column(length=80)
 	public String getSaburra() {
 		return saburra;
 	}
@@ -66,7 +67,7 @@ public class InspecaoLingua implements Serializable{
 	public void setForma(String forma) {
 		this.forma = forma;
 	}
-
+	@Column(length=80)
 	public String getUmidade() {
 		return umidade;
 	}
@@ -74,7 +75,7 @@ public class InspecaoLingua implements Serializable{
 	public void setUmidade(String umidade) {
 		this.umidade = umidade;
 	}
-
+	@Column(length=300)
 	public String getOutrasEspecificacoes() {
 		return outrasEspecificacoes;
 	}
@@ -82,7 +83,7 @@ public class InspecaoLingua implements Serializable{
 	public void setOutrasEspecificacoes(String outrasEspecificacoes) {
 		this.outrasEspecificacoes = outrasEspecificacoes;
 	}
-
+	@Column(length=300)
 	public String getDiagnostico() {
 		return diagnostico;
 	}

@@ -1,5 +1,6 @@
 package br.com.webacupuntura.modelo;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,7 +22,7 @@ public class Diagnostico {
 	public void setCodigo(Integer codigo) {
 		this.codigo = codigo;
 	}
-
+	@Column(length=400)
 	public String getDiagnostico() {
 		return diagnostico;
 	}
@@ -29,7 +30,7 @@ public class Diagnostico {
 	public void setDiagnostico(String diagnostico) {
 		this.diagnostico = diagnostico;
 	}
-
+	@Column(length=400)
 	public String getTratamento() {
 		return tratamento;
 	}

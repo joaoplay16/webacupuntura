@@ -18,9 +18,11 @@
 					<f:selectItem itemLabel="Selecione" />
 				</p:selectOneMenu>
 
-				<p:outputLabel value="Saburra" />
+				<p:outputLabel value="Saburra"/>
 				<p:inputText
-					value="#{cadProntuarioB.paciente.prontuario.inspecaoLingua.saburra}" />
+					value="#{cadProntuarioB.paciente.prontuario.inspecaoLingua.saburra}"
+					maxlength="80"
+					 />
 
 				<p:outputLabel value="Forma" />
 				<p:selectOneMenu>
@@ -80,27 +82,31 @@
 			<div class="ui-g-12 ui-md-6">
 				<p:outputLabel value="Humidade" />
 				<p:inputText
-					value="#{cadProntuarioB.paciente.prontuario.inspecaoLingua.umidade}" />
+					value="#{cadProntuarioB.paciente.prontuario.inspecaoLingua.umidade}"
+					maxlength="80" />
 			</div>
 		</div>
 	</div>
 	<div class="ui-grid-row bb">
 		<div class="ui-fluid">
-			<div class="ui-g-12">
-				<!--PULSO  -->
-				<p:outputLabel value="Pulso" />
-				<p:editor value="#{cadProntuarioB.paciente.prontuario.pulso}" maxlength="999" />
-
-			</div>
+			
 			<div class="ui-g-12 ui-md-6">
 				<p:outputLabel value="Outras especificações" />
 				<p:inputTextarea
-					value="#{cadProntuarioB.paciente.prontuario.inspecaoLingua.outrasEspecificacoes}" />
+					value="#{cadProntuarioB.paciente.prontuario.inspecaoLingua.outrasEspecificacoes}" 
+					maxlength="300"/>
 			</div>
 			<div class="ui-g-12 ui-md-6">
 				<p:outputLabel value="Diagnóstico" />
 				<p:inputTextarea
 					value="#{cadProntuarioB.paciente.prontuario.inspecaoLingua.diagnostico}" />
+			</div>
+			<hr />
+			<div class="ui-g-12">
+				<!--PULSO  -->
+				<p:outputLabel value="Pulso" />
+				<p:editor value="#{cadProntuarioB.paciente.prontuario.pulso}" maxlength="1000" />
+
 			</div>
 		</div>
 	</div>

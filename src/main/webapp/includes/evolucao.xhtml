@@ -36,13 +36,13 @@
 				<f:facet name="output">
 					<h:outputText value="#{evolucao.data}" 
 						style="width: 5px">
-						<f:convertDateTime pattern="dd/MM/yyyy" />
+						<f:convertDateTime pattern="dd/MM/yyyy HH:mm" timeZone="GMT-3"/>
 					</h:outputText>
 				</f:facet>
 				
 				<f:facet name="input">
-					<p:calendar id="data" value="#{evolucao.data}" pattern="dd/MM/yyyy"
-								locale="pt_BR" mask="true" required="true"
+					<p:calendar id="data" value="#{evolucao.data}" pattern="dd/MM/yyyy HH:mm"
+							 timeZone="GMT-3" mask="true" required="true"
 								requiredMessage="A data é necessária!" />
 					<p:message for="data"/>
 				</f:facet>
@@ -59,7 +59,7 @@
 					<f:facet name="input">
 						<h:inputTextarea id="evo" value="#{evolucao.evolucao}" 
 						styleClass="form-control" requiredMessage="Preencao o campo evolução"
-						rows="6"/>
+						rows="6" />
 						<p:message for="evo" />
 					</f:facet>
 				</p:cellEditor>

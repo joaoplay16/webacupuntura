@@ -1,5 +1,6 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?xml version='1.0' encoding='ISO-8859-1' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
@@ -14,13 +15,13 @@
 		<f:metadata>
 			<f:viewParam name="paciente" value="#{cadProntuarioB.paciente}" converter="#{pacienteConverter}"></f:viewParam>
 		</f:metadata>
-				<h2 id="titulo" class="text-center">ProntuÃ¡rio</h2>
+				<h2 id="titulo" class="text-center">Prontuário</h2>
 		
-		<h:form id="form">
+		<h:form id="form"  acceptcharset="ISO-8859-1">
 			<p:growl id="msgs" showDetail="true" />
 			<p:messages id="toast" autoUpdate="true" />
 	
-			<h:outputText id="perm" value="VocÃª nÃ£o tem permissÃ£o para alterar o prontuÃ¡rio!"
+			<h:outputText id="perm" value="Você não tem permissão para alterar o prontuário!"
 						 rendered="#{loginBean.usuarioLogado.permissao != 'admin'}"
 					styleClass="text-center label label-warning"
 					style="font-size: 15pt;"/>
@@ -35,7 +36,7 @@
 					<div class="panel-heading">
 						<div class="panel-title">
 							<h4 class="text-center" style="font-weight: bold">
-								InformaÃ§Ãµes pessoais
+								Informações pessoais
 							</h4>
 							
 						</div>
@@ -59,7 +60,7 @@
 					</div>
 				</p:tab>
 
-				<p:tab title="HistÃ³rico">
+				<p:tab title="Histórico">
 					<div class='ui-fluid' >
 
 						<!-- 						HISTORiCO -->
@@ -68,7 +69,7 @@
 						<!-- 						TABELA PATOLOGIA -->
 						<ui:include src="/includes/tabela_patologia.xhtml" />
 
-						<!-- HISTÃ“RICO CLINICO-->
+						<!-- HISTÓRICO CLINICO-->
 						<ui:include src="/includes/historico_clinico.xhtml" />
 
 						<!--DOR DE CABECA  -->
@@ -77,29 +78,31 @@
 				</p:tab>
 
 				<!-- EXAME FISICO -->
-				<p:tab  title="Exame FÃ­sico">
+				<p:tab  title="Exame Físico">
 					<ui:include src="/includes/exame_fisico.xhtml" />
 				</p:tab>
 
-				<!-- DIAGNÃ“STICO -->
-				<p:tab title="DiagnÃ³stico">
+				<!-- DIAGNÓSTICO -->
+				<p:tab title="Diagnóstico">
 
 					<div class="ui-fluid">
 						<div class="ui-g-12">
-							<p:outputLabel value="DiagnÃ³stico" />
+							<p:outputLabel value="Diagnóstico" />
 							<p:inputTextarea
-								value="#{cadProntuarioB.paciente.prontuario.diagnostico.diagnostico}" />
+								value="#{cadProntuarioB.paciente.prontuario.diagnostico.diagnostico}" 
+								maxlength="400"/>
 						</div>
 
 						<div class="ui-g-12">
 							<p:outputLabel value="Tratamento" />
 							<p:inputTextarea autoResize="true" cols="100"
-								value="#{cadProntuarioB.paciente.prontuario.diagnostico.tratamento}" />
+								value="#{cadProntuarioB.paciente.prontuario.diagnostico.tratamento}"
+								maxlength="400" />
 						</div>
 					</div>
 				</p:tab>
 
-				<p:tab title="EvoluÃ§Ã£o">
+				<p:tab title="Evolução">
 					<ui:include src="/includes/evolucao.xhtml"/>
 				</p:tab>
 				<p:tab title="Finalizar" id="final">

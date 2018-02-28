@@ -64,7 +64,7 @@
 				<staticText>
 					<reportElement x="20" y="20" width="234" height="43" forecolor="#FFFFFF" uuid="37bc56e8-af25-48f5-864f-fec1eec52473"/>
 					<textElement>
-						<font fontName="Ubuntu" size="34" isBold="false"/>
+						<font fontName="SansSerif" size="34" isBold="false"/>
 					</textElement>
 					<text><![CDATA[Relatórios]]></text>
 				</staticText>

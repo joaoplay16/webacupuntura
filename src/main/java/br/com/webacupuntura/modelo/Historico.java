@@ -1,5 +1,6 @@
 package br.com.webacupuntura.modelo;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -43,7 +44,8 @@ public class Historico {
 	public void setCodigo(Integer codigo) {
 		this.codigo = codigo;
 	}
-
+	
+	@Column(length=270)
 	public String gethDoencaAtual() {
 		return hDoencaAtual;
 	}
@@ -51,7 +53,7 @@ public class Historico {
 	public void sethDoencaAtual(String hDoencaAtual) {
 		this.hDoencaAtual = hDoencaAtual;
 	}
-
+	@Column(length=270)
 	public String gethPatologico() {
 		return hPatologico;
 	}
@@ -59,7 +61,7 @@ public class Historico {
 	public void sethPatologico(String hPatologico) {
 		this.hPatologico = hPatologico;
 	}
-
+	@Column(length=270)
 	public String gethFamiliar() {
 		return hFamiliar;
 	}
@@ -67,7 +69,7 @@ public class Historico {
 	public void sethFamiliar(String hFamiliar) {
 		this.hFamiliar = hFamiliar;
 	}
-
+	@Column(length=270)
 	public String gethSocial() {
 		return hSocial;
 	}
@@ -75,7 +77,7 @@ public class Historico {
 	public void sethSocial(String hSocial) {
 		this.hSocial = hSocial;
 	}
-
+	@Column(length=200)
 	public String getTratamentoAtual() {
 		return tratamentoAtual;
 	}
@@ -83,7 +85,7 @@ public class Historico {
 	public void setTratamentoAtual(String tratamentoAtual) {
 		this.tratamentoAtual = tratamentoAtual;
 	}
-
+	@Column(length=200)
 	public String getTratamentosAnteriores() {
 		return tratamentosAnteriores;
 	}
@@ -91,7 +93,7 @@ public class Historico {
 	public void setTratamentosAnteriores(String tratamentosAnteriores) {
 		this.tratamentosAnteriores = tratamentosAnteriores;
 	}
-
+	@Column(length=200)
 	public String getMedicamentoEmUso() {
 		return medicamentoEmUso;
 	}
@@ -99,7 +101,7 @@ public class Historico {
 	public void setMedicamentoEmUso(String medicamentoEmUso) {
 		this.medicamentoEmUso = medicamentoEmUso;
 	}
-
+	@Column(length=270)
 	public String getExamesApresentados() {
 		return examesApresentados;
 	}
@@ -107,7 +109,7 @@ public class Historico {
 	public void setExamesApresentados(String examesApresentados) {
 		this.examesApresentados = examesApresentados;
 	}
-
+	@Column(length=270)
 	public String getDiagnosticoMedico() {
 		return diagnosticoMedico;
 	}
@@ -115,7 +117,7 @@ public class Historico {
 	public void setDiagnosticoMedico(String diagnosticoMedico) {
 		this.diagnosticoMedico = diagnosticoMedico;
 	}
-
+	@Column(length=80)
 	public String getMedico() {
 		return medico;
 	}
@@ -123,7 +125,7 @@ public class Historico {
 	public void setMedico(String medico) {
 		this.medico = medico;
 	}
-
+	@Column(length=270)
 	public String getSistemaCirculatorio() {
 		return sistemaCirculatorio;
 	}
@@ -131,7 +133,7 @@ public class Historico {
 	public void setSistemaCirculatorio(String sistemaCirculatorio) {
 		this.sistemaCirculatorio = sistemaCirculatorio;
 	}
-
+	@Column(length=270)
 	public String getSistemaMuscular() {
 		return sistemaMuscular;
 	}
@@ -139,7 +141,7 @@ public class Historico {
 	public void setSistemaMuscular(String sistemaMuscular) {
 		this.sistemaMuscular = sistemaMuscular;
 	}
-
+	@Column(length=270)
 	public String getSistemaNervoso() {
 		return sistemaNervoso;
 	}
@@ -147,7 +149,7 @@ public class Historico {
 	public void setSistemaNervoso(String sistemaNervoso) {
 		this.sistemaNervoso = sistemaNervoso;
 	}
-
+	@Column(length=270)
 	public String getSistemaOsseo() {
 		return sistemaOsseo;
 	}
@@ -155,7 +157,7 @@ public class Historico {
 	public void setSistemaOsseo(String sistemaOsseo) {
 		this.sistemaOsseo = sistemaOsseo;
 	}
-
+	@Column(length=270)
 	public String getSistemaRespiratorio() {
 		return sistemaRespiratorio;
 	}
@@ -163,7 +165,7 @@ public class Historico {
 	public void setSistemaRespiratorio(String sistemaRespiratorio) {
 		this.sistemaRespiratorio = sistemaRespiratorio;
 	}
-
+	@Column(length=270)
 	public String getSistemaGastroIntestinal() {
 		return sistemaGastroIntestinal;
 	}
@@ -171,11 +173,11 @@ public class Historico {
 	public void setSistemaGastroIntestinal(String sistemaGastroIntestinal) {
 		this.sistemaGastroIntestinal = sistemaGastroIntestinal;
 	}
-
+	@Column(length=270)
 	public String getSistemaGeniturinario() {
 		return sistemaGeniturinario;
 	}
-
+	
 	public void setSistemaGeniturinario(String sistemaGeniturinario) {
 		this.sistemaGeniturinario = sistemaGeniturinario;
 	}
@@ -187,7 +189,7 @@ public class Historico {
 	public void setSono(Integer sono) {
 		this.sono = sono;
 	}
-
+	@Column(length=270)
 	public String getCirurgias() {
 		return cirurgias;
 	}
@@ -195,7 +197,7 @@ public class Historico {
 	public void setCirurgias(String cirurgias) {
 		this.cirurgias = cirurgias;
 	}
-
+	@Column(length=270)
 	public String getAlimentacao() {
 		return alimentacao;
 	}
@@ -203,7 +205,7 @@ public class Historico {
 	public void setAlimentacao(String alimentacao) {
 		this.alimentacao = alimentacao;
 	}
-
+	@Column(length=270)
 	public String getCicloMenstrual() {
 		return cicloMenstrual;
 	}
@@ -211,7 +213,7 @@ public class Historico {
 	public void setCicloMenstrual(String cicloMenstrual) {
 		this.cicloMenstrual = cicloMenstrual;
 	}
-
+	@Column(length=270)
 	public String getAtividadeSexual() {
 		return atividadeSexual;
 	}

@@ -12,77 +12,7 @@
 	<queryString>
 		<![CDATA[select
 
-        prontuario.pulso as pulso,
-        alcoolismo2_.avos as alcolismo_avos,
-        alcoolismo2_.individuo as alcolismo_individuo,
-        alcoolismo2_.irmao as alcolismo_irmao,
-        alcoolismo2_.mae as alcolismo_mae,
-        alcoolismo2_.outros as alcolismo_outros,
-        alcoolismo2_.pai as alcolismo_pai,
-        alergia3_.avos as alergia_avos,
-        alergia3_.individuo as alergia_individuo,
-        alergia3_.irmao as alergia_irmao,
-        alergia3_.mae as alergia_mae,
-        alergia3_.outros as alergia_outros,
-        alergia3_.pai as alergia_pai,
-        cancer4_.avos as cancer_avos,
-        cancer4_.individuo as cancer_individuo,
-        cancer4_.irmao as cancer_irmao,
-        cancer4_.mae as cancer_mae,
-        cancer4_.outros as cancer_outros,
-        cancer4_.pai as cancer_pai,
-        depressao5_.avos as depressao_avos,
-        depressao5_.individuo as depressao_individuo,
-        depressao5_.irmao as depressao_irmao,
-        depressao5_.mae as depressao_mae,
-        depressao5_.outros as depressao_outros,
-        depressao5_.pai as depressao_pai,
-        diabetes6_.avos as diabete_avos,
-        diabetes6_.individuo as diabete_individuo,
-        diabetes6_.irmao as diabete_irmao,
-        diabetes6_.mae as diabete_mae,
-        diabetes6_.outros as diabete_outros,
-        diabetes6_.pai as diabete_pai,
-        diagnostic7_.diagnostico as diagnostico,
-        diagnostic7_.tratamento as tratamento,
-        doencascar8_.avos as dcardio_avos,
-        doencascar8_.individuo as dcardio_individuo,
-        doencascar8_.irmao as dcardio_irmao,
-        doencascar8_.mae as dcardio_mae,
-        doencascar8_.outros as dcardio_outros,
-        doencascar8_.pai as dcardio_pai,
-        dorcabeca9_.dor1 as dor1,
-        dorcabeca9_.dor2 as dor2,
-        dorcabeca9_.dor3 as dor3,
-        dorcabeca9_.dor4 as dor4,
-        dorcabeca9_.dor5 as dor5,
-        dorcabeca9_.dor6 as dor6,
-        evolucao11_.data as data_evolucao,
-        evolucao11_.evolucao as evolucao,
-        gastrite12_.avos as gastrite_avos,
-        gastrite12_.individuo as gastrite_individuo,
-        gastrite12_.irmao as gastrite_irmao,
-        gastrite12_.mae as gastrite_mae,
-        gastrite12_.outros as gastrite_outros,
-        gastrite12_.pai as gastrite_pai,
-        hipertensa13_.avos as hipertensao_avos,
-        hipertensa13_.individuo as hipertensao_individuo,
-        hipertensa13_.irmao as hipertensao_irmao,
-        hipertensa13_.mae as hipertensao_mae,
-        hipertensa13_.outros as hipertensao_outros,
-        hipertensa13_.pai as hipertensao_pai,
-        hipertireo14_.avos as hipertireoidismo_avos,
-        hipertireo14_.individuo as hipertireoidismo_individuo,
-        hipertireo14_.irmao as hipertireoidismo_irmao,
-        hipertireo14_.mae as hipertireoidismo_mae,
-        hipertireo14_.outros as hipertireoidismo_outros,
-        hipertireo14_.pai as hipertireoidismo_pai,
-        hipotireoi15_.avos as hipotireoidismo_avos,
-        hipotireoi15_.individuo as hipotireoidismo_individuo,
-        hipotireoi15_.irmao as hipotireoidismo_irmao,
-        hipotireoi15_.mae as hipotireoidismo_mae,
-        hipotireoi15_.outros as hipotireoidismo_outros,
-        hipotireoi15_.pai as hipotireoidismo_pai,
+
         historico16_.alimentacao as alimentacao,
         historico16_.atividadeSexual as atividadeSexual,
         historico16_.cicloMenstrual as cicloMentrual,
@@ -104,214 +34,21 @@
         historico16_.sistemaRespiratorio as sistemaRespiratorio,
         historico16_.sono as sono,
         historico16_.tratamentoAtual as tratamentoAtual,
-        historico16_.tratamentosAnteriores as tratamentosAnteriores,
-        inspecaoli17_.cor as cor_lingua,
-        inspecaoli17_.diagnostico as diagnostico_lingua,
-        inspecaoli17_.forma as forma_lingua,
-        inspecaoli17_.outrasEspecificacoes as outrasEspecificacoes,
-        inspecaoli17_.saburra as saburra,
-        inspecaoli17_.umidade as umidade,
-        obesidade18_.avos as obesidade_avos,
-        obesidade18_.individuo as obesidade_individuo,
-        obesidade18_.irmao as obesidade_irmao,
-        obesidade18_.mae as obesidade_mae,
-        obesidade18_.outros as obesidade_outros,
-        obesidade18_.pai as obesidade_pai,
-        problemasc19_.avos as pcirculatorios_avos,
-        problemasc19_.individuo as pcirculatorios_individuo,
-        problemasc19_.irmao as pcirculatorios_irmao,
-        problemasc19_.mae as pcirculatorios_mae,
-        problemasc19_.outros as pcirculatorios_outros,
-        problemasc19_.pai as pcirculatorios_pai,
-        refluxo20_.avos as refluxo_avos,
-        refluxo20_.individuo as refluxo_individuo,
-        refluxo20_.irmao as refluxo_irmao,
-        refluxo20_.mae as refluxo_mae,
-        refluxo20_.outros as refluxo_outros,
-        refluxo20_.pai as refluxo_pai,
-        stress21_.avos as stress_avos,
-        stress21_.individuo as stress_individuo,
-        stress21_.irmao as stress_irmao,
-        stress21_.mae as stress_mae,
-        stress21_.outros as stress_outros,
-        stress21_.pai as stress_pai,
-        tabagismo22_.avos as tabagismo_avos,
-        tabagismo22_.individuo as tabagismo_individuo,
-        tabagismo22_.irmao as tabagismo_irmao,
-        tabagismo22_.mae as tabagismo_mae,
-        tabagismo22_.outros as tabagismo_outros,
-        tabagismo22_.pai as tabagismo_pai,
-        ulcera23_.avos as ulcera_avos,
-        ulcera23_.individuo as ulcera_individuo,
-        ulcera23_.irmao as ulcera_irmao,
-        ulcera23_.mae as ulcera_mae,
-        ulcera23_.outros as ulcera_outros,
-        ulcera23_.pai as ulcera_pai
+        historico16_.tratamentosAnteriores as tratamentosAnteriores
+
     from
         Paciente paciente
     left outer join
         Prontuario prontuario
             on paciente.codigo_prontuario = prontuario.codigo
-    left outer join
-        Patologia alcoolismo2_
-            on prontuario.codigo_alcoolismo=alcoolismo2_.codigo
-    left outer join
-        Patologia alergia3_
-            on prontuario.codigo_alergia=alergia3_.codigo
-    left outer join
-        Patologia cancer4_
-            on prontuario.codigo_cancer=cancer4_.codigo
-    left outer join
-        Patologia depressao5_
-            on prontuario.codigo_depressao=depressao5_.codigo
-    left outer join
-        Patologia diabetes6_
-            on prontuario.codigo_diabetes=diabetes6_.codigo
-    left outer join
-        Diagnostico diagnostic7_
-            on prontuario.codigo_diagnostico=diagnostic7_.codigo
-    left outer join
-        Patologia doencascar8_
-            on prontuario.codigo_dcadiovasculares=doencascar8_.codigo
-    left outer join
-        DorCabeca dorcabeca9_
-            on prontuario.codigo_dor_cabeca=dorcabeca9_.codigo
-    left outer join
-        Prontuario_Evolucao evolucoes10_
-            on prontuario.codigo=evolucoes10_.Prontuario_codigo
-    left outer join
-        Evolucao evolucao11_
-            on evolucoes10_.evolucoes_codigo=evolucao11_.codigo
-    left outer join
-        Patologia gastrite12_
-            on prontuario.codigo_gastrite=gastrite12_.codigo
-    left outer join
-        Patologia hipertensa13_
-            on prontuario.codigo_hipertensao=hipertensa13_.codigo
-    left outer join
-        Patologia hipertireo14_
-            on prontuario.codigo_hipertireoidismo=hipertireo14_.codigo
-    left outer join
-        Patologia hipotireoi15_
-            on prontuario.codigo_hipotireoidismo=hipotireoi15_.codigo
+
     left outer join
         Historico historico16_
             on prontuario.codigo_historico=historico16_.codigo
-    left outer join
-        InspecaoLingua inspecaoli17_
-            on prontuario.codigo_inspecao_ligua=inspecaoli17_.codigo
-    left outer join
-        Patologia obesidade18_
-            on prontuario.codigo_obesidade=obesidade18_.codigo
-    left outer join
-        Patologia problemasc19_
-            on prontuario.codigo_pcirculatorios=problemasc19_.codigo
-    left outer join
-        Patologia refluxo20_
-            on prontuario.codigo_refluxo=refluxo20_.codigo
-    left outer join
-        Patologia stress21_
-            on prontuario.codigo_stress=stress21_.codigo
-    left outer join
-        Patologia tabagismo22_
-            on prontuario.codigo_tabagismo=tabagismo22_.codigo
-    left outer join
-        Patologia ulcera23_
-            on prontuario.codigo_ulcera=ulcera23_.codigo
+
     where
         paciente.codigo=$P{codigo}]]>
 	</queryString>
-	<field name="pulso" class="java.lang.String">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="alcolismo_avos" class="java.lang.Boolean"/>
-	<field name="alcolismo_individuo" class="java.lang.Boolean"/>
-	<field name="alcolismo_irmao" class="java.lang.Boolean"/>
-	<field name="alcolismo_mae" class="java.lang.Boolean"/>
-	<field name="alcolismo_outros" class="java.lang.String"/>
-	<field name="alcolismo_pai" class="java.lang.Boolean"/>
-	<field name="alergia_avos" class="java.lang.Boolean"/>
-	<field name="alergia_individuo" class="java.lang.Boolean"/>
-	<field name="alergia_irmao" class="java.lang.Boolean"/>
-	<field name="alergia_mae" class="java.lang.Boolean"/>
-	<field name="alergia_outros" class="java.lang.String"/>
-	<field name="alergia_pai" class="java.lang.Boolean"/>
-	<field name="cancer_avos" class="java.lang.Boolean"/>
-	<field name="cancer_individuo" class="java.lang.Boolean"/>
-	<field name="cancer_irmao" class="java.lang.Boolean"/>
-	<field name="cancer_mae" class="java.lang.Boolean"/>
-	<field name="cancer_outros" class="java.lang.String"/>
-	<field name="cancer_pai" class="java.lang.Boolean"/>
-	<field name="depressao_avos" class="java.lang.Boolean"/>
-	<field name="depressao_individuo" class="java.lang.Boolean"/>
-	<field name="depressao_irmao" class="java.lang.Boolean"/>
-	<field name="depressao_mae" class="java.lang.Boolean"/>
-	<field name="depressao_outros" class="java.lang.String"/>
-	<field name="depressao_pai" class="java.lang.Boolean"/>
-	<field name="diabete_avos" class="java.lang.Boolean"/>
-	<field name="diabete_individuo" class="java.lang.Boolean"/>
-	<field name="diabete_irmao" class="java.lang.Boolean"/>
-	<field name="diabete_mae" class="java.lang.Boolean"/>
-	<field name="diabete_outros" class="java.lang.String"/>
-	<field name="diabete_pai" class="java.lang.Boolean"/>
-	<field name="diagnostico" class="java.lang.String">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="tratamento" class="java.lang.String">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="dcardio_avos" class="java.lang.Boolean"/>
-	<field name="dcardio_individuo" class="java.lang.Boolean"/>
-	<field name="dcardio_irmao" class="java.lang.Boolean"/>
-	<field name="dcardio_mae" class="java.lang.Boolean"/>
-	<field name="dcardio_outros" class="java.lang.String"/>
-	<field name="dcardio_pai" class="java.lang.Boolean"/>
-	<field name="dor1" class="java.lang.Boolean">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="dor2" class="java.lang.Boolean">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="dor3" class="java.lang.Boolean">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="dor4" class="java.lang.Boolean">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="dor5" class="java.lang.Boolean">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="dor6" class="java.lang.Boolean">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="data_evolucao" class="java.sql.Timestamp"/>
-	<field name="evolucao" class="java.lang.String">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="gastrite_avos" class="java.lang.Boolean"/>
-	<field name="gastrite_individuo" class="java.lang.Boolean"/>
-	<field name="gastrite_irmao" class="java.lang.Boolean"/>
-	<field name="gastrite_mae" class="java.lang.Boolean"/>
-	<field name="gastrite_outros" class="java.lang.String"/>
-	<field name="gastrite_pai" class="java.lang.Boolean"/>
-	<field name="hipertensao_avos" class="java.lang.Boolean"/>
-	<field name="hipertensao_individuo" class="java.lang.Boolean"/>
-	<field name="hipertensao_irmao" class="java.lang.Boolean"/>
-	<field name="hipertensao_mae" class="java.lang.Boolean"/>
-	<field name="hipertensao_outros" class="java.lang.String"/>
-	<field name="hipertensao_pai" class="java.lang.Boolean"/>
-	<field name="hipertireoidismo_avos" class="java.lang.Boolean"/>
-	<field name="hipertireoidismo_individuo" class="java.lang.Boolean"/>
-	<field name="hipertireoidismo_irmao" class="java.lang.Boolean"/>
-	<field name="hipertireoidismo_mae" class="java.lang.Boolean"/>
-	<field name="hipertireoidismo_outros" class="java.lang.String"/>
-	<field name="hipertireoidismo_pai" class="java.lang.Boolean"/>
-	<field name="hipotireoidismo_avos" class="java.lang.Boolean"/>
-	<field name="hipotireoidismo_individuo" class="java.lang.Boolean"/>
-	<field name="hipotireoidismo_irmao" class="java.lang.Boolean"/>
-	<field name="hipotireoidismo_mae" class="java.lang.Boolean"/>
-	<field name="hipotireoidismo_outros" class="java.lang.String"/>
-	<field name="hipotireoidismo_pai" class="java.lang.Boolean"/>
 	<field name="alimentacao" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
@@ -374,54 +111,6 @@
 	<field name="tratamentosAnteriores" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="cor_lingua" class="java.lang.String"/>
-	<field name="diagnostico_lingua" class="java.lang.String"/>
-	<field name="forma_lingua" class="java.lang.String"/>
-	<field name="outrasEspecificacoes" class="java.lang.String">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="saburra" class="java.lang.String">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="umidade" class="java.lang.String">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="obesidade_avos" class="java.lang.Boolean"/>
-	<field name="obesidade_individuo" class="java.lang.Boolean"/>
-	<field name="obesidade_irmao" class="java.lang.Boolean"/>
-	<field name="obesidade_mae" class="java.lang.Boolean"/>
-	<field name="obesidade_outros" class="java.lang.String"/>
-	<field name="obesidade_pai" class="java.lang.Boolean"/>
-	<field name="pcirculatorios_avos" class="java.lang.Boolean"/>
-	<field name="pcirculatorios_individuo" class="java.lang.Boolean"/>
-	<field name="pcirculatorios_irmao" class="java.lang.Boolean"/>
-	<field name="pcirculatorios_mae" class="java.lang.Boolean"/>
-	<field name="pcirculatorios_outros" class="java.lang.String"/>
-	<field name="pcirculatorios_pai" class="java.lang.Boolean"/>
-	<field name="refluxo_avos" class="java.lang.Boolean"/>
-	<field name="refluxo_individuo" class="java.lang.Boolean"/>
-	<field name="refluxo_irmao" class="java.lang.Boolean"/>
-	<field name="refluxo_mae" class="java.lang.Boolean"/>
-	<field name="refluxo_outros" class="java.lang.String"/>
-	<field name="refluxo_pai" class="java.lang.Boolean"/>
-	<field name="stress_avos" class="java.lang.Boolean"/>
-	<field name="stress_individuo" class="java.lang.Boolean"/>
-	<field name="stress_irmao" class="java.lang.Boolean"/>
-	<field name="stress_mae" class="java.lang.Boolean"/>
-	<field name="stress_outros" class="java.lang.String"/>
-	<field name="stress_pai" class="java.lang.Boolean"/>
-	<field name="tabagismo_avos" class="java.lang.Boolean"/>
-	<field name="tabagismo_individuo" class="java.lang.Boolean"/>
-	<field name="tabagismo_irmao" class="java.lang.Boolean"/>
-	<field name="tabagismo_mae" class="java.lang.Boolean"/>
-	<field name="tabagismo_outros" class="java.lang.String"/>
-	<field name="tabagismo_pai" class="java.lang.Boolean"/>
-	<field name="ulcera_avos" class="java.lang.Boolean"/>
-	<field name="ulcera_individuo" class="java.lang.Boolean"/>
-	<field name="ulcera_irmao" class="java.lang.Boolean"/>
-	<field name="ulcera_mae" class="java.lang.Boolean"/>
-	<field name="ulcera_outros" class="java.lang.String"/>
-	<field name="ulcera_pai" class="java.lang.Boolean"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -429,27 +118,27 @@
 		<band/>
 	</title>
 	<pageHeader>
-		<band height="513">
+		<band height="622">
 			<staticText>
-				<reportElement x="0" y="255" width="158" height="16" uuid="a99d19a1-ef4f-44f6-98ea-1e47ad000296"/>
+				<reportElement x="0" y="297" width="158" height="16" uuid="a99d19a1-ef4f-44f6-98ea-1e47ad000296"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Tratamento atual	]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="0" y="271" width="552" height="40" uuid="9900a0f6-b5ae-4bb4-b1a8-12593be5f77b"/>
+				<reportElement x="0" y="313" width="595" height="56" uuid="9900a0f6-b5ae-4bb4-b1a8-12593be5f77b"/>
 				<textFieldExpression><![CDATA[$F{tratamentoAtual}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="0" y="201" width="158" height="16" uuid="7d7d0130-1168-4ae6-a767-ff47b9e1d550"/>
+				<reportElement x="0" y="229" width="158" height="16" uuid="7d7d0130-1168-4ae6-a767-ff47b9e1d550"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Histórico social]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="146" width="158" height="16" uuid="5a26769e-a270-45ea-bed2-f04ef2c63090"/>
+				<reportElement x="0" y="166" width="158" height="16" uuid="5a26769e-a270-45ea-bed2-f04ef2c63090"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
@@ -463,78 +152,78 @@
 				<text><![CDATA[Histórico da doença atual]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="83" width="129" height="16" uuid="cc511c9d-3057-433d-b83f-ee05f0b082c5"/>
+				<reportElement x="0" y="91" width="129" height="16" uuid="cc511c9d-3057-433d-b83f-ee05f0b082c5"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Histórico patológico]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement mode="Transparent" x="0" y="38" width="554" height="45" uuid="23d3b927-1acb-47a5-8280-038698eccf41"/>
+				<reportElement mode="Transparent" x="0" y="35" width="595" height="57" uuid="23d3b927-1acb-47a5-8280-038698eccf41"/>
 				<textFieldExpression><![CDATA[$F{hDoencaAtual}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="0" y="101" width="552" height="45" uuid="3e430a48-5329-494b-96a6-082c46ddf2f7"/>
+				<reportElement x="0" y="109" width="595" height="56" uuid="3e430a48-5329-494b-96a6-082c46ddf2f7"/>
 				<textFieldExpression><![CDATA[$F{hPatologico}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="0" y="160" width="552" height="41" uuid="15b900af-212e-4819-8ba0-3b922f15c5d1"/>
+				<reportElement x="0" y="180" width="595" height="51" uuid="15b900af-212e-4819-8ba0-3b922f15c5d1"/>
 				<textFieldExpression><![CDATA[$F{hFamiliar}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="0" y="215" width="552" height="40" uuid="e81f61e6-7472-4edb-8800-451bb371020d"/>
+				<reportElement x="0" y="243" width="595" height="54" uuid="e81f61e6-7472-4edb-8800-451bb371020d"/>
 				<textFieldExpression><![CDATA[$F{hSocial}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="0" y="500" width="595" height="13" uuid="054526bb-e02e-43b1-9b6c-225c02c10dd3"/>
+				<reportElement x="0" y="600" width="595" height="13" uuid="054526bb-e02e-43b1-9b6c-225c02c10dd3"/>
 				<textFieldExpression><![CDATA[$F{medico}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="305" y="424" width="247" height="60" uuid="d96d3da4-7bdf-483e-8510-5e66af3430fa"/>
+				<reportElement x="305" y="524" width="290" height="60" uuid="d96d3da4-7bdf-483e-8510-5e66af3430fa"/>
 				<textFieldExpression><![CDATA[$F{historico_diagnostico}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="0" y="484" width="158" height="16" uuid="81c2ce7a-387e-43a6-aa92-46e734e6c98b"/>
+				<reportElement x="0" y="584" width="158" height="16" uuid="81c2ce7a-387e-43a6-aa92-46e734e6c98b"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Médico:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="305" y="408" width="158" height="16" uuid="a8e750b6-cd59-4112-a8ee-eb04366571a6"/>
+				<reportElement x="305" y="508" width="158" height="16" uuid="a8e750b6-cd59-4112-a8ee-eb04366571a6"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Diagnóstico médico]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="0" y="424" width="281" height="60" uuid="acad745c-a750-44ce-bc02-c51aa36f8466"/>
+				<reportElement x="0" y="524" width="281" height="60" uuid="acad745c-a750-44ce-bc02-c51aa36f8466"/>
 				<textFieldExpression><![CDATA[$F{examesApresentados}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="0" y="376" width="552" height="32" uuid="1eb9086b-7d85-4cfc-9ac5-3ba8505514a6"/>
+				<reportElement x="0" y="454" width="595" height="54" uuid="1eb9086b-7d85-4cfc-9ac5-3ba8505514a6"/>
 				<textFieldExpression><![CDATA[$F{medicamentoEmUso}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="0" y="408" width="158" height="16" uuid="6156da3e-66a6-49e8-9c7a-378188832008"/>
+				<reportElement x="0" y="508" width="158" height="16" uuid="6156da3e-66a6-49e8-9c7a-378188832008"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Exames apresentados]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="360" width="158" height="16" uuid="78effcad-0de7-405a-88cc-39d6b1381525"/>
+				<reportElement x="0" y="438" width="158" height="16" uuid="78effcad-0de7-405a-88cc-39d6b1381525"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Mediacamentos em  uso]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="0" y="325" width="552" height="35" uuid="c772796b-d86f-42ef-8129-47c09e69d2a6"/>
+				<reportElement x="0" y="383" width="595" height="55" uuid="c772796b-d86f-42ef-8129-47c09e69d2a6"/>
 				<textFieldExpression><![CDATA[$F{tratamentosAnteriores}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="0" y="311" width="158" height="14" uuid="a40f3b68-058c-40d5-8479-88860f2ee4a7"/>
+				<reportElement x="0" y="369" width="158" height="14" uuid="a40f3b68-058c-40d5-8479-88860f2ee4a7"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>

@@ -95,7 +95,7 @@
 	<field name="nome" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="data" class="java.sql.Timestamp">
+	<field name="data" class="java.util.Date">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="valor" class="java.lang.Double">
@@ -117,14 +117,14 @@
 				<staticText>
 					<reportElement x="20" y="20" width="234" height="43" forecolor="#FFFFFF" uuid="a7787ac0-1372-40dd-b2bd-4aa40c100c62"/>
 					<textElement>
-						<font fontName="DejaVu Sans" size="34" isBold="false"/>
+						<font fontName="SansSerif" size="34" isBold="false"/>
 					</textElement>
 					<text><![CDATA[Relatórios]]></text>
 				</staticText>
 				<staticText>
 					<reportElement x="421" y="43" width="160" height="20" forecolor="#FFFFFF" uuid="b8a460bb-fb2c-4abf-8073-a77d43fb630e"/>
 					<textElement textAlignment="Right">
-						<font fontName="DejaVu Sans" size="14" isBold="true" isItalic="true" isUnderline="false"/>
+						<font fontName="SansSerif" size="14" isBold="true" isItalic="true" isUnderline="false"/>
 					</textElement>
 					<text><![CDATA[Registro de Consultas]]></text>
 				</staticText>
@@ -173,7 +173,7 @@
 				<textElement textAlignment="Justified" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[Pago]]></text>
+				<text><![CDATA[Paga]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="428" y="20" width="59" height="17" forecolor="#006699" uuid="d3d91a23-5efe-4d5b-af1f-3762e38efff9"/>

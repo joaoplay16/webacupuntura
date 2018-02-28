@@ -10,52 +10,61 @@
 	<div class="ui-g-12 ui-md-6">
 		<p:outputLabel for="area" value="Histórico da doença atual" />
 		<p:inputTextarea 
-			value="#{cadProntuarioB.paciente.prontuario.historico.hDoencaAtual}" id="area"
-			autoResize="true" />
+			value="#{cadProntuarioB.paciente.prontuario.historico.hDoencaAtual}" 
+			id="area" autoResize="true" maxlength="270"/>
 	</div>
 	<div class="ui-g-12 ui-md-6">
 		<p:outputLabel for="area1" value="Histórico patológico" />
 		<p:inputTextarea
-			value="#{cadProntuarioB.paciente.prontuario.historico.hPatologico}" id="area1" />
+			value="#{cadProntuarioB.paciente.prontuario.historico.hPatologico}" 
+			id="area1" maxlength="270"/>
 	</div>
 	<div class="ui-g-12 ui-md-6 ">
 		<p:outputLabel for="area2" value="Histórico familiar" />
 		<p:inputTextarea id="area2"
-			value="#{cadProntuarioB.paciente.prontuario.historico.hFamiliar}" />
+			value="#{cadProntuarioB.paciente.prontuario.historico.hFamiliar}" 
+			maxlength="270"/>
 	</div>
 	<div class="ui-g-12 ui-md-6">
 		<p:outputLabel for="area3" value="Histórico Social" />
 		<p:inputTextarea id="area3"
-			value="#{cadProntuarioB.paciente.prontuario.historico.hSocial}" />
+			value="#{cadProntuarioB.paciente.prontuario.historico.hSocial}"
+			maxlength="270" />
 	</div>
 	<div class="ui-g-12 ui-md-6">
 		<p:outputLabel for="area4" value="Tratamento atual" />
 		<p:inputTextarea id="area4"
-			value="#{cadProntuarioB.paciente.prontuario.historico.tratamentoAtual}" />
+			value="#{cadProntuarioB.paciente.prontuario.historico.tratamentoAtual}" 
+			maxlength="200"/>
 	</div>
 	<div class="ui-g-12 ui-md-6">
 		<p:outputLabel for="area5" value="Tratamentos anteriores" />
 		<p:inputTextarea id="area5"
-			value="#{cadProntuarioB.paciente.prontuario.historico.tratamentosAnteriores}" />
+			value="#{cadProntuarioB.paciente.prontuario.historico.tratamentosAnteriores}"
+			maxlength="200" />
 	</div>
 	<div class="ui-g-12 ui-md-6">
 		<p:outputLabel for="area6" value="Medicamentos em uso" />
 		<p:inputTextarea id="area6"
-			value="#{cadProntuarioB.paciente.prontuario.historico.medicamentoEmUso}" />
+			value="#{cadProntuarioB.paciente.prontuario.historico.medicamentoEmUso}"
+			maxlength="200" />
 	</div>
 	<div class="ui-g-12 ui-md-6">
 		<p:outputLabel for="area7" value="Exames apresentados" />
 		<p:inputTextarea id="area7"
-			value="#{cadProntuarioB.paciente.prontuario.historico.examesApresentados}" />
+			value="#{cadProntuarioB.paciente.prontuario.historico.examesApresentados}" 
+			maxlength="270"/>
 	</div>
 	<div class="ui-g-12">
 		<p:outputLabel for="input8" value="Diagnóstico médico" />
 		<p:inputText id="input8"
-			value="#{cadProntuarioB.paciente.prontuario.historico.diagnosticoMedico}" />
+			value="#{cadProntuarioB.paciente.prontuario.historico.diagnosticoMedico}"
+			maxlength="270" />
 	</div>
 	<div class="ui-g-12 ">
 		<p:outputLabel for="input9" value="Médico" />
 		<p:inputText id="input9"
-			value="#{cadProntuarioB.paciente.prontuario.historico.medico}" />
+			value="#{cadProntuarioB.paciente.prontuario.historico.medico}"
+			maxlength="80" />
 	</div>
 </ui:composition>

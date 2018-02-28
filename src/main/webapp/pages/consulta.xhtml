@@ -35,7 +35,8 @@
 					<f:facet name="header">Impressão</f:facet>
 				<p:outputLabel value="De:" />	
 				<p:calendar
-						value="#{consultaBean.relatorioConsulta.dataInicial}" size="8" />
+						value="#{consultaBean.relatorioConsulta.dataInicial}" size="8"
+						locale="pt_BR" timeZone="GMT-3" />
 				<p:outputLabel value="Até:" />
 				   <p:calendar value="#{consultaBean.relatorioConsulta.dataFinal}"
 						size="8" locale="pt_BR" timeZone="GMT-3"/>

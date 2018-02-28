@@ -4,15 +4,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
+import javax.persistence.Transient;
 
 public class Pulso {
 	private Integer codigo;
 	private String IG, E, TA, P, BP, CS, C, F, ID, VB, B;
 	private String diagnostico;
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	//@Id
+	//@GeneratedValue(strategy=GenerationType.IDENTITY)
 	public Integer getCodigo() {
 		return codigo;
 	}
@@ -108,7 +108,7 @@ public class Pulso {
 	public void setB(String b) {
 		B = b;
 	}
-
+	
 	public String getDiagnostico() {
 		return diagnostico;
 	}

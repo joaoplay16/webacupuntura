@@ -108,7 +108,7 @@ order by data_evolucao desc]]>
         paciente.codigo=$P{codigo}
 order by data_evolucao desc]]>
 	</queryString>
-	<field name="data_evolucao" class="java.sql.Timestamp"/>
+	<field name="data_evolucao" class="java.util.Date"/>
 	<field name="evolucao" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
@@ -128,7 +128,7 @@ order by data_evolucao desc]]>
 	</title>
 	<detail>
 		<band height="107" splitType="Stretch">
-			<textField isBlankWhenNull="true">
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
 				<reportElement x="0" y="0" width="128" height="20" uuid="72410408-0c26-4756-9aae-3bbf10ed1326"/>
 				<textElement>
 					<font size="12"/>
