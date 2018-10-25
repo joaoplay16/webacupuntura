@@ -91,7 +91,7 @@ public class Relatorio implements Serializable{
 	private Connection getConexao() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			con = DriverManager.getConnection("jdbc:mysql://sql9.freesqldatabase.com", "sql9262732", "J176l787R3");
+			con = DriverManager.getConnection("jdbc:mysql://sql9.freesqldatabase.com/sql9262732", "sql9262732", "J176l787R3");
 			return con;
 
 		} catch (SQLException e) {
