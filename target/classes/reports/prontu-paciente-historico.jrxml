@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="prontu-paciente" language="groovy" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="9d492d21-2db2-48fd-8539-83d73571932c">
+	<property name="ireport.zoom" value="1.1"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="codigo" class="java.lang.Long">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["/home/joao/Documentos/projetos-eclipse/webacupuntura/src/main/java/report/"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select
+
+
+        historico16_.alimentacao as alimentacao,
+        historico16_.atividadeSexual as atividadeSexual,
+        historico16_.cicloMenstrual as cicloMentrual,
+        historico16_.cirurgias as cirurgias,
+        historico16_.diagnosticoMedico as historico_diagnostico,
+        historico16_.examesApresentados as examesApresentados,
+        historico16_.hDoencaAtual as hDoencaAtual,
+        historico16_.hFamiliar as hFamiliar,
+        historico16_.hPatologico as hPatologico,
+        historico16_.hSocial as hSocial,
+        historico16_.medicamentoEmUso as medicamentoEmUso,
+        historico16_.medico as medico,
+        historico16_.sistemaCirculatorio as sistemaCirculatorio,
+        historico16_.sistemaGastroIntestinal as sistemaGastroIntestinal,
+        historico16_.sistemaGeniturinario as sistemaGeniturinario,
+        historico16_.sistemaMuscular as sistemaMuscular,
+        historico16_.sistemaNervoso as sistemaNervoso,
+        historico16_.sistemaOsseo as sistemaOsseo,
+        historico16_.sistemaRespiratorio as sistemaRespiratorio,
+        historico16_.sono as sono,
+        historico16_.tratamentoAtual as tratamentoAtual,
+        historico16_.tratamentosAnteriores as tratamentosAnteriores
+
+    from
+        Paciente paciente
+    left outer join
+        Prontuario prontuario
+            on paciente.codigo_prontuario = prontuario.codigo
+
+    left outer join
+        Historico historico16_
+            on prontuario.codigo_historico=historico16_.codigo
+
+    where
+        paciente.codigo=$P{codigo}]]>
+	</queryString>
+	<field name="alimentacao" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="atividadeSexual" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cicloMentrual" class="java.lang.String"/>
+	<field name="cirurgias" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="historico_diagnostico" class="java.lang.String"/>
+	<field name="examesApresentados" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="hDoencaAtual" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="hFamiliar" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="hPatologico" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="hSocial" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="medicamentoEmUso" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="medico" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="sistemaCirculatorio" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="sistemaGastroIntestinal" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="sistemaGeniturinario" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="sistemaMuscular" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="sistemaNervoso" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="sistemaOsseo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="sistemaRespiratorio" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="sono" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tratamentoAtual" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tratamentosAnteriores" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band/>
+	</title>
+	<pageHeader>
+		<band height="622">
+			<staticText>
+				<reportElement x="0" y="297" width="158" height="16" uuid="a99d19a1-ef4f-44f6-98ea-1e47ad000296"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tratamento atual	]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="0" y="313" width="595" height="56" uuid="9900a0f6-b5ae-4bb4-b1a8-12593be5f77b"/>
+				<textFieldExpression><![CDATA[$F{tratamentoAtual}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="229" width="158" height="16" uuid="7d7d0130-1168-4ae6-a767-ff47b9e1d550"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Histórico social]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="166" width="158" height="16" uuid="5a26769e-a270-45ea-bed2-f04ef2c63090"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Histórico familiar]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="19" width="158" height="16" uuid="fcf6a52e-d6c2-4011-a6f6-b83c81eb6ad9"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Histórico da doença atual]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="91" width="129" height="16" uuid="cc511c9d-3057-433d-b83f-ee05f0b082c5"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Histórico patológico]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="0" y="35" width="595" height="57" uuid="23d3b927-1acb-47a5-8280-038698eccf41"/>
+				<textFieldExpression><![CDATA[$F{hDoencaAtual}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="0" y="109" width="595" height="56" uuid="3e430a48-5329-494b-96a6-082c46ddf2f7"/>
+				<textFieldExpression><![CDATA[$F{hPatologico}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="0" y="180" width="595" height="51" uuid="15b900af-212e-4819-8ba0-3b922f15c5d1"/>
+				<textFieldExpression><![CDATA[$F{hFamiliar}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="0" y="243" width="595" height="54" uuid="e81f61e6-7472-4edb-8800-451bb371020d"/>
+				<textFieldExpression><![CDATA[$F{hSocial}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="0" y="600" width="595" height="13" uuid="054526bb-e02e-43b1-9b6c-225c02c10dd3"/>
+				<textFieldExpression><![CDATA[$F{medico}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="305" y="524" width="290" height="60" uuid="d96d3da4-7bdf-483e-8510-5e66af3430fa"/>
+				<textFieldExpression><![CDATA[$F{historico_diagnostico}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="584" width="158" height="16" uuid="81c2ce7a-387e-43a6-aa92-46e734e6c98b"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Médico:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="305" y="508" width="158" height="16" uuid="a8e750b6-cd59-4112-a8ee-eb04366571a6"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Diagnóstico médico]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="0" y="524" width="281" height="60" uuid="acad745c-a750-44ce-bc02-c51aa36f8466"/>
+				<textFieldExpression><![CDATA[$F{examesApresentados}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="0" y="454" width="595" height="54" uuid="1eb9086b-7d85-4cfc-9ac5-3ba8505514a6"/>
+				<textFieldExpression><![CDATA[$F{medicamentoEmUso}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="508" width="158" height="16" uuid="6156da3e-66a6-49e8-9c7a-378188832008"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Exames apresentados]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="438" width="158" height="16" uuid="78effcad-0de7-405a-88cc-39d6b1381525"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Mediacamentos em  uso]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="0" y="383" width="595" height="55" uuid="c772796b-d86f-42ef-8129-47c09e69d2a6"/>
+				<textFieldExpression><![CDATA[$F{tratamentosAnteriores}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="369" width="158" height="14" uuid="a40f3b68-058c-40d5-8479-88860f2ee4a7"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tratamentos anteriores]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="105" height="20" uuid="f2a1349e-a331-48c8-b881-a098e90e1840"/>
+				<textElement>
+					<font fontName="SansSerif" size="15" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Histórico]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+</jasperReport>
