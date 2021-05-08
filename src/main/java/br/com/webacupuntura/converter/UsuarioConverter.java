@@ -24,7 +24,7 @@ public class UsuarioConverter implements Converter {
 		Usuario usuario = null;
 		
 		if(value != null){
-			usuario = usuarioDAO.buscarPeloCodigo(new Long(value));
+			usuario = usuarioDAO.buscarPeloCodigo(Long.valueOf(value));
 		}
 		
 		return usuario;

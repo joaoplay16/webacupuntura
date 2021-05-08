@@ -24,7 +24,7 @@ public class PacienteConverter implements Converter {
 		Paciente retorno = null;
 
 		if (value != null) {
-			retorno = this.pacienteDAO.buscarPeloCodigo(new Long(value));
+			retorno = this.pacienteDAO.buscarPeloCodigo(Long.valueOf(value));
 		}
 
 		return retorno;

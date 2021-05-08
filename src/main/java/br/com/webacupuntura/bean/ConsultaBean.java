@@ -135,7 +135,7 @@ implements Serializable , AoGerarRelatorio{
 
 	
 
-	public void onRowEdit(RowEditEvent event) {
+	public void onRowEdit(RowEditEvent<Consulta> event) {
 		this.consultaSelecionada = (Consulta) event.getObject();
 		if (consultaSelecionada.getCodigo() != null) {
 			FacesUtil.addSuccessMessage("Atualização de consulta",
@@ -144,13 +144,13 @@ implements Serializable , AoGerarRelatorio{
 		salvar();
 	}
 
-	public void onRowCancel(RowEditEvent event) {
+	public void onRowCancel(RowEditEvent<Consulta> event) {
 		FacesMessage msg = new FacesMessage("Edicao cancelada: ",
 				((Consulta) event.getObject()).getPaciente().getNome());
 		FacesContext.getCurrentInstance().addMessage(null, msg);
 	}
 
-	public void onCellEdit(CellEditEvent event) {
+	public void onCellEdit(CellEditEvent<Consulta> event) {
 		Object oldValue = event.getOldValue();
 		Object newValue = event.getNewValue();
 		if (newValue != null && !newValue.equals(oldValue)) {

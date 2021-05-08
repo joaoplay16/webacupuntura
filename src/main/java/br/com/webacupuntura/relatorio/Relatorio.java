@@ -91,7 +91,7 @@ public class Relatorio implements Serializable{
 	private Connection getConexao() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			con = DriverManager.getConnection("jdbc:mysql://sql9.freesqldatabase.com/sql9262732", "sql9262732", "J176l787R3");
+			con = DriverManager.getConnection("jdbc:mysql://remotemysql.com:3306/TGNmAyL5rl", "TGNmAyL5rl", "D1YYIvpyAE");
 			return con;
 
 		} catch (SQLException e) {
@@ -104,7 +104,8 @@ public class Relatorio implements Serializable{
 
 	private void closeConnection() {
 		try {
-			con.close();
+			if(this.con != null)
+				con.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

@@ -5,9 +5,9 @@
 	
 	<persistence-unit name="webacupunturaPU" transaction-type="RESOURCE_LOCAL">
 		<properties>
-			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://sql9.freesqldatabase.com:3306/sql9262732"/>
-			<property name="javax.persistence.jdbc.user" value="sql9262732"/>
-			<property name="javax.persistence.jdbc.password" value="J176l787R3"/>
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://remotemysql.com:3306/TGNmAyL5rl"/>
+			<property name="javax.persistence.jdbc.user" value="TGNmAyL5rl"/>
+			<property name="javax.persistence.jdbc.password" value="D1YYIvpyAE"/>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect"/>
 			<!-- validate | update | create | create-drop -->
