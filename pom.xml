@@ -27,7 +27,9 @@
 				<executions>
 					<execution>
 						<phase>package</phase>
-						<goal>copy</goal>
+						<goals>
+							<goal>copy</goal>
+						</goals>
 						<configuration>
 							<artifactItems>
 								<artifactItem>
